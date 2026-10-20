@@ -1557,6 +1557,22 @@
     bgmAudio.volume = 0.35;
     ttsAudio.volume = 1.0;
 
+    const BGM_BASE_VOL = 0.28;   // 평소 은은한 배경 볼륨
+    const BGM_DUCK_VOL = 0.08;   // 성우가 낭독할 때 부드럽게 줄어드는 볼륨
+
+    function setBgmVolumeSmooth(targetVol, durationMs = 350) {
+      if (!bgmAudio) return;
+      const startVol = bgmAudio.volume;
+      const startTime = performance.now();
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / durationMs, 1);
+        bgmAudio.volume = startVol + (targetVol - startVol) * progress;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
     // =========================================================
     // 갤러리 ⇄ 슬라이더 전환 엔진 (사용자 요구사항 완벽 대응)
     // =========================================================
@@ -1571,10 +1587,10 @@
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // 전문 AI 성우 음성 낭독 자동 시작
+      // 은은한 BGM 및 성우 낭독 시작
       startAllAudio();
       showCard(cardNum, true);
-      showToast(`🎬 0${cardNum}번 카드 감상 시작 (전문 AI 성우 낭독)`);
+      showToast(`🎬 0${cardNum}번 카드 감상 시작 (BGM + 성우 낭독)`);
     }
 
     // 2. 전체 목록 버튼을 눌렀을 때 -> 첫 번째 그림(갤러리 목록)으로 복귀!
@@ -1593,12 +1609,19 @@
       showToast("⊞ 전체 매거진 갤러리 목록으로 돌아왔습니다.");
     }
 
-    // 배경음악(BGM)은 완전히 배제하고, 순수하게 해당 컷의 내용(AI 성우 낭독 음성)만 또렷하게 재생!
+    // 은은한 BGM과 성우 낭독 스마트 시작
     function startAllAudio() {
       if (isSoundMuted) return;
       isAudioStarted = true;
       if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
       if (btnPublicSound) btnPublicSound.classList.add('active');
+
+      if (bgmAudio && bgmAudio.paused) {
+        bgmAudio.volume = BGM_BASE_VOL;
+        bgmAudio.play().catch(err => {
+          console.log("BGM Autoplay pending user interaction");
+        });
+      }
 
       if (isSliderOpen) {
         playCurrentVoice();
@@ -1616,7 +1639,6 @@
 
     // 페이지 진입 초기화
     window.addEventListener('DOMContentLoaded', () => {
-      if (bgmAudio) bgmAudio.pause();
       const urlParams = new URLSearchParams(window.location.search);
       const cardParam = parseInt(urlParams.get('card'), 10);
 
@@ -1661,6 +1683,9 @@
 
       ttsAudio.src = `../audio/tts_mag_0${currentIdx}.mp3`;
 
+      // ★ [스마트 오디오 덕킹] 성우가 말할 때는 BGM 볼륨을 0.08로 줄여 내용이 또렷하게 들림!
+      setBgmVolumeSmooth(BGM_DUCK_VOL, 300);
+
       ttsAudio.play().then(() => {
         isAudioStarted = true;
         const icon = document.getElementById('speakIcon');
@@ -1672,6 +1697,9 @@
       ttsAudio.onended = () => {
         const icon = document.getElementById('speakIcon');
         if (icon) icon.className = 'fa-solid fa-volume-high';
+
+        // ★ [스마트 오디오 덕킹] 성우 말이 끝나면 BGM 볼륨이 다시 원래 은은한 크기(0.28)로 복귀!
+        setBgmVolumeSmooth(BGM_BASE_VOL, 400);
 
         // 음성 종료 후 2.2초 뒤 다음 카드로 자동 이동 (원활한 슬라이드 감상)
         if (currentIdx < total) {
@@ -1697,7 +1725,7 @@
       showCard(prev, true);
     }
 
-    // 미니멀 음소거 / 성우 낭독 켬 토글
+    // 미니멀 음소거 / 소리 켬 토글
     function toggleAllSound() {
       isSoundMuted = !isSoundMuted;
       if (isSoundMuted) {
@@ -1706,18 +1734,39 @@
         clearTimeout(autoNextTimer);
         if (soundIcon) soundIcon.className = 'fa-solid fa-volume-xmark';
         if (btnPublicSound) btnPublicSound.classList.remove('active');
-        showToast("성우 음성이 음소거되었습니다.");
+        showToast("소리가 음소거되었습니다.");
       } else {
         isAudioStarted = true;
-        if (bgmAudio) bgmAudio.pause(); // BGM은 항상 꺼짐 유지
+        if (bgmAudio) {
+          bgmAudio.volume = BGM_BASE_VOL;
+          bgmAudio.play().catch(() => {});
+        }
         if (isSliderOpen) {
           playCurrentVoice();
         }
         if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
         if (btnPublicSound) btnPublicSound.classList.add('active');
-        showToast("전문 AI 성우 낭독이 켜졌습니다.");
+        showToast("음악과 성우 음성이 켜졌습니다.");
       }
     }
+
+    // ★ [탭 간 음악 겹침 100% 원천 차단] 다른 탭으로 이동 시 즉시 음악 일시정지!
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (bgmAudio) bgmAudio.pause();
+        ttsAudio.pause();
+        clearTimeout(autoNextTimer);
+      } else {
+        if (!isSoundMuted && isAudioStarted && isSliderOpen) {
+          if (bgmAudio) bgmAudio.play().catch(() => {});
+        }
+      }
+    });
+
+    window.addEventListener('pagehide', () => {
+      if (bgmAudio) bgmAudio.pause();
+      ttsAudio.pause();
+    });
 
     // Touch Swipe Navigation for Smartphones
     let touchStartX = 0;

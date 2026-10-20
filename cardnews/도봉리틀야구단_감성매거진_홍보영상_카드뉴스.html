@@ -891,12 +891,36 @@
     bgm.volume = 0.35;
     tts.volume = 1.0;
 
-    // 배경음악(BGM)은 완전히 배제하고, 순수하게 해당 컷의 내용(AI 성우 낭독 음성)만 또렷하게 재생!
+    const BGM_BASE_VOL = 0.28;   // 평소 은은한 배경 볼륨
+    const BGM_DUCK_VOL = 0.08;   // 성우가 낭독할 때 부드럽게 줄어드는 볼륨
+
+    function setBgmVolumeSmooth(targetVol, durationMs = 350) {
+      if (!bgm) return;
+      const startVol = bgm.volume;
+      const startTime = performance.now();
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / durationMs, 1);
+        bgm.volume = startVol + (targetVol - startVol) * progress;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // 은은한 BGM 및 성우 낭독 스마트 시작
     function startAllAudio() {
       if (isAudioStarted || isSoundMuted) return;
       isAudioStarted = true;
       if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
       if (btnSound) btnSound.classList.add('highlight');
+
+      if (bgm && bgm.paused) {
+        bgm.volume = BGM_BASE_VOL;
+        bgm.play().catch(err => {
+          console.log('BGM Autoplay pending user interaction');
+        });
+      }
+
       playCutVoice(currentCut);
     }
 
@@ -911,7 +935,6 @@
 
     // 페이지 로드 시 즉시 시도
     window.addEventListener('DOMContentLoaded', () => {
-      if (bgm) bgm.pause();
       showCut(1, false);
       startAllAudio();
     });
@@ -957,6 +980,9 @@
 
       tts.src = `../audio/tts_video_0${cutNum}.mp3`;
 
+      // ★ [스마트 오디오 덕킹] 성우가 말할 때는 BGM을 0.08로 줄여 내용이 또렷하게 들림!
+      setBgmVolumeSmooth(BGM_DUCK_VOL, 300);
+
       tts.play().then(() => {
         isAudioStarted = true;
       }).catch(e => {
@@ -964,6 +990,9 @@
       });
 
       tts.onended = () => {
+        // ★ [스마트 오디오 덕킹] 성우 말이 끝나면 BGM을 다시 원래의 은은한 볼륨(0.28)으로 복귀!
+        setBgmVolumeSmooth(BGM_BASE_VOL, 400);
+
         // 음성 종료 후 2초 뒤 자동 다음 컷 전환 (쇼츠/릴스 방식)
         if (currentCut < totalCuts) {
           autoNextTimer = setTimeout(() => {
@@ -988,7 +1017,7 @@
       showCut(prev, true);
     }
 
-    // 미니멀 음소거 / 성우 낭독 켬 토글
+    // 미니멀 음소거 / 소리 켬 토글
     function toggleAllSound() {
       isSoundMuted = !isSoundMuted;
       if (isSoundMuted) {
@@ -997,16 +1026,37 @@
         clearTimeout(autoNextTimer);
         if (soundIcon) soundIcon.className = 'fa-solid fa-volume-xmark';
         if (btnSound) btnSound.classList.remove('highlight');
-        showToast('성우 음성이 음소거되었습니다.');
+        showToast('소리가 음소거되었습니다.');
       } else {
         isAudioStarted = true;
-        if (bgm) bgm.pause(); // BGM은 항상 비활성화 유지
+        if (bgm) {
+          bgm.volume = BGM_BASE_VOL;
+          bgm.play().catch(() => {});
+        }
         playCutVoice(currentCut);
         if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
         if (btnSound) btnSound.classList.add('highlight');
-        showToast('전문 AI 성우 낭독이 켜졌습니다.');
+        showToast('음악과 성우 음성이 켜졌습니다.');
       }
     }
+
+    // ★ [탭 간 음악 겹침 100% 원천 차단] 다른 탭으로 이동 시 즉시 음악 일시정지!
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (bgm) bgm.pause();
+        tts.pause();
+        clearTimeout(autoNextTimer);
+      } else {
+        if (!isSoundMuted && isAudioStarted) {
+          if (bgm) bgm.play().catch(() => {});
+        }
+      }
+    });
+
+    window.addEventListener('pagehide', () => {
+      if (bgm) bgm.pause();
+      tts.pause();
+    });
 
     // 토스트 알림
     function showToast(msg) {
