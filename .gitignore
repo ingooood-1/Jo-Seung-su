@@ -9,3 +9,5 @@ $RECYCLE.BIN/
 *.log
 scratch/
 .temp/
+temp_*
+*_fitted.jpg
