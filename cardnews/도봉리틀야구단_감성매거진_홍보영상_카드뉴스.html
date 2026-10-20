@@ -677,9 +677,9 @@
 
       <div class="card-body-column">
         <div>
-          <h2 class="hand-main-title">
-            체형이 다른데 왜 똑같이?<br>
-            <span class="hl-red">몸통 무너지면 힘 전달 불가!</span>
+          <h2 class="hand-main-title" style="font-size: 26px; line-height: 1.25;">
+            아이마다 체형이 다른데,<br>왜 폼은 다 똑같이 가르칠까요?<br>
+            <span class="hl-red" style="font-size: 22px;">몸통 무너지면 힘 전달 불가!</span>
           </h2>
           <p class="body-desc-text">
             모양과 움직임은 같을지 몰라도, <strong>쓰는 근육이 달라지면 선수의 능력치도 달라집니다!</strong><br>
@@ -891,18 +891,12 @@
     bgm.volume = 0.35;
     tts.volume = 1.0;
 
-    // 무조건 음악 및 성우 음성 자동 시작 (브라우저 정책 자동 대응)
+    // 배경음악(BGM)은 완전히 배제하고, 순수하게 해당 컷의 내용(AI 성우 낭독 음성)만 또렷하게 재생!
     function startAllAudio() {
       if (isAudioStarted || isSoundMuted) return;
       isAudioStarted = true;
-
-      bgm.play().then(() => {
-        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
-        if (btnSound) btnSound.classList.add('highlight');
-      }).catch(err => {
-        console.log('BGM Autoplay pending user interaction');
-      });
-
+      if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
+      if (btnSound) btnSound.classList.add('highlight');
       playCutVoice(currentCut);
     }
 
@@ -917,6 +911,7 @@
 
     // 페이지 로드 시 즉시 시도
     window.addEventListener('DOMContentLoaded', () => {
+      if (bgm) bgm.pause();
       showCut(1, false);
       startAllAudio();
     });
@@ -961,9 +956,6 @@
       tts.pause();
 
       tts.src = `../audio/tts_video_0${cutNum}.mp3`;
-      if (!bgm.paused) {
-        bgm.volume = 0.12; // 목소리 나올 때 BGM 부드럽게 감소
-      }
 
       tts.play().then(() => {
         isAudioStarted = true;
@@ -972,9 +964,6 @@
       });
 
       tts.onended = () => {
-        if (!bgm.paused) {
-          bgm.volume = 0.35; // 목소리 끝나면 BGM 원래 볼륨 복귀
-        }
         // 음성 종료 후 2초 뒤 자동 다음 컷 전환 (쇼츠/릴스 방식)
         if (currentCut < totalCuts) {
           autoNextTimer = setTimeout(() => {
@@ -999,24 +988,23 @@
       showCut(prev, true);
     }
 
-    // 미니멀 음소거 / 소리켬 토글
+    // 미니멀 음소거 / 성우 낭독 켬 토글
     function toggleAllSound() {
       isSoundMuted = !isSoundMuted;
       if (isSoundMuted) {
-        bgm.pause();
+        if (bgm) bgm.pause();
         tts.pause();
         clearTimeout(autoNextTimer);
         if (soundIcon) soundIcon.className = 'fa-solid fa-volume-xmark';
         if (btnSound) btnSound.classList.remove('highlight');
-        showToast('소리가 음소거되었습니다.');
+        showToast('성우 음성이 음소거되었습니다.');
       } else {
         isAudioStarted = true;
-        bgm.volume = 0.35;
-        bgm.play().catch(() => {});
+        if (bgm) bgm.pause(); // BGM은 항상 비활성화 유지
         playCutVoice(currentCut);
         if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
         if (btnSound) btnSound.classList.add('highlight');
-        showToast('음악과 성우 음성이 켜졌습니다.');
+        showToast('전문 AI 성우 낭독이 켜졌습니다.');
       }
     }
 

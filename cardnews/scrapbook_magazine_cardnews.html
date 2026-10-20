@@ -1114,7 +1114,7 @@
     <div class="gallery-hero">
       <span class="hero-badge"><i class="fa-solid fa-layer-group"></i> CSS 야구센터 × 도봉리틀 카드뉴스 컬렉션</span>
       <h2>도봉 리틀 공식 카드뉴스 시리즈</h2>
-      <p>감상하실 카드뉴스 작품의 <strong>대표 썸네일을 클릭</strong>하시면 BGM과 AI 성우 목소리로 바로 실행됩니다.</p>
+      <p>감상하실 카드뉴스 작품의 <strong>대표 썸네일을 클릭</strong>하시면 전문 AI 성우의 또렷한 낭독으로 바로 실행됩니다.</p>
     </div>
 
     <!-- 제작된 2개 작품 갤러리 (추후 3호, 4호 추가 확장 가능) -->
@@ -1130,7 +1130,7 @@
           </div>
         </div>
         <div class="gallery-info-box" style="padding: 20px;">
-          <div style="font-size:12px; color:#0284c7; font-weight:800; margin-bottom:4px;">총 6컷 완결 · BGM &amp; AI 성우 탑재</div>
+          <div style="font-size:12px; color:#0284c7; font-weight:800; margin-bottom:4px;">총 6컷 완결 · 전문 AI 성우 낭독 탑재</div>
           <div class="gallery-card-title" style="font-size:18px;">[1호] 야구도 잘하고 키도 쑥쑥!</div>
           <div class="gallery-card-desc">초등 성장기 성장판 보호 &amp; 좌우 밸런스 회복으로 숨은 키와 잠재력을 깨우는 스크랩북 매거진</div>
           <div style="margin-top:14px; display:flex; align-items:center; justify-content:space-between; color:#e11d48; font-weight:800; font-size:13px;">
@@ -1156,7 +1156,7 @@
         <div class="gallery-info-box" style="padding: 20px;">
           <div style="font-size:12px; color:#e11d48; font-weight:800; margin-bottom:4px;">총 6컷 자동 슬라이드 · 영상 플레이어</div>
           <div class="gallery-card-title" style="font-size:18px;">[2호] 도봉리틀 홍보영상 카드뉴스</div>
-          <div class="gallery-card-desc">타임라인을 따라 자동으로 전환되며 은은한 BGM과 AI 성우 목소리로 시청하는 영상형 카드뉴스</div>
+          <div class="gallery-card-desc">타임라인을 따라 자동으로 전환되며 전문 AI 성우의 또렷한 목소리로 시청하는 영상형 카드뉴스</div>
           <div style="margin-top:14px; display:flex; align-items:center; justify-content:space-between; color:#e11d48; font-weight:800; font-size:13px;">
             <span><i class="fa-solid fa-circle-play"></i> 클릭하여 2편 감상하기</span>
             <span style="color:#64748b; font-size:12px;">6 Cuts</span>
@@ -1571,10 +1571,10 @@
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // 무조건 음악 및 성우 음성 자동 시작
+      // 전문 AI 성우 음성 낭독 자동 시작
       startAllAudio();
       showCard(cardNum, true);
-      showToast(`🎬 CUT 0${cardNum} 재생 시작 (BGM + 성우 낭독)`);
+      showToast(`🎬 0${cardNum}번 카드 감상 시작 (전문 AI 성우 낭독)`);
     }
 
     // 2. 전체 목록 버튼을 눌렀을 때 -> 첫 번째 그림(갤러리 목록)으로 복귀!
@@ -1582,6 +1582,7 @@
       isSliderOpen = false;
       clearTimeout(autoNextTimer);
       ttsAudio.pause();
+      if (bgmAudio) bgmAudio.pause();
 
       sliderView.style.display = 'none';
       galleryView.style.display = 'block';
@@ -1592,17 +1593,16 @@
       showToast("⊞ 전체 매거진 갤러리 목록으로 돌아왔습니다.");
     }
 
-    // 무조건 음악 및 성우 음성 자동 시작 (브라우저 정책 완벽 대응)
+    // 배경음악(BGM)은 완전히 배제하고, 순수하게 해당 컷의 내용(AI 성우 낭독 음성)만 또렷하게 재생!
     function startAllAudio() {
       if (isSoundMuted) return;
       isAudioStarted = true;
+      if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
+      if (btnPublicSound) btnPublicSound.classList.add('active');
 
-      bgmAudio.play().then(() => {
-        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
-        if (btnPublicSound) btnPublicSound.classList.add('active');
-      }).catch(err => {
-        console.log("BGM Autoplay pending user interaction");
-      });
+      if (isSliderOpen) {
+        playCurrentVoice();
+      }
     }
 
     // 첫 터치/클릭 즉시 오디오 언락 리스너
@@ -1616,6 +1616,7 @@
 
     // 페이지 진입 초기화
     window.addEventListener('DOMContentLoaded', () => {
+      if (bgmAudio) bgmAudio.pause();
       const urlParams = new URLSearchParams(window.location.search);
       const cardParam = parseInt(urlParams.get('card'), 10);
 
@@ -1648,22 +1649,17 @@
       } catch (e) {}
 
       // 카드 변경 시 성우 음성 자동 낭독
-      if (!isSoundMuted && (autoPlayVoice || isAudioStarted)) {
+      if (!isSoundMuted && (autoPlayVoice || isAudioStarted) && isSliderOpen) {
         playCurrentVoice();
       }
     }
 
     function playCurrentVoice() {
-      if (isSoundMuted) return;
+      if (isSoundMuted || !isSliderOpen) return;
       clearTimeout(autoNextTimer);
       ttsAudio.pause();
 
       ttsAudio.src = `../audio/tts_mag_0${currentIdx}.mp3`;
-      
-      // BGM 볼륨 부드럽게 줄이기 (오디오 덕킹)
-      if (!bgmAudio.paused) {
-        bgmAudio.volume = 0.12;
-      }
 
       ttsAudio.play().then(() => {
         isAudioStarted = true;
@@ -1676,9 +1672,6 @@
       ttsAudio.onended = () => {
         const icon = document.getElementById('speakIcon');
         if (icon) icon.className = 'fa-solid fa-volume-high';
-        if (!bgmAudio.paused) {
-          bgmAudio.volume = 0.35;
-        }
 
         // 음성 종료 후 2.2초 뒤 다음 카드로 자동 이동 (원활한 슬라이드 감상)
         if (currentIdx < total) {
@@ -1704,26 +1697,25 @@
       showCard(prev, true);
     }
 
-    // 미니멀 음소거 / 소리켬 토글
+    // 미니멀 음소거 / 성우 낭독 켬 토글
     function toggleAllSound() {
       isSoundMuted = !isSoundMuted;
       if (isSoundMuted) {
-        bgmAudio.pause();
+        if (bgmAudio) bgmAudio.pause();
         ttsAudio.pause();
         clearTimeout(autoNextTimer);
         if (soundIcon) soundIcon.className = 'fa-solid fa-volume-xmark';
         if (btnPublicSound) btnPublicSound.classList.remove('active');
-        showToast("소리가 음소거되었습니다.");
+        showToast("성우 음성이 음소거되었습니다.");
       } else {
         isAudioStarted = true;
-        bgmAudio.volume = 0.35;
-        bgmAudio.play().catch(() => {});
+        if (bgmAudio) bgmAudio.pause(); // BGM은 항상 꺼짐 유지
         if (isSliderOpen) {
           playCurrentVoice();
         }
         if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
         if (btnPublicSound) btnPublicSound.classList.add('active');
-        showToast("음악과 성우 음성이 켜졌습니다.");
+        showToast("전문 AI 성우 낭독이 켜졌습니다.");
       }
     }
 
