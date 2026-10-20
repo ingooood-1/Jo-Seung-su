@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조승수 야구센터 &amp; 바이오피치 랩 - 카드뉴스 &amp; 홈페이지 포털</title>
+  <meta name="description" content="조승수 대표의 전문 야구 수업과 박인국 실장의 1:1 맞춤 코칭 서비스 - 감성 매거진 카드뉴스 및 공식 웹사이트 포털">
+
+  <!-- Pretendard & Outfit Fonts -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #0a0f1d;
+      --card-bg: rgba(18, 25, 43, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-border: rgba(56, 189, 248, 0.5);
+      --primary-blue: #0284c7;
+      --accent-cyan: #38bdf8;
+      --accent-gold: #f59e0b;
+      --accent-rose: #f43f5e;
+      --text-white: #ffffff;
+      --text-gray: #e2e8f0; /* 흐린 회색 배제 -> 선명하고 밝은 오프화이트 */
+      --text-dim: #bae6fd; /* 어두운 회색 배제 -> 선명하고 또렷한 아이스 스카이블루 */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, sans-serif;
+      background-color: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(2, 132, 199, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 85% 25%, rgba(245, 158, 11, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(244, 63, 94, 0.1) 0%, transparent 50%);
+      color: var(--text-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Nav */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 15, 29, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 16px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
+    }
+
+    .brand-name {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-name span {
+      color: var(--accent-cyan);
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+
+    .nav-badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 44px 0 28px 0;
+      text-align: center;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: #fbbf24;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      line-height: 1.35;
+      margin-bottom: 14px;
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #38bdf8, #818cf8, #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.6;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Dual Expert Badge Notice */
+    .expert-notice-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 28px auto 36px auto;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .notice-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 10px;
+    }
+
+    .notice-tag {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .notice-badge-info {
+      font-size: 11.5px;
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+    }
+
+    .dual-cards-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .dual-card-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .dual-card-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .dual-card-info h4 {
+      font-size: 14px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .dual-card-info .service-tag {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin: 3px 0;
+    }
+
+    .tag-baseball {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+    }
+
+    .tag-coaching {
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+    }
+
+    .dual-card-info p {
+      font-size: 11.5px;
+      color: var(--text-gray);
+      line-height: 1.4;
+    }
+
+    /* Main Grid */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .portal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+
+    .portal-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--card-hover-border);
+      box-shadow: 0 20px 40px rgba(2, 132, 199, 0.2);
+    }
+
+    .card-glow {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      filter: blur(50px);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .glow-blue { background: #0284c7; }
+    .glow-gold { background: #f59e0b; }
+    .glow-rose { background: #f43f5e; }
+    .glow-cyan { background: #06b6d4; }
+
+    .card-top {
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .card-badge {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-primary { background: #0284c7; color: #fff; }
+    .badge-admin { background: #f59e0b; color: #000; }
+    .badge-video { background: #e11d48; color: #fff; }
+    .badge-web { background: #059669; color: #fff; }
+
+    .card-icon-large {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .feature-list li {
+      font-size: 12px;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feature-list li i {
+      font-size: 11px;
+      color: var(--accent-cyan);
+    }
+
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      z-index: 2;
+      border: none;
+    }
+
+    .btn-solid-blue {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35);
+    }
+    .btn-solid-blue:hover {
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+      filter: brightness(1.1);
+    }
+
+    .btn-solid-gold {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0f172a;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+    }
+    .btn-solid-gold:hover {
+      filter: brightness(1.1);
+    }
+
+    .btn-solid-rose {
+      background: linear-gradient(135deg, #e11d48, #be123c);
+      color: #fff;
+    }
+
+    .btn-solid-green {
+      background: linear-gradient(135deg, #059669, #047857);
+      color: #fff;
+    }
+
+    /* Kakao Share & Tools Bar */
+    .tools-section {
+      background: rgba(18, 25, 43, 0.95);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .tools-text h3 {
+      font-size: 17px;
+      font-weight: 900;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .tools-text p {
+      font-size: 13px;
+      color: var(--text-gray);
+    }
+
+    .tools-btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f1f5f9;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 10px 18px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-pill:hover {
+      background: rgba(255, 255, 255, 0.16);
+      transform: translateY(-2px);
+    }
+
+    .btn-pill.yellow {
+      background: #fde047;
+      color: #1e293b;
+      border-color: #fde047;
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      background: rgba(255,255,255,0.02);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+      border-color: var(--accent-cyan);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-cap {
+      padding: 8px 10px;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #cbd5e1;
+      text-align: center;
+      background: rgba(10, 15, 29, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 30px 0;
+      text-align: center;
+      margin-top: auto;
+      background: rgba(10, 15, 29, 0.6);
+    }
+
+    footer p {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* Toast */
+    .toast-popup {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      color: #fff;
+      border: 1px solid var(--accent-cyan);
+      padding: 14px 28px;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 800;
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    .toast-popup.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 24px;
+      }
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+      .tools-section {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Nav -->
+  <nav class="top-nav">
+    <div class="container nav-inner">
+      <div class="brand-group">
+        <div class="brand-icon">
+          <i class="fa-solid fa-baseball-bat-ball" style="color: #fff;"></i>
+        </div>
+        <div>
+          <div class="brand-name">조승수 야구센터 <span>× 바이오피치 랩</span></div>
+          <div class="brand-sub">카드뉴스 &amp; 공식 홈페이지 포털</div>
+        </div>
+      </div>
+      <div class="nav-badge">
+        <i class="fa-solid fa-circle-check"></i> 공식 단독 배포 패키지
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Hero Header -->
+    <header class="hero">
+      <div class="hero-pill">
+        <i class="fa-solid fa-star"></i> KBO 프로 출신 레슨 &amp; 16년 임상 물리치료사 코칭
+      </div>
+      <h1 class="hero-title">
+        야구도 잘하고 키도 쑥쑥!<br>
+        <span class="gradient-text">조승수 센터 카드뉴스 &amp; 홈페이지</span>
+      </h1>
+      <p class="hero-desc">
+        도봉 리틀 야구단 학부모님 배포용 감성 매거진 카드뉴스부터 센터 관리자 콘솔, 홍보영상 플레이어, 공식 웹사이트까지 한곳에서 바로 접속하실 수 있습니다.
+      </p>
+    </header>
+
+    <!-- Dual Expert Service Distinction Notice -->
+    <div class="expert-notice-box">
+      <div class="notice-header">
+        <div class="notice-tag">
+          <i class="fa-solid fa-handshake"></i> 조승수 X 박인국 서비스 안내
+        </div>
+        <div class="notice-badge-info">
+          ※ 조승수 대표 야구 수업과 별개로 1:1 케어 진행
+        </div>
+      </div>
+
+      <div class="dual-cards-row">
+        <!-- Cho Seung-soo -->
+        <div class="dual-card-item">
+          <img src="cho_seungsoo_real.jpg" alt="조승수 대표" class="dual-card-img">
+          <div class="dual-card-info">
+            <h4>조승수 대표</h4>
+            <span class="service-tag tag-baseball">⚾ 정규 야구 수업</span>
+            <p>KBO 두산베어스 출신 실전 투구 폼 &amp; 구속 향상 메커니즘 레슨</p>
+          </div>
+        </div>
+
+        <!-- Park In-guk -->
+        <div class="dual-card-item">
+          <img src="park_inguk_profile.jpg" alt="박인국 실장" class="dual-card-img">
+          <div class="dual-card-info">
+            <h4>박인국 실장</h4>
+            <span class="service-tag tag-coaching">🏃 1:1 맞춤 케어</span>
+            <p>16년 임상 물리치료사 출신 / 관절 안정화 &amp; 성장판 보호 (야구 수업과 별개 진행)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Main Portal Cards -->
+    <section class="portal-grid">
+
+      <!-- Card 1: Public User Mode -->
+      <article class="portal-card">
+        <div class="card-glow glow-blue"></div>
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-badge badge-primary">📱 학부모 전용 배포</span>
+            <i class="fa-solid fa-mobile-screen" style="color: var(--accent-cyan); font-size: 16px;"></i>
+          </div>
+          <div class="card-icon-large" style="color: var(--accent-cyan);">
+            <i class="fa-solid fa-newspaper"></i>
+          </div>
+          <h2 class="card-title">학부모 배포용 카드뉴스</h2>
+          <p class="card-desc">
+            학부모님이 스마트폰에서 편안하게 보실 수 있도록 관리용 버튼을 모두 숨긴 <strong>클린 매거진 리더 뷰</strong>입니다.
+          </p>
+          <ul class="feature-list">
+            <li><i class="fa-solid fa-check"></i> 군더더기 없는 미니멀 럭셔리 매거진 뷰</li>
+            <li><i class="fa-solid fa-check"></i> 스마트폰 좌우 스와이프 &amp; AI 성우 낭독</li>
+            <li><i class="fa-solid fa-check"></i> 하단 고정 대표님 직통 전화/문자 상담</li>
+          </ul>
+        </div>
+        <a href="cardnews/scrapbook_magazine_cardnews.html?mode=user" class="card-btn btn-solid-blue">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> 학부모 배포 뷰어 열기
+        </a>
+      </article>
+
+      <!-- Card 2: Admin Console Mode -->
+      <article class="portal-card">
+        <div class="card-glow glow-gold"></div>
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-badge badge-admin">👑 센터 관리자 콘솔</span>
+            <i class="fa-solid fa-shield-halved" style="color: var(--accent-gold); font-size: 16px;"></i>
+          </div>
+          <div class="card-icon-large" style="color: var(--accent-gold);">
+            <i class="fa-solid fa-sliders"></i>
+          </div>
+          <h2 class="card-title">센터 관리자 모드</h2>
+          <p class="card-desc">
+            센터 및 대표님 전용 콘솔로 <strong>배포 링크 복사, 카톡 공지문 복사, 카드 고화질 PNG/ZIP 다운로드</strong>가 가능합니다.
+          </p>
+          <ul class="feature-list">
+            <li><i class="fa-solid fa-check"></i> 배포 링크 및 카톡 단톡방 공지문 즉시 복사</li>
+            <li><i class="fa-solid fa-check"></i> 6장 전체 고화질 ZIP 압축 다운로드</li>
+            <li><i class="fa-solid fa-check"></i> BGM 볼륨 및 AI 성우 낭독 제어 툴바</li>
+          </ul>
+        </div>
+        <a href="cardnews/scrapbook_magazine_cardnews.html?mode=admin" class="card-btn btn-solid-gold">
+          <i class="fa-solid fa-gear"></i> 관리자 콘솔 열기
+        </a>
+      </article>
+
+      <!-- Card 3: Video Player -->
+      <article class="portal-card">
+        <div class="card-glow glow-rose"></div>
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-badge badge-video">🎬 영상 플레이어</span>
+            <i class="fa-solid fa-film" style="color: var(--accent-rose); font-size: 16px;"></i>
+          </div>
+          <div class="card-icon-large" style="color: var(--accent-rose);">
+            <i class="fa-solid fa-clapperboard"></i>
+          </div>
+          <h2 class="card-title">도봉리틀 홍보영상 플레이어</h2>
+          <p class="card-desc">
+            카드뉴스가 6개 CUT 타임라인을 따라 자동으로 전환되며 AI 성우 음성과 BGM이 함께 재생되는 <strong>동영상형 플레이어</strong>입니다.
+          </p>
+          <ul class="feature-list">
+            <li><i class="fa-solid fa-check"></i> 6개 컷 자동 프로그레스 타임라인</li>
+            <li><i class="fa-solid fa-check"></i> 조승수 X 박인국 듀얼 사진 및 직통 전화</li>
+            <li><i class="fa-solid fa-check"></i> 쇼츠 및 인스타 릴스 시연에 최적화</li>
+          </ul>
+        </div>
+        <a href="cardnews/도봉리틀야구단_감성매거진_홍보영상_카드뉴스.html" class="card-btn btn-solid-rose">
+          <i class="fa-solid fa-play"></i> 홍보영상 플레이어 열기
+        </a>
+      </article>
+
+      <!-- Card 4: Official Website -->
+      <article class="portal-card">
+        <div class="card-glow glow-cyan"></div>
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-badge badge-web">🌐 공식 풀 웹사이트</span>
+            <i class="fa-solid fa-globe" style="color: #34d399; font-size: 16px;"></i>
+          </div>
+          <div class="card-icon-large" style="color: #34d399;">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <h2 class="card-title">바이오피치 랩 풀 웹사이트</h2>
+          <p class="card-desc">
+            16년 임상 기반 야구 바이오메카닉 평가(GIRD), 50분 집중 케어, B2B 아카데미 제휴 솔루션이 수록된 <strong>풀 웹사이트</strong>입니다.
+          </p>
+          <ul class="feature-list">
+            <li><i class="fa-solid fa-check"></i> 조승수 야구 아카데미 &amp; 도봉야구단 파트너십</li>
+            <li><i class="fa-solid fa-check"></i> 1:1 케어 예약 모달 및 거점 안내</li>
+            <li><i class="fa-solid fa-check"></i> 반응형 모바일 드로어 및 애니메이션</li>
+          </ul>
+        </div>
+        <a href="website/index.html" class="card-btn btn-solid-green">
+          <i class="fa-solid fa-arrow-right"></i> 공식 웹사이트 열기
+        </a>
+      </article>
+
+    </section>
+
+    <!-- Quick Tools & Kakao Notice Bar -->
+    <section class="tools-section">
+      <div class="tools-text">
+        <h3><i class="fa-solid fa-bullhorn" style="color: var(--accent-gold);"></i> 학부모 단톡방 공지문 원클릭 복사</h3>
+        <p>초등~중1 선수모집 및 조승수 대표(010-3666-9069) 직통 번호가 담긴 공지문을 바로 복사할 수 있습니다.</p>
+      </div>
+      <div class="tools-btns">
+        <button class="btn-pill yellow" onclick="copyKakaoMsg()">
+          <i class="fa-solid fa-comment"></i> 카톡 공지문 복사
+        </button>
+        <button class="btn-pill" onclick="copyShareLink()">
+          <i class="fa-solid fa-link"></i> 학부모 배포 링크 복사
+        </button>
+        <a href="tel:01036669069" class="btn-pill" style="border-color: rgba(56, 189, 248, 0.4); color: var(--accent-cyan);" title="조승수 대표 직통 상담">
+          <i class="fa-solid fa-phone"></i> 조승수 대표 직통 상담 (010-3666-9069)
+        </a>
+      </div>
+    </section>
+
+    <!-- Gallery Section (High Res PNG Previews) -->
+    <section class="gallery-section">
+      <h2 class="section-title">
+        <i class="fa-solid fa-images" style="color: var(--accent-cyan);"></i> 고화질 매거진 카드뉴스 (총 6장)
+      </h2>
+      <p class="section-sub">인쇄, 학부모 알림장 전송, SNS 업로드용으로 바로 활용 가능한 고화질 이미지 모음입니다.</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="cardnews/감성매거진_01_표지_야구도키도쑥쑥.png" alt="01 표지">
+          <div class="gallery-cap">01. 표지 (야구도 키도 쑥쑥)</div>
+        </div>
+        <div class="gallery-item">
+          <img src="cardnews/감성매거진_02_메인_성장판지키며키쑥쑥.png" alt="02 성장판">
+          <div class="gallery-cap">02. 성장판 지키며 키 쑥쑥</div>
+        </div>
+        <div class="gallery-item">
+          <img src="cardnews/감성매거진_03_원인_왜또아플까.png" alt="03 부상원인">
+          <div class="gallery-cap">03. 왜 또 아플까? (부상 원인)</div>
+        </div>
+        <div class="gallery-item">
+          <img src="cardnews/감성매거진_04_솔루션_3단계성장프로세스.png" alt="04 성장솔루션">
+          <div class="gallery-cap">04. 3단계 성장 솔루션</div>
+        </div>
+        <div class="gallery-item">
+          <img src="cardnews/감성매거진_05_원팀_조승수X박인국.png" alt="05 원팀 조승수X박인국">
+          <div class="gallery-cap">05. 조승수 X 박인국 원팀</div>
+        </div>
+        <div class="gallery-item">
+          <img src="cardnews/감성매거진_06_혜택_도봉리틀특별혜택.png" alt="06 도봉리틀 혜택">
+          <div class="gallery-cap">06. 1:1 코칭 특별 혜택</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-size: 15px; color: #f8fafc;"><strong>조승수 야구센터 × 바이오피치 랩 (BioPitch Lab)</strong></p>
+      <p style="margin-top: 4px; font-size: 13.5px; color: #93c5fd; font-weight: 600;">야구 레슨 및 입단·케어 문의: 조승수 대표 (010-3666-9069) ※ 조승수 대표를 통해 1:1 맞춤 케어 연계 진행</p>
+      <p style="margin-top: 4px; font-size: 12.5px; color: #38bdf8; font-weight: 700;">※ 본 웹 패키지는 바탕화면에서 독립적으로 실행 가능한 통합 포털입니다.</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast-popup" id="toastPopup">
+    <i class="fa-solid fa-circle-check" style="color: #38bdf8;"></i>
+    <span id="toastMsg">복사되었습니다.</span>
+  </div>
+
+  <script>
+    const KAKAO_MSG = `[도봉 리틀 야구단 특별 소식 ⚾]
+야구도 잘하고 키도 쑥쑥! 초등 성장 발육 & 균형잡힌 체형 만들기
+
+📢 초등학생 ~ 중1 선수모집! 입단테스트 상시 가능! 1:1 개인레슨 상담!!
+야구처럼 한쪽 회전력을 강하게 쓰는 운동일수록, 반대쪽 밸런스를 균형 있게 채워줄 때 숨은 키와 폭발적인 잠재력이 함께 깨어납니다!
+좌우 밸런스를 바로잡아 체형 불균형을 예방하고 성장판 스트레스 및 관절 과부하를 대폭 줄여줍니다.
+
+★ 서비스 안내
+• ⚾ 조승수 대표: 전문 야구 수업 (KBO 프로 출신 투구 폼 & 구속 메커니즘, 1:1 개인레슨)
+• 🏃 박인국 실장: 1:1 맞춤 케어 (16년 임상 관절 안정화 & 체형 케어)
+※ 조승수 대표 야구 수업과 별개로 1:1 케어가 진행됩니다.
+
+📞 【문의】: 조승수 대표 (010-3666-9069)
+(※ 조승수 대표를 통해 입단 및 박인국 실장의 1:1 맞춤 케어 상담이 연계 진행됩니다.)
+• 🔍 첫 정밀 가동성 평가 & 맞춤 분석 (50% 지원): 50,000원
+• 📱 모바일 감성 매거진 카드뉴스 보기:
+https://ingooood-1.github.io/biopitch-center/cardnews/scrapbook_magazine_cardnews.html?mode=user`;
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastPopup');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function copyKakaoMsg() {
+      navigator.clipboard.writeText(KAKAO_MSG).then(() => {
+        showToast('카카오톡 공지문이 클립보드에 복사되었습니다!');
+      }).catch(() => {
+        alert('복사 권한이 필요합니다.');
+      });
+    }
+
+    function copyShareLink() {
+      const shareUrl = "https://ingooood-1.github.io/biopitch-center/scrapbook_magazine_cardnews.html?mode=user";
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        showToast('학부모 배포용 링크가 복사되었습니다!');
+      }).catch(() => {
+        alert('복사 권한이 필요합니다.');
+      });
+    }
+  </script>
+</body>
+</html>

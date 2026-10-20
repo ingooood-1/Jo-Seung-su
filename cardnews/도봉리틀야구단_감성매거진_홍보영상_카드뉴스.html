@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>도봉 리틀 야구단 뉴스 - 감성 매거진 카드뉴스 &amp; 홍보 영상 플레이어</title>
+  <meta name="description" content="도봉 리틀 야구단 학부모와 선수를 위한 특별호: 16년 임상 물리치료사 출신 박인국 실장의 6대 움직임 & 부상 예방 컨디셔닝 매거진">
+
+  <!-- Google Fonts: Gaegu(감성 손글씨), Nanum Pen Script(캘리), Playfair Display(세리프), Pretendard -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Nanum+Pen+Script&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --desk-bg: #1c222e;
+      --paper-bg: #faf8f2;
+      --paper-border: #e4dfd3;
+      --paper-shadow: rgba(0, 0, 0, 0.45);
+      
+      --text-main: #0f172a;
+      --text-sub: #0f172a; /* 회색 전면 배제 -> 선명한 잉크 블랙 */
+      --text-muted: #0284c7; /* 흐린 회색 배제 -> 선명한 로얄 블루 */
+      
+      --navy-primary: #1e3a8a;
+      --navy-dark: #0f172a;
+      --point-blue: #2563eb;
+      --point-red: #e11d48;
+      --point-green: #059669;
+      --tape-blue: rgba(79, 110, 142, 0.85);
+      --tape-amber: rgba(217, 119, 6, 0.8);
+      
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--desk-bg);
+      background-image: 
+        radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(225, 29, 72, 0.08) 0%, transparent 50%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* Top Sticky Navigation Toolbar */
+    .top-toolbar {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .toolbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-icon-box {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 16px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+    .brand-text h1 {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #f8fafc;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+    .brand-text p {
+      font-size: 11px;
+      color: #93c5fd;
+      font-weight: 600;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-action {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #f1f5f9;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-action:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+    .btn-action.highlight {
+      background: linear-gradient(135deg, #e11d48, #be123c);
+      border-color: #f43f5e;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(225, 29, 72, 0.4);
+    }
+
+    /* Main Stage Container */
+    .stage-wrapper {
+      width: 100%;
+      max-width: 500px; /* Mobile vertical video/shorts 9:16 optimized */
+      padding: 16px 14px 100px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Video Progress Timeline (Auto-Play Video Mode) */
+    .video-timeline-wrap {
+      width: 100%;
+      display: flex;
+      gap: 4px;
+      margin-bottom: 12px;
+      padding: 0 4px;
+    }
+    .timeline-segment {
+      flex: 1;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .timeline-fill {
+      width: 0%;
+      height: 100%;
+      background: #38bdf8;
+      transition: width 0.1s linear;
+    }
+    .timeline-segment.active .timeline-fill {
+      background: #38bdf8;
+    }
+    .timeline-segment.completed .timeline-fill {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ========================================================
+       MAGAZINE SCRAPBOOK CARD (9:16 VERTICAL RATIO)
+       ======================================================== */
+    .magazine-card {
+      width: 100%;
+      aspect-ratio: 9 / 15.5;
+      background: var(--paper-bg);
+      border: 1px solid var(--paper-border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 25px 60px var(--paper-shadow), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      padding: 24px 20px 22px 20px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    /* Paper Texture Effect */
+    .magazine-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(#d1cfc7 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* Magazine Header Meta */
+    .card-top-header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #111827;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .card-meta-left {
+      display: flex;
+      flex-direction: column;
+    }
+    .meta-tagline {
+      font-size: 10px;
+      font-weight: 800;
+      color: #dc2626;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .meta-edition {
+      font-family: 'Playfair Display', serif;
+      font-size: 12px;
+      font-weight: 900;
+      color: #111827;
+      letter-spacing: -0.2px;
+    }
+    .card-meta-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .meta-barcode {
+      display: flex;
+      gap: 1.5px;
+      height: 18px;
+      align-items: flex-end;
+    }
+    .bar {
+      width: 1.5px;
+      height: 100%;
+      background: #111827;
+    }
+    .bar.thick { width: 3px; }
+    .bar.short { height: 70%; }
+    .card-cut-badge {
+      background: #111827;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Middle Visual Graphic with Washi Tapes */
+    .photo-stage-wrap {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 200px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .washi-tape-top {
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      width: 80px;
+      height: 24px;
+      background: var(--tape-blue);
+      transform: rotate(-8deg);
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      border-left: 2px dashed rgba(0,0,0,0.2);
+      border-right: 2px dashed rgba(0,0,0,0.2);
+    }
+    .washi-tape-bottom {
+      position: absolute;
+      bottom: -8px;
+      right: 15px;
+      width: 80px;
+      height: 24px;
+      background: var(--tape-amber);
+      transform: rotate(6deg);
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      border-left: 2px dashed rgba(0,0,0,0.2);
+      border-right: 2px dashed rgba(0,0,0,0.2);
+    }
+    .photo-polaroid-frame {
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Bottom Text Column */
+    .card-body-column {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hand-main-title {
+      font-family: 'Gaegu', cursive;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.18;
+      color: #111827;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .hand-main-title .hl-blue {
+      color: #2563eb;
+    }
+    .hand-main-title .hl-red {
+      color: #e11d48;
+    }
+
+    .body-desc-text {
+      font-size: 15px;
+      line-height: 1.65;
+      color: #0f172a;
+      word-break: keep-all;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .body-desc-text strong {
+      color: #000000;
+      font-weight: 900;
+    }
+
+    .calli-sub-box {
+      background: #f1f0e9;
+      border-left: 4px solid #2563eb;
+      border-radius: 6px;
+      padding: 10px 14px;
+    }
+    .calli-subhead {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 28px;
+      color: #2563eb;
+      line-height: 1;
+      margin-bottom: 4px;
+      font-weight: bold;
+    }
+    .calli-item-line {
+      font-size: 13.5px;
+      color: #0f172a;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+    .calli-item-line span {
+      color: #0369a1; /* 회색(#64748b) 배제 -> 선명한 블루 */
+      font-weight: 700;
+    }
+
+    /* Magazine Card Footer Stamp */
+    .card-bottom-stamp-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px dashed #d1d5db;
+      padding-top: 8px;
+      margin-top: 10px;
+    }
+    .stamp-text {
+      font-size: 10.5px;
+      color: #64748b;
+      font-weight: 700;
+    }
+    .stamp-red-badge {
+      display: inline-block;
+      border: 1.5px solid #e11d48;
+      color: #e11d48;
+      font-size: 9.5px;
+      font-weight: 900;
+      padding: 1px 6px;
+      border-radius: 4px;
+      transform: rotate(-3deg);
+    }
+
+    /* Bottom Fixed Video Controls Bar */
+    .bottom-video-controls {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 500px;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 10px 16px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .btn-ctrl {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-ctrl:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .btn-play-video {
+      flex: 1;
+      background: linear-gradient(135deg, #e11d48, #be123c);
+      border: none;
+      color: #fff;
+      font-size: 14.5px;
+      font-weight: 900;
+      padding: 11px 0;
+      border-radius: 9999px;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(225, 29, 72, 0.45);
+    }
+    .btn-play-video.playing {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.45);
+    }
+
+    /* Toast Notification */
+    .toast-popup {
+      position: fixed;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: #0f172a;
+      color: #fff;
+      border: 1px solid #38bdf8;
+      padding: 9px 18px;
+      border-radius: 9999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .toast-popup.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Modal for Quick Copy */
+    .copy-modal-wrap {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .copy-modal-card {
+      background: #0f172a;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      max-width: 480px;
+      width: 100%;
+      padding: 24px;
+      color: #fff;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Elements for Video BGM & AI Voice TTS -->
+  <audio id="bgmAudio" loop preload="auto">
+    <source src="../audio/bgm_morning.mp3" type="audio/mpeg">
+    <source src="../audio/bgm_carefree.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="ttsAudio" preload="auto"></audio>
+  <audio id="sfxAudio" preload="auto" src="../audio/sfx_chime.wav"></audio>
+
+  <!-- Top Sticky Navigation Toolbar -->
+  <header class="top-toolbar">
+    <div class="toolbar-brand">
+      <div class="brand-icon-box">
+        <i class="fa-solid fa-baseball"></i>
+      </div>
+      <div class="brand-text">
+        <h1>도봉 리틀 야구단 뉴스</h1>
+        <p>CSS 야구센터 바이오피치 랩 매거진</p>
+      </div>
+    </div>
+    <div class="toolbar-actions">
+      <a href="scrapbook_magazine_cardnews.html?mode=user" class="btn-action" style="text-decoration:none; background:rgba(255,255,255,0.15);" title="감성 매거진 스크랩북으로 보기">
+        <i class="fa-solid fa-book-open"></i> 스크랩북 보기
+      </a>
+      <button class="btn-action" onclick="openShareModal()">
+        <i class="fa-solid fa-comment-dots"></i> 카톡 문구
+      </button>
+      <button class="btn-action" id="btnTtsToggle" onclick="toggleTtsVoice()">
+        <i class="fa-solid fa-microphone-lines"></i> <span id="ttsBtnText">성우 켜짐</span>
+      </button>
+      <button class="btn-action highlight" id="btnBgmToggle" onclick="toggleBgm()">
+        <i class="fa-solid fa-volume-high" id="bgmIcon"></i> BGM
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Stage -->
+  <main class="stage-wrapper">
+
+    <!-- Video Progress Timeline Bar (6 cuts) -->
+    <div class="video-timeline-wrap">
+      <div class="timeline-segment active" id="seg-1"><div class="timeline-fill" id="fill-1"></div></div>
+      <div class="timeline-segment" id="seg-2"><div class="timeline-fill" id="fill-2"></div></div>
+      <div class="timeline-segment" id="seg-3"><div class="timeline-fill" id="fill-3"></div></div>
+      <div class="timeline-segment" id="seg-4"><div class="timeline-fill" id="fill-4"></div></div>
+      <div class="timeline-segment" id="seg-5"><div class="timeline-fill" id="fill-5"></div></div>
+      <div class="timeline-segment" id="seg-6"><div class="timeline-fill" id="fill-6"></div></div>
+    </div>
+
+    <!-- ==================== CUT 01: COVER (도봉 리틀 특별호) ==================== -->
+    <article class="magazine-card" id="card-1" style="display:flex;">
+      <div class="card-top-header">
+        <div class="card-meta-left">
+          <span class="meta-tagline">DOBONG LITTLE BASEBALL NEWS</span>
+          <span class="meta-edition">2026.10 SPECIAL ISSUE</span>
+        </div>
+        <div class="card-meta-right">
+          <div class="meta-barcode">
+            <span class="bar thick"></span><span class="bar short"></span><span class="bar"></span>
+            <span class="bar thick"></span><span class="bar short"></span><span class="bar"></span>
+          </div>
+          <span class="card-cut-badge">CUT 01</span>
+        </div>
+      </div>
+
+      <div class="photo-stage-wrap">
+        <div class="washi-tape-top"></div>
+        <div class="photo-polaroid-frame" style="background: linear-gradient(135deg, #0284c7, #1e3a8a); color: #fff;">
+          <i class="fa-solid fa-child-reaching" style="font-size: 52px; color: #fde047; margin-bottom: 8px;"></i>
+          <h4 style="font-size: 19px; font-weight: 900; letter-spacing: -0.3px;">도봉 리틀 꿈나무를 위한<br>성장 발육 &amp; 균형 체형 특강</h4>
+          <span style="font-size: 11px; color: #bfdbfe; margin-top: 4px;">CSS 야구센터 바이오피치 랩</span>
+        </div>
+        <div class="washi-tape-bottom"></div>
+      </div>
+
+      <div class="card-body-column">
+        <div>
+          <h2 class="hand-main-title">
+            야구도 잘하고 키도 쑥쑥!<br>
+            <span class="hl-blue">초등 성장 발육 &amp; 균형잡힌 체형</span>
+          </h2>
+          <p class="body-desc-text">
+            야구처럼 한쪽 회전력을 강하게 쓰는 운동일수록, <strong>반대쪽 밸런스를 균형 있게 채워줄 때 숨은 키와 잠재력</strong>이 함께 깨어납니다!<br>
+            좌우 밸런스를 바로잡아주면 <strong>균형잡힌 체형 형성</strong>은 물론, 아이들 <strong>성장 발육에도 큰 도움</strong>이 됩니다!
+          </p>
+        </div>
+
+        <div class="calli-sub-box">
+          <div class="calli-subhead">성장 발육 &amp; 부상 예방</div>
+          <div class="calli-item-line">16년 임상 물리치료사 출신의 성장기 맞춤 코칭</div>
+          <div class="calli-item-line">불균형 예방 <span>(어깨·팔꿈치 과부하 대폭 감소)</span></div>
+        </div>
+
+        <div class="card-bottom-stamp-row">
+          <span class="stamp-text">CSS 야구센터 × 도봉 리틀 야구단</span>
+          <span class="stamp-red-badge">성장 케어</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==================== CUT 02: 박인국 실장 프로필 ==================== -->
+    <article class="magazine-card" id="card-2" style="display:none;">
+      <div class="card-top-header">
+        <div class="card-meta-left">
+          <span class="meta-tagline">EXPERT INTERVIEW</span>
+          <span class="meta-edition">가동성 컨디셔닝 디렉터</span>
+        </div>
+        <div class="card-meta-right">
+          <span class="card-cut-badge">CUT 02</span>
+        </div>
+      </div>
+
+      <div class="photo-stage-wrap">
+        <div class="washi-tape-top"></div>
+        <div class="photo-polaroid-frame" style="background:#ffffff; border: 2px solid #e2e8f0;">
+          <div style="display:flex; align-items:center; gap: 14px; width: 100%; text-align: left; padding: 4px 6px;">
+            <img src="../park_inguk_profile.jpg" alt="박인국 실장" style="width: 80px; height: 95px; border-radius: 8px; object-fit: contain; background: #ffffff; border: 2px solid #2563eb; box-shadow: 0 4px 12px rgba(0,0,0,0.15); padding: 2px;">
+            <div>
+              <div style="font-size: 12px; color:#2563eb; font-weight:800;">가동성 컨디셔닝 디렉터</div>
+              <h3 style="font-size: 22px; font-weight: 900; color:#0f172a; line-height: 1.15;">박인국 실장</h3>
+              <p style="font-size: 13px; color:#0f172a; font-weight: 800; margin-top: 2px;">16년 임상 경력 물리치료사 출신</p>
+              <span style="display:inline-block; margin-top:4px; background:#dbeafe; color:#1e40af; font-size:10px; font-weight:800; padding:2px 6px; border-radius:4px;">2만여 명 임상 경험</span>
+            </div>
+          </div>
+        </div>
+        <div class="washi-tape-bottom" style="background:var(--tape-blue);"></div>
+      </div>
+
+      <div class="card-body-column">
+        <div>
+          <h2 class="hand-main-title">
+            2만여 명의 임상 경험 담은<br>
+            <span class="hl-blue">1:1 맞춤형 코칭 전문가</span>
+          </h2>
+          <p class="body-desc-text">
+            병원 도수치료실 16년 경력을 바탕으로, 현재 <strong>유도 엘리트 선수들의 전담 매뉴얼 코칭</strong>을 맡아 관절 안정화와 가동성을 지도하고 있습니다.
+          </p>
+        </div>
+
+        <div class="calli-sub-box" style="border-left-color: #059669;">
+          <div class="calli-subhead" style="color:#059669;">핵심 전문성</div>
+          <div class="calli-item-line">✔ 16년 임상 물리치료사 출신 &amp; 2만여 명 임상 경험</div>
+          <div class="calli-item-line">✔ 現 유도 엘리트 선수 매뉴얼 코칭 전담 (관절 안정화 케어)</div>
+          <div class="calli-item-line">✔ 수술 후 움직임 회복 &amp; 재활 코칭 (가동성 점진 회복)</div>
+        </div>
+
+        <div class="card-bottom-stamp-row">
+          <span class="stamp-text">의료법 안심 준수 전문 코칭</span>
+          <span class="stamp-red-badge" style="border-color:#059669; color:#059669;">전문 코칭</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==================== CUT 03: STEP 1 & 2 (체형과 기둥) ==================== -->
+    <article class="magazine-card" id="card-3" style="display:none;">
+      <div class="card-top-header">
+        <div class="card-meta-left">
+          <span class="meta-tagline">DOBONG LITTLE LESSON 1</span>
+          <span class="meta-edition">체형 평가 &amp; 기둥 세우기</span>
+        </div>
+        <div class="card-meta-right">
+          <span class="card-cut-badge">CUT 03</span>
+        </div>
+      </div>
+
+      <div class="photo-stage-wrap">
+        <div class="washi-tape-top"></div>
+        <div class="photo-polaroid-frame" style="background: linear-gradient(135deg, #0f172a, #1e293b); color: #fff;">
+          <i class="fa-solid fa-person-arrow-up-from-line" style="font-size: 50px; color: #38bdf8; margin-bottom: 6px;"></i>
+          <h4 style="font-size: 18px; font-weight: 800;">하체 제어 &amp; 몸통 안정화</h4>
+          <span style="font-size: 11px; color: #94a3b8;">흔들리지 않는 기둥이 먼저!</span>
+        </div>
+        <div class="washi-tape-bottom"></div>
+      </div>
+
+      <div class="card-body-column">
+        <div>
+          <h2 class="hand-main-title">
+            체형이 다른데 왜 똑같이?<br>
+            <span class="hl-red">몸통 무너지면 힘 전달 불가!</span>
+          </h2>
+          <p class="body-desc-text">
+            모양과 움직임은 같을지 몰라도, <strong>쓰는 근육이 달라지면 선수의 능력치도 달라집니다!</strong><br>
+            몸통에 안정성이 떨어지고 하체가 제어되지 않으면, 아무리 세게 던져도 공에 힘이 실리지 않아요.
+          </p>
+        </div>
+
+        <div class="calli-sub-box">
+          <div class="calli-subhead">체크 포인트</div>
+          <div class="calli-item-line">① 체형 평가: 내 뼈·관절에 딱 맞는 맞춤 폼 찾기</div>
+          <div class="calli-item-line">② 몸통 안정화: 하체가 버텨줘야 손끝까지 힘 전달</div>
+        </div>
+
+        <div class="card-bottom-stamp-row">
+          <span class="stamp-text">도봉 리틀 움직임 공식 STEP 1 &amp; 2</span>
+          <span class="stamp-red-badge">핵심 원리</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==================== CUT 04: STEP 3 & 4 (큰 움직임 & 힘 전달) ==================== -->
+    <article class="magazine-card" id="card-4" style="display:none;">
+      <div class="card-top-header">
+        <div class="card-meta-left">
+          <span class="meta-tagline">DOBONG LITTLE LESSON 2</span>
+          <span class="meta-edition">회전 파워 &amp; 전달 순서</span>
+        </div>
+        <div class="card-meta-right">
+          <span class="card-cut-badge">CUT 04</span>
+        </div>
+      </div>
+
+      <div class="photo-stage-wrap">
+        <div class="washi-tape-top"></div>
+        <div class="photo-polaroid-frame" style="background: linear-gradient(135deg, #1e3a8a, #0369a1); color: #fff;">
+          <i class="fa-solid fa-bolt-lightning" style="font-size: 52px; color: #fde047; margin-bottom: 6px;"></i>
+          <h4 style="font-size: 18px; font-weight: 800;">발끝에서 손끝까지 전달</h4>
+          <span style="font-size: 11px; color: #e0f2fe;">공과 배트에 힘이 온전히 실리는 몸</span>
+        </div>
+        <div class="washi-tape-bottom"></div>
+      </div>
+
+      <div class="card-body-column">
+        <div>
+          <h2 class="hand-main-title">
+            몸통·고관절 큰 회전에서<br>
+            <span class="hl-blue">소근육으로 부드럽고 강력하게</span>
+          </h2>
+          <p class="body-desc-text">
+            팔만 휘두르면 인대가 다칩니다. <strong>몸통과 고관절의 큰 움직임에서 시작해 소근육으로 부드럽게</strong> 이어져야 합니다.<br>
+            근육 활성화와 힘 전달 순서를 학습하여 공에 온전히 힘을 실어줍니다.
+          </p>
+        </div>
+
+        <div class="calli-sub-box">
+          <div class="calli-subhead">투구 메커니즘 팁</div>
+          <div class="calli-item-line">③ 큰 움직임 ➔ 소근육 섬세한 컨트롤</div>
+          <div class="calli-item-line">④ 순서 학습: 발끝 지면반력 ➔ 고관절 ➔ 손끝 방출</div>
+        </div>
+
+        <div class="card-bottom-stamp-row">
+          <span class="stamp-text">도봉 리틀 움직임 공식 STEP 3 &amp; 4</span>
+          <span class="stamp-red-badge">구속 증가</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==================== CUT 05: STEP 5 & 6 (파동 부상 예방 & 원인 개선) ==================== -->
+    <article class="magazine-card" id="card-5" style="display:none;">
+      <div class="card-top-header">
+        <div class="card-meta-left">
+          <span class="meta-tagline">DOBONG LITTLE LESSON 3</span>
+          <span class="meta-edition">부상 예방 &amp; 올바른 복귀</span>
+        </div>
+        <div class="card-meta-right">
+          <span class="card-cut-badge">CUT 05</span>
+        </div>
+      </div>
+
+      <div class="photo-stage-wrap">
+        <div class="washi-tape-top"></div>
+        <div class="photo-polaroid-frame" style="background: linear-gradient(135deg, #065f46, #047857); color: #fff;">
+          <i class="fa-solid fa-water" style="font-size: 52px; color: #6ee7b7; margin-bottom: 6px;"></i>
+          <h4 style="font-size: 18px; font-weight: 800;">물결 파동처럼 스트레스 분산</h4>
+          <span style="font-size: 11px; color: #d1fae5;">관절 스트레스 온몸으로 고르게 흡수</span>
+        </div>
+        <div class="washi-tape-bottom"></div>
+      </div>
+
+      <div class="card-body-column">
+        <div>
+          <h2 class="hand-main-title">
+            물의 파동처럼 흘러야 예방!<br>
+            <span class="hl-red">그냥 쉬는 건 해결책이 아냐</span>
+          </h2>
+          <p class="body-desc-text">
+            물에 파동이 일어 잔잔해지듯 <strong>관절 스트레스(충격 부하)가 온몸으로 분산되어야 어깨와 팔꿈치를 보호</strong>할 수 있어요.<br>
+            통증만 잠시 잊는 단순 휴식 대신, 아픈 근본 원인(통증과 스트레스의 원인)을 바로잡아야 부상 예방과 기능 향상에 도움이 됩니다.
+          </p>
+        </div>
+
+        <div class="calli-sub-box" style="border-left-color:#059669;">
+          <div class="calli-subhead" style="color:#059669;">부상 관리 철칙</div>
+          <div class="calli-item-line">⑤ 스트레스 분산: 물결처럼 부드럽게 관절 부하 &amp; 스트레스 분산</div>
+          <div class="calli-item-line">⑥ 원인 개선: 바른 움직임을 완전히 내 것으로 체득</div>
+        </div>
+
+        <div class="card-bottom-stamp-row">
+          <span class="stamp-text">도봉 리틀 움직임 공식 STEP 5 &amp; 6</span>
+          <span class="stamp-red-badge" style="border-color:#059669; color:#059669;">부상 예방</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==================== CUT 06: 도봉 리틀 특별 프로모션 ==================== -->
+    <article class="magazine-card" id="card-6" style="display:none;">
+      <div class="card-top-header">
+        <div class="card-meta-left">
+          <span class="meta-tagline">SPECIAL BENEFIT</span>
+          <span class="meta-edition">도봉 리틀 선수 특별 프로모션</span>
+        </div>
+        <div class="card-meta-right">
+          <span class="card-cut-badge">CUT 06</span>
+        </div>
+      </div>
+
+      <div class="photo-stage-wrap" style="height: 175px; margin-bottom: 12px;">
+        <div class="washi-tape-top"></div>
+        <div class="photo-polaroid-frame" style="background: #fff; border: 2px dashed #cbd5e1; padding: 10px 12px; display:flex; flex-direction:column; justify-content:space-between;">
+          <!-- Dual Profile Pictures -->
+          <div style="display:flex; gap:8px; height: 100px;">
+            <div style="flex:1; border-radius:6px; overflow:hidden; border:1px solid #e2e8f0; position:relative; background:#0f172a;">
+              <img src="../cho_seungsoo_real.jpg" alt="조승수 대표 투구" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
+              <span style="position:absolute; bottom:2px; left:2px; background:rgba(0,0,0,0.85); color:#fff; font-size:10px; font-weight:800; padding:2px 5px; border-radius:3px;">조승수 대표 | 실전 투구</span>
+            </div>
+            <div style="flex:1; border-radius:6px; overflow:hidden; border:1px solid #e2e8f0; position:relative; background:#0f172a;">
+              <img src="../park_inguk_profile.jpg" alt="박인국 실장 케어" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
+              <span style="position:absolute; bottom:2px; left:2px; background:rgba(0,0,0,0.85); color:#fff; font-size:10px; font-weight:800; padding:2px 5px; border-radius:3px;">박인국 실장 | 16년 임상</span>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; background:#f8fafc; border-radius:6px; padding:6px 10px; border:1px solid #e2e8f0; margin-top:6px;">
+            <div>
+              <span style="font-size: 12px; font-weight: 900; color: #1e293b;">조승수 X 박인국 1:1 맞춤 분석</span>
+              <span style="background:#e11d48; color:#fff; font-size:8.5px; font-weight:900; padding:1px 5px; border-radius:3px; margin-left:3px;">50% 지원</span>
+            </div>
+            <span style="font-size: 15px; font-weight: 900; color:#e11d48;">50,000원</span>
+          </div>
+        </div>
+        <div class="washi-tape-bottom" style="background:#e11d48;"></div>
+      </div>
+
+      <div class="card-body-column">
+        <div>
+          <h2 class="hand-main-title">
+            "선수모집 &amp; 특별 혜택"<br>
+            <span class="hl-red">조승수 X 박인국 원팀 케어</span>
+          </h2>
+          <p class="body-desc-text">
+            <strong>초등학생 ~ 중1 선수모집!</strong> (입단테스트 가능! 1:1 개인레슨 상담!!)<br>
+            <strong>조승수 감독의 전문 야구 수업</strong>과 연계하여, <strong>박인국 실장의 1:1 맞춤 케어 서비스</strong>를 도봉 리틀 선수들에게 <strong>첫 방문 50% 할인 혜택</strong>으로 지원합니다.<br>
+            <span style="font-size:12.5px; color:#e11d48; font-weight:800;">※ 조승수 감독 야구 수업과 별개로 1:1 케어가 진행됩니다.</span>
+          </p>
+        </div>
+
+        <div class="calli-sub-box" style="border-left-color: #e11d48; background:#fff1f2; padding: 12px 14px;">
+          <div class="calli-item-line" style="font-size: 15.5px; font-weight: 800;">📞 <strong>문의</strong>: 조승수 대표 (<a href="tel:01036669069" style="color:#e11d48; text-decoration:none; font-weight:900;">010-3666-9069</a>)</div>
+          <div style="font-size: 12.5px; color: #475569; font-weight: 700; margin-top: 4px;">※ 조승수 대표를 통해 입단 및 박인국 실장의 1:1 맞춤 케어 상담이 연계 진행됩니다.</div>
+        </div>
+
+        <div class="card-bottom-stamp-row">
+          <span class="stamp-text">CSS 야구센터 바이오피치 랩 (도봉야구단 거점)</span>
+          <span class="stamp-red-badge">특별 혜택</span>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Bottom Floating Video Controls Bar -->
+  <div class="bottom-video-controls">
+    <button class="btn-ctrl" onclick="prevCut()"><i class="fa-solid fa-backward-step"></i></button>
+    <button class="btn-ctrl btn-play-video" id="btnPlayVideo" onclick="toggleVideoPlay()">
+      <i class="fa-solid fa-play" id="playIcon"></i> <span id="playText">영상 자동 재생 (BGM+성우)</span>
+    </button>
+    <button class="btn-ctrl" onclick="nextCut()"><i class="fa-solid fa-forward-step"></i></button>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-popup" id="toast">
+    <i class="fa-solid fa-check"></i> <span id="toastMsg">알림</span>
+  </div>
+
+  <!-- Share Modal for KakaoTalk Text Copy -->
+  <div class="copy-modal-wrap" id="copyModal" onclick="closeShareModal(event)">
+    <div class="copy-modal-card" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+        <h3 style="font-size:18px; font-weight:800; color:#38bdf8;"><i class="fa-solid fa-comment"></i> 도봉 리틀 학부모 공지용 카톡 문구</h3>
+        <button onclick="closeShareModal()" style="background:transparent; border:none; color:#f8fafc; font-size:20px; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p style="font-size:14px; font-weight:700; color:#f8fafc; margin-bottom:10px;">아래 문구를 복사해서 학부모 단톡방이나 밴드에 그대로 전송하세요:</p>
+      <textarea id="kakaoText" readonly style="width:100%; height:230px; background:#070b14; color:#f8fafc; border:1px solid rgba(255,255,255,0.2); border-radius:10px; padding:14px; font-size:13.5px; line-height:1.65; resize:none;">[도봉 리틀 야구단 특별 소식 ⚾]
+야구도 잘하고 키도 쑥쑥! 초등 성장 발육 & 균형잡힌 체형 만들기
+
+📢 초등학생 ~ 중1 선수모집! 입단테스트 상시 가능! 1:1 개인레슨 상담!!
+야구처럼 한쪽 회전력을 강하게 쓰는 운동일수록, 반대쪽 밸런스를 균형 있게 채워줄 때 숨은 키와 폭발적인 잠재력이 함께 깨어납니다!
+좌우 밸런스를 바로잡아 체형 불균형을 예방하고 성장판 스트레스 및 관절 과부하를 대폭 줄여줍니다.
+
+★ 서비스 안내
+• ⚾ 조승수 대표: 전문 야구 수업 (KBO 프로 출신 투구 폼 & 구속 메커니즘, 1:1 개인레슨)
+• 🏃 박인국 실장: 1:1 맞춤 케어 (16년 임상 관절 안정화 & 체형 케어)
+※ 조승수 대표 야구 수업과 별개로 1:1 케어가 진행됩니다.
+
+📞 【문의】: 조승수 대표 (010-3666-9069)
+• 🔍 첫 정밀 가동성 평가 & 맞춤 분석 (50% 지원): 50,000원
+• 📱 모바일 감성 매거진 카드뉴스 보기:
+https://ingooood-1.github.io/biopitch-center/cardnews/scrapbook_magazine_cardnews.html?mode=user</textarea>
+      <button onclick="copyKakaoMsg()" style="width:100%; margin-top:12px; background:#38bdf8; color:#0f172a; font-weight:900; font-size:15px; padding:13px; border-radius:10px; border:none; cursor:pointer;">
+        <i class="fa-solid fa-copy"></i> 카카오톡 안내 문구 전체 복사
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const totalCuts = 6;
+    let currentCut = 1;
+    let isPlaying = false;
+    let playTimer = null;
+    let progressTimer = null;
+    const cutDurationMs = 5000; // 5 seconds per cut for video slide mode
+    let cutStartTime = 0;
+
+    const bgm = document.getElementById('bgmAudio');
+    const tts = document.getElementById('ttsAudio');
+    const btnPlay = document.getElementById('btnPlayVideo');
+    const playIcon = document.getElementById('playIcon');
+    const playText = document.getElementById('playText');
+    const bgmIcon = document.getElementById('bgmIcon');
+    let isTtsEnabled = true;
+
+    bgm.volume = 0.35;
+    tts.volume = 1.0;
+
+    function showCut(cutNum, triggerVoice = true) {
+      currentCut = cutNum;
+      for (let i = 1; i <= totalCuts; i++) {
+        const card = document.getElementById(`card-${i}`);
+        const seg = document.getElementById(`seg-${i}`);
+        const fill = document.getElementById(`fill-${i}`);
+
+        if (i === cutNum) {
+          card.style.display = 'flex';
+          card.style.opacity = '0';
+          setTimeout(() => { card.style.opacity = '1'; }, 20);
+          seg.className = 'timeline-segment active';
+          fill.style.width = '0%';
+        } else if (i < cutNum) {
+          card.style.display = 'none';
+          seg.className = 'timeline-segment completed';
+          fill.style.width = '100%';
+        } else {
+          card.style.display = 'none';
+          seg.className = 'timeline-segment';
+          fill.style.width = '0%';
+        }
+      }
+
+      if (isTtsEnabled && triggerVoice) {
+        playCutVoice(cutNum);
+      }
+    }
+
+    function playCutVoice(cutNum) {
+      tts.pause();
+      tts.src = `../audio/tts_video_0${cutNum}.mp3`;
+      if (!bgm.paused) {
+        bgm.volume = 0.12;
+      }
+
+      tts.play().catch(e => console.log('TTS Autoplay waiting for click:', e));
+
+      tts.onended = () => {
+        if (!bgm.paused) {
+          bgm.volume = 0.35;
+        }
+        if (isPlaying) {
+          playTimer = setTimeout(() => {
+            nextCut();
+          }, 1200);
+        }
+      };
+    }
+
+    function nextCut() {
+      let next = currentCut + 1;
+      if (next > totalCuts) {
+        if (isPlaying) {
+          pauseVideo();
+          showToast('🎉 전편 시청이 완료되었습니다!');
+          return;
+        } else {
+          next = 1;
+        }
+      }
+      showCut(next, true);
+    }
+
+    function prevCut() {
+      let prev = currentCut - 1;
+      if (prev < 1) prev = totalCuts;
+      showCut(prev, true);
+    }
+
+    // Video Auto-Play Engine
+    function toggleVideoPlay() {
+      if (isPlaying) {
+        pauseVideo();
+      } else {
+        playVideo();
+      }
+    }
+
+    function playVideo() {
+      isPlaying = true;
+      btnPlay.classList.add('playing');
+      playIcon.className = 'fa-solid fa-pause';
+      playText.innerText = '일시 정지';
+      
+      // Start BGM with low soothing volume
+      bgm.volume = 0.35;
+      bgm.play().catch(e => console.log('Autoplay audio blocked:', e));
+
+      showCut(currentCut, true);
+      showToast('🎬 BGM과 AI 성우 음성 자동 재생이 시작되었습니다.');
+    }
+
+    function pauseVideo() {
+      isPlaying = false;
+      btnPlay.classList.remove('playing');
+      playIcon.className = 'fa-solid fa-play';
+      playText.innerText = '영상 자동 재생 (BGM+성우)';
+      
+      clearTimeout(playTimer);
+      clearInterval(progressTimer);
+      tts.pause();
+      bgm.pause();
+    }
+
+    function toggleBgm() {
+      if (bgm.paused) {
+        bgm.volume = 0.35;
+        bgm.play().then(() => {
+          bgmIcon.className = 'fa-solid fa-volume-high';
+          document.getElementById('btnBgmToggle').classList.add('highlight');
+          showToast('배경음악(BGM)이 켜졌습니다.');
+        }).catch(e => {
+          showToast('화면을 한 번 클릭해 주세요!');
+        });
+      } else {
+        bgm.pause();
+        bgmIcon.className = 'fa-solid fa-volume-xmark';
+        document.getElementById('btnBgmToggle').classList.remove('highlight');
+        showToast('배경음악이 일시 중지되었습니다.');
+      }
+    }
+
+    function toggleTtsVoice() {
+      isTtsEnabled = !isTtsEnabled;
+      const btn = document.getElementById('btnTtsToggle');
+      const txt = document.getElementById('ttsBtnText');
+
+      if (isTtsEnabled) {
+        btn.classList.add('highlight');
+        txt.innerText = '성우 켜짐';
+        playCutVoice(currentCut);
+        showToast('🎙️ AI 성우 낭독이 켜졌습니다.');
+      } else {
+        tts.pause();
+        btn.classList.remove('highlight');
+        txt.innerText = '성우 꺼짐';
+        if (!bgm.paused) bgm.volume = 0.35;
+        showToast('AI 성우 낭독이 꺼졌습니다.');
+      }
+    }
+
+    // Toast Utility
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => { toast.classList.remove('show'); }, 2200);
+    }
+
+    // Modal Utilities
+    function openShareModal() {
+      document.getElementById('copyModal').style.display = 'flex';
+    }
+    function closeShareModal() {
+      document.getElementById('copyModal').style.display = 'none';
+    }
+    function copyKakaoMsg() {
+      const text = document.getElementById('kakaoText').value;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text);
+        showToast('카카오톡 문구가 복사되었습니다!');
+        setTimeout(closeShareModal, 1000);
+      }
+    }
+
+    // Keyboard Arrow Controls
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextCut();
+      } else if (e.key === 'ArrowLeft') {
+        prevCut();
+      }
+    });
+  </script>
+</body>
+</html>

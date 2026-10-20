@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>바이오피치 랩 (BioPitch Lab) | 야구 바이오메카닉 &amp; 전문 메디컬 케어 플랫폼</title>
+  <meta name="description"
+    content="16년 임상 기반, 야구 유소년·엘리트를 위한 과학적 바이오메카닉 케어 시스템. 투구 가동성 평가(GIRD), 50분 집중 릴리즈, 모바일 리포트 및 아카데미 턴키 제휴 솔루션.">
+  <meta name="keywords" content="바이오피치랩, 야구메디컬, 투수가동성, GIRD, 야구피지컬케어, 야구아카데미제휴, 조승수야구센터, 유소년야구, 박인국물리치료사, 엘리트야구재활">
+
+  <!-- Pretendard CDN -->
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="top-announcement" id="topAnnouncement">
+    <div class="container announcement-inner">
+      <span class="announcement-tag"><i class="fa-solid fa-baseball"></i> 공식 파트너십</span>
+      <span class="announcement-text">
+        <strong>[조승수 야구 아카데미 센터 &amp; 도봉 야구단]</strong> 공식 전담 바이오메카닉 케어 및 주말 정원제(17:00~22:00) 예약 접수 중
+      </span>
+      <a href="#locations" class="announcement-link">제휴 센터 및 예약 안내 <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header" id="mainHeader">
+    <div class="container header-container">
+      <a href="#" class="brand-logo" id="brandLogo">
+        <div class="logo-symbol">
+          <i class="fa-solid fa-baseball-bat-ball"></i>
+        </div>
+        <div class="logo-text-group">
+          <span class="logo-main">BIOPITCH <span class="highlight">LAB</span></span>
+          <span class="logo-sub">ATHLETIC BIOMECHANICS &amp; MEDICAL CARE</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="#whyUs" class="nav-link">시스템 소개</a></li>
+          <li><a href="#locations" class="nav-link">제휴 거점</a></li>
+          <li><a href="#clinicalData" class="nav-link">가동성 평가</a></li>
+          <li><a href="#b2bSolution" class="nav-link highlight-link">B2B 공간 제휴</a></li>
+          <li><a href="#director" class="nav-link">디렉터 소개</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Buttons -->
+      <div class="header-actions">
+        <a href="#bookingModal" class="btn btn-sm btn-outline-cyan open-booking-btn">
+          <i class="fa-regular fa-calendar-check"></i> 케어 예약
+        </a>
+        <a href="#b2bSolution" class="btn btn-sm btn-primary-gold">
+          <i class="fa-solid fa-handshake"></i> B2B 제휴
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴 열기">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Dropdown Nav Drawer -->
+  <div class="mobile-nav-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <span class="drawer-title">BIOPITCH LAB</span>
+      <button class="drawer-close-btn" id="drawerCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="#whyUs" class="mobile-link">시스템 소개 (Why Us)</a></li>
+      <li><a href="#locations" class="mobile-link">공식 제휴 센터 (조승수 센터 &amp; 도봉야구단)</a></li>
+      <li><a href="#clinicalData" class="mobile-link">가동성 평가 시스템 &amp; 리포트</a></li>
+      <li><a href="#b2bSolution" class="mobile-link">B2B 아카데미 공간 제휴</a></li>
+      <li><a href="#director" class="mobile-link">16년 경력 박인국 디렉터 소개</a></li>
+    </ul>
+    <div class="drawer-actions">
+      <a href="#bookingModal" class="btn btn-cyan btn-full open-booking-btn"><i
+          class="fa-regular fa-calendar-check"></i> 선수 1:1 케어 예약하기</a>
+      <a href="#b2bSolution" class="btn btn-gold btn-full"><i class="fa-solid fa-handshake"></i> 아카데미 B2B 제휴 신청</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ========================================================
+         HERO SECTION: 브랜드 아이덴티티 및 듀얼 CTA
+         ======================================================== -->
+    <section class="hero-section" id="heroSection">
+      <div class="hero-bg-overlay"></div>
+      <div class="container hero-container">
+
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span>KOREA ELITE BASEBALL BIOMECHANICS CARE PLATFORM</span>
+        </div>
+
+        <h1 class="hero-title">
+          16년 임상 기반, 야구 유소년·엘리트를 위한<br>
+          <span class="gradient-text-cyan">과학적 바이오메카닉 케어 시스템</span>
+        </h1>
+
+        <p class="hero-subtext">
+          투구 가동성 평가(GIRD)부터 부상 방지 릴리즈, 데이터 리포트까지.<br class="pc-only">
+          단순 마사지가 아닌, <strong>16년 임상 배경의 전문 물리치료사</strong>가 데이터와 표준 절차로 선수의 관절을 책임집니다.
+        </p>
+
+        <!-- Dual CTA Buttons -->
+        <div class="hero-cta-group">
+          <a href="#bookingModal" class="btn btn-lg btn-cyan open-booking-btn">
+            <i class="fa-solid fa-baseball"></i> 선수 1:1 집중 케어 예약하기
+            <span class="btn-subtext">주말 정원제 · 50분 집중 케어</span>
+          </a>
+          <a href="#b2bSolution" class="btn btn-lg btn-gold">
+            <i class="fa-solid fa-building-circle-check"></i> 아카데미 B2B 제휴 문의
+            <span class="btn-subtext">4평 유휴공간 턴키 메디컬 룸 세팅</span>
+          </a>
+        </div>
+
+        <!-- Hero KPI Metrics -->
+        <div class="hero-kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon"><i class="fa-solid fa-user-doctor"></i></div>
+            <div class="kpi-content">
+              <span class="kpi-number">16<span class="unit">년+</span></span>
+              <span class="kpi-label">도수·재활 임상 총괄 경력</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon"><i class="fa-solid fa-stopwatch-20"></i></div>
+            <div class="kpi-content">
+              <span class="kpi-number">50<span class="unit">분</span></span>
+              <span class="kpi-label">회당 1:1 전담 정밀 릴리즈</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <div class="kpi-content">
+              <span class="kpi-number">100<span class="unit">%</span></span>
+              <span class="kpi-label">모바일 비포/애프터 리포트</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon"><i class="fa-solid fa-chart-pie"></i></div>
+            <div class="kpi-content">
+              <span class="kpi-number">4~6<span class="unit">평</span></span>
+              <span class="kpi-label">아카데미 유휴공간 턴키 구축</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 1: 시스템 소개 (Why Us - 바이오메카닉 정밀 케어)
+         ======================================================== -->
+    <section class="section section-whyus" id="whyUs">
+      <div class="container">
+
+        <div class="section-title-center">
+          <span class="section-pill">SYSTEM ARCHITECTURE</span>
+          <h2 class="section-heading">왜 단순 마사지가 아닌, <span class="highlight">바이오메카닉 케어</span>여야 할까요?</h2>
+          <p class="section-subheading">
+            통증이 생긴 뒤에 찾는 병원 치료와 기술만 가르치는 레슨 사이의 치명적인 공백을<br>
+            데이터 기반의 3단계 가동성 평가 &amp; 기능 활성화 프로토콜로 완벽하게 메웁니다.
+          </p>
+        </div>
+
+        <!-- 모바일 전용 좌우 스와이프 가이드 -->
+        <div class="mobile-swipe-hint">
+          <i class="fa-solid fa-arrows-left-right"></i> 좌우로 넘겨서 3단계 프로토콜 확인
+        </div>
+
+        <!-- 3-Step Protocol Cards -->
+        <div class="protocol-grid">
+
+          <div class="protocol-card">
+            <div class="protocol-step-badge">STEP 01</div>
+            <div class="protocol-icon-wrap">
+              <i class="fa-solid fa-compass-drafting"></i>
+            </div>
+            <h3 class="protocol-title">정밀 관절 가동성 스크리닝</h3>
+            <p class="protocol-desc">
+              관절 각도계를 이용해 투수 어깨 내·외회전(GIRD), 팔꿈치 굴곡/신전 각도, 견갑골 상방회전, 흉추·고관절 가동 범위를 객관적인 수치로 정밀 측정합니다.
+            </p>
+            <ul class="protocol-feature-list">
+              <li><i class="fa-solid fa-circle-check"></i> 어깨 내회전 결손(GIRD) 조기 판별</li>
+              <li><i class="fa-solid fa-circle-check"></i> 투구 부상 위험 신호(Red Flags) 감지</li>
+              <li><i class="fa-solid fa-circle-check"></i> MLB Pitch Smart 기준 휴식일 가이드</li>
+            </ul>
+          </div>
+
+          <div class="protocol-card featured-step">
+            <div class="protocol-step-badge featured-badge">STEP 02 (CORE)</div>
+            <div class="protocol-icon-wrap">
+              <i class="fa-solid fa-hand-holding-medical"></i>
+            </div>
+            <h3 class="protocol-title">회당 50분 1:1 집중 릴리즈</h3>
+            <p class="protocol-desc">
+              PNF(고유수용성신경근촉진법) 심화 기법과 오스테오파시(Osteopathy) 근막이완술을 융합하여, 굳어진 관절낭과 과긴장된 근육을 통증 없이 이완하고 활성화합니다.
+            </p>
+            <ul class="protocol-feature-list">
+              <li><i class="fa-solid fa-circle-check"></i> 회전근개 &amp; 후방 관절낭 정밀 이완</li>
+              <li><i class="fa-solid fa-circle-check"></i> 전거근·하부승모근 신경근 촉진 활성화</li>
+              <li><i class="fa-solid fa-circle-check"></i> 흉곽 확장 및 골반-어깨 분리각(X-Factor) 복원</li>
+            </ul>
+          </div>
+
+          <div class="protocol-card">
+            <div class="protocol-step-badge">STEP 03</div>
+            <div class="protocol-icon-wrap">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3 class="protocol-title">모바일 비포/애프터 리포트</h3>
+            <p class="protocol-desc">
+              케어 직후 관절 각도의 전·후 변화 그래프와 담당 치료사의 전문 소견, 집에서 할 수 있는 맞춤 홈트레이닝 루틴 카드를 학부모 스마트폰으로 전송합니다.
+            </p>
+            <ul class="protocol-feature-list">
+              <li><i class="fa-solid fa-circle-check"></i> 카카오톡 시각화 데이터 리포트 발행</li>
+              <li><i class="fa-solid fa-circle-check"></i> 아이 신체 변화를 눈으로 확인하는 안심 케어</li>
+              <li><i class="fa-solid fa-circle-check"></i> 투수 전용 웜업·쿨다운 튜빙 루틴 카드 제공</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Target Problems Grid -->
+        <div class="target-symptom-box">
+          <div class="target-header">
+            <h4><i class="fa-solid fa-bullseye"></i> 바이오피치 랩 집중 케어 대상 포지션별 주요 증상</h4>
+            <span class="target-header-hint"><i class="fa-solid fa-arrows-left-right"></i> 좌우 넘김</span>
+          </div>
+          <div class="target-grid">
+            <div class="target-item">
+              <span class="target-badge pitcher-badge">투수 (PITCHER)</span>
+              <h5>어깨 충돌 &amp; 구속 정체 해결</h5>
+              <p>투구 후 팔이 뒤로 잘 넘어가지 않거나(GIRD), 릴리스 순간 어깨 앞쪽이 찝히는 느낌, 팔꿈치 안쪽 당김 완화</p>
+            </div>
+            <div class="target-item">
+              <span class="target-badge batter-badge">타자 (BATTER)</span>
+              <h5>골반 회전 비대칭 &amp; 허리 부담 해소</h5>
+              <p>배팅 팔로스루 시 고관절 찝힘, 한쪽 골반 회전 제한으로 인한 상체 들림 현상 및 요추 과부하 예방</p>
+            </div>
+            <div class="target-item">
+              <span class="target-badge youth-badge">유소년/성장기 (YOUTH)</span>
+              <h5>성장판 보호 &amp; 올바른 관절 정렬</h5>
+              <p>급격한 신체 성장에 따른 유연성 저하, 투구 과사용에 의한 조기 부상 방지 및 균형 잡힌 관절 축 완성</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 2: 공식 제휴 센터 & 협력 야구단 (Partners)
+         ======================================================== -->
+    <section class="section section-locations" id="locations">
+      <div class="container">
+
+        <div class="section-title-center">
+          <span class="section-pill">OFFICIAL PARTNER NETWORK</span>
+          <h2 class="section-heading">바이오피치 랩 <span class="highlight">공식 제휴 센터 &amp; 협력 야구단</span></h2>
+          <p class="section-subheading">
+            바이오피치 랩은 현장 검증을 거친 공식 파트너십 아카데미 및 야구단에 전담 바이오메카닉 시스템을 구축하여<br>
+            선수들의 관절 부상 예방과 최적의 퍼포먼스를 완성하고 있습니다.
+          </p>
+        </div>
+
+        <div class="locations-grid single-flagship-grid">
+
+          <!-- 조승수 야구 아카데미 센터 × 도봉 야구단 통합 플래그십 거점 -->
+          <div class="location-card featured-location single-hero-location">
+            <div class="location-header">
+              <div class="location-badge-group">
+                <span class="badge badge-flagship">OFFICIAL BASECAMP</span>
+                <span class="badge badge-dobong">도봉 야구단 공식 전담 센터</span>
+                <span class="badge badge-active"><span class="pulse-dot-sm"></span> 주말 정원제 운영 중</span>
+              </div>
+              <h3 class="location-title">조승수 야구 아카데미 &amp; 도봉 야구단 베이스캠프</h3>
+              <p class="location-collab">
+                <i class="fa-solid fa-handshake"></i> 전 두산 베어스 투수 조승수 대표 &amp; 16년 차 물리치료사 박인국 실장의 결합 거점
+              </p>
+            </div>
+
+            <div class="location-body">
+              <div class="location-unified-banner">
+                <div class="banner-badge-box">
+                  <img src="images/css_official_logo.png" alt="CSS 공식 엠블럼" class="unified-logo-img">
+                  <div class="banner-text-box">
+                    <h4>CSS 야구센터 × 도봉 야구단 공식 메디컬 케어 존</h4>
+                    <p>도봉구 유소년·엘리트 선수단 및 조승수 아카데미 원생 전담 바이오메카닉 시스템 가동</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="location-info-list big-text-list">
+                <div class="info-row">
+                  <span class="info-key"><i class="fa-solid fa-location-dot"></i> 위 치</span>
+                  <span class="info-val"><strong>경기 남양주시 순화궁로 (별내역 인근 / CSS 야구센터)</strong></span>
+                </div>
+                <div class="info-row">
+                  <span class="info-key"><i class="fa-solid fa-users"></i> 대상 선수</span>
+                  <span class="info-val"><strong>도봉 야구단 선수단 전원 &amp; 조승수 야구 아카데미 투수·타자 원생</strong></span>
+                </div>
+                <div class="info-row">
+                  <span class="info-key"><i class="fa-solid fa-clock"></i> 운영 시간</span>
+                  <span class="info-val"><strong>매주 토·일 (주말) 17:00 ~ 22:00</strong> (1:1 집중 정원제 예약)</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-key"><i class="fa-solid fa-user-doctor"></i> 전담 디렉터</span>
+                  <span class="info-val"><strong>16년 임상 경력 물리치료사 박인국 총괄 실장 직접 1:1 케어</strong></span>
+                </div>
+                <div class="info-row">
+                  <span class="info-key"><i class="fa-solid fa-clipboard-check"></i> 세션 구성</span>
+                  <span class="info-val"><strong>50분 정밀 관절 각도 측정 + 수기 근막 릴리즈 + 모바일 리포트 전달</strong></span>
+                </div>
+              </div>
+
+              <div class="location-cta-group">
+                <a href="#bookingModal" class="btn btn-cyan btn-large-cta open-booking-btn"
+                  data-center="조승수 야구센터 &amp; 도봉야구단 (경기 남양주 별내)">
+                  <i class="fa-solid fa-calendar-check"></i> 1:1 바이오메카닉 케어 예약하기
+                </a>
+                <a href="tel:010-3888-2649" class="btn btn-outline-light btn-large-cta">
+                  <i class="fa-solid fa-phone"></i> 박인국 실장 직통 상담 (010-3888-2649)
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 3: 객관적 가동성 평가 시스템 프로세스 (예시)
+         ======================================================== -->
+    <section class="section section-clinical" id="clinicalData">
+      <div class="container">
+
+        <div class="section-title-center">
+          <span class="section-pill">EVALUATION SYSTEM PROTOCOL</span>
+          <h2 class="section-heading">데이터 기반의 객관적 <span class="highlight">관절 가동성 평가 시스템</span></h2>
+          <p class="section-subheading">
+            바이오피치 랩은 주관적인 느낌이 아닌, 과학적 측정 도구와 지표로 선수의 신체 상태를 정밀 체크합니다.<br>
+            <span style="color: #38bdf8; font-size: 13.5px; font-weight: 600;">※ 아래 수치와 내용은 이해를 돕기 위한 바이오피치 랩의 표준 평가 지표
+              및 관리 시스템 프로세스 예시입니다.</span>
+          </p>
+        </div>
+
+        <!-- System Evaluation Framework Showcase Grid -->
+        <div class="case-showcase-grid">
+
+          <div class="case-card">
+            <div class="case-badge">평가 시스템 예시 01 · 투수 어깨</div>
+            <h4 class="case-title">어깨 내회전(GIRD) 비대칭 정밀 스크리닝</h4>
+            <div class="case-stats-box">
+              <div class="stat-before">
+                <span class="stat-tag">체크 지표 (예시)</span>
+                <span class="stat-num">내회전 42°</span>
+                <span class="stat-note">후방 관절낭 제한 구간 감지</span>
+              </div>
+              <div class="stat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+              <div class="stat-after">
+                <span class="stat-tag">케어 목표 범위 (예시)</span>
+                <span class="stat-num">정상화 65~70°</span>
+                <span class="stat-note">좌우 편차 15° 이내 안정권 확보</span>
+              </div>
+            </div>
+            <p class="case-desc">
+              <strong>[체크 목적]</strong> 투구 후 반복되는 후방 관절낭 단축과 회전근개 과긴장 여부를 각도계로 측정하여, 어깨 충돌 및 통증 전 단계의 위험 신호를 조기에 발견합니다.
+            </p>
+          </div>
+
+          <div class="case-card">
+            <div class="case-badge">평가 시스템 예시 02 · 상체 회전축</div>
+            <h4 class="case-title">흉추 회전 가동성 및 상하체 꼬임각 평가</h4>
+            <div class="case-stats-box">
+              <div class="stat-before">
+                <span class="stat-tag">체크 지표 (예시)</span>
+                <span class="stat-num">흉추 회전 35°</span>
+                <span class="stat-note">상체 굳음 (팔꿈치 과부하 유발)</span>
+              </div>
+              <div class="stat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+              <div class="stat-after">
+                <span class="stat-tag">케어 목표 범위 (예시)</span>
+                <span class="stat-num">정상화 50~55°</span>
+                <span class="stat-note">골반-어깨 분리각(X-Factor) 확보</span>
+              </div>
+            </div>
+            <p class="case-desc">
+              <strong>[체크 목적]</strong> 상체 꼬임이 원활하지 못해 팔에만 무리가 가는 현상을 방지합니다. 흉곽 확장과 흉추 모빌리티를 회복시켜 하체 회전력이 투구로 온전히 전달되도록
+              관리합니다.
+            </p>
+          </div>
+
+          <div class="case-card">
+            <div class="case-badge">평가 시스템 예시 03 · 팔꿈치 &amp; 전완</div>
+            <h4 class="case-title">팔꿈치 굴곡·신전 범위 &amp; 전완근 과긴장 평가</h4>
+            <div class="case-stats-box">
+              <div class="stat-before">
+                <span class="stat-tag">체크 지표 (예시)</span>
+                <span class="stat-num">굴곡 120°</span>
+                <span class="stat-note">신전·굴곡 제한 및 전완근 뭉침</span>
+              </div>
+              <div class="stat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+              <div class="stat-after">
+                <span class="stat-tag">케어 목표 범위 (예시)</span>
+                <span class="stat-num">완전 가동 140~145°</span>
+                <span class="stat-note">완전 신전(0°) 및 유연성 회복</span>
+              </div>
+            </div>
+            <p class="case-desc">
+              <strong>[체크 목적]</strong> 송구 후 전완 굴곡근군 긴장으로 팔꿈치가 완전히 펴지지 않거나 당기는 현상을 평가합니다. PNF 신경근 촉진 및 이완으로 인대 부담을 사전에
+              차단합니다.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- 1:1 Consultation & Check Sheet Banner -->
+        <div class="report-mockup-banner">
+          <div class="mockup-content">
+            <span class="mockup-pill"><i class="fa-solid fa-clipboard-check"></i> 1:1 정밀 측정 &amp; 상담 피드백</span>
+            <h3>"전문 물리치료사가 직접 측정한<br>관절 가동성 시트를 전달합니다."</h3>
+            <p>
+              별도의 복잡한 앱 설치 없이, 당일 세션에서 관절 각도계로 실측한 어깨·흉추·팔꿈치 가동성 수치와<br>
+              집에서 꼭 실천해야 할 투수 보강 튜빙 루틴을 담당 실장이 학부모님께 1:1로 알기 쉽게 정리해 드립니다.
+            </p>
+            <div class="mockup-features">
+              <div class="mf-item"><i class="fa-solid fa-check"></i> 관절 각도계 실측 수치 공유</div>
+              <div class="mf-item"><i class="fa-solid fa-check"></i> 투구 후 필수 웜업·쿨다운 루틴 지도</div>
+              <div class="mf-item"><i class="fa-solid fa-check"></i> 학부모님과의 투명한 1:1 카카오톡 상담</div>
+            </div>
+          </div>
+          <div class="mockup-visual">
+            <div class="smartphone-frame">
+              <div class="phone-screen">
+                <div class="report-header-ui">
+                  <span class="rh-logo">BIOPITCH LAB</span>
+                  <span class="rh-date">관절 가동성 체크 시트 (예시)</span>
+                </div>
+                <div class="report-body-ui">
+                  <div class="rb-player">
+                    <strong>선수명: 예시 (포지션: 투수)</strong>
+                    <span class="rb-badge">평가 완료</span>
+                  </div>
+                  <div class="rb-metric-card">
+                    <span class="rm-title">어깨 내회전 (Internal Rotation)</span>
+                    <div class="rm-bar-group">
+                      <div class="rm-bar before-bar" style="width: 50%;">체크: 42° (제한 감지)</div>
+                      <div class="rm-bar after-bar" style="width: 85%;">케어 후: 68° (가동성 회복)</div>
+                    </div>
+                  </div>
+                  <div class="rb-metric-card">
+                    <span class="rm-title">흉추 회전 (Thoracic Rotation)</span>
+                    <div class="rm-bar-group">
+                      <div class="rm-bar before-bar" style="width: 45%;">체크: 35° (상체 굳음)</div>
+                      <div class="rm-bar after-bar" style="width: 75%;">케어 후: 55° (회전각 확장)</div>
+                    </div>
+                  </div>
+                  <div class="rb-memo">
+                    <strong>담당 실장 피드백 예시:</strong> 후방 관절낭 및 소원근 릴리즈 진행. 투구 직후 필수 쿨다운 튜빙 루틴 2세트 지도 완료.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ: Frequently Asked Questions (허위 후기 대체) -->
+        <div class="faq-section" id="faqSection">
+          <div class="section-title-center" style="margin-bottom: 32px;">
+            <span class="section-pill">FAQ</span>
+            <h3 class="section-heading" style="font-size: 24px;">학부모님과 지도자분들이 <span class="highlight">가장 자주 묻는 질문</span>
+            </h3>
+            <p class="section-subheading" style="font-size: 13.5px;">바이오피치 랩의 운영 방식과 안전 원칙에 대한 솔직하고 명확한 답변입니다.</p>
+          </div>
+
+          <div class="faq-grid">
+            <div class="faq-item">
+              <h4 class="faq-q"><i class="fa-solid fa-circle-question" style="color: #38bdf8;"></i> Q1. 일반 마사지나 병원 치료와
+                무엇이 다른가요?</h4>
+              <p class="faq-a">
+                단순 뭉친 근육을 주무르는 마사지가 아닙니다. 16년 임상 경력의 국가공인 물리치료사가 관절 각도계로 투구에 필수적인 관절 가동 범위를 실측하고, PNF(신경근 촉진)와 오스테오파시
+                기법을 바탕으로 관절 움직임 회복과 기능 활성화를 돕는 <strong>합법적인 전문 스포츠 피지컬 케어</strong>입니다.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h4 class="faq-q"><i class="fa-solid fa-circle-question" style="color: #38bdf8;"></i> Q2. 아직 통증이 없는 선수도
+                관리를 받아야 하나요?</h4>
+              <p class="faq-a">
+                네, 부상 예방을 위해 통증이 생기기 전 관리가 더욱 중요합니다. 야구 선수의 관절 손상은 통증이 터지기 수 주 전부터 <strong>'가동 범위의 저하(GIRD)'</strong>로
+                먼저 신호가 옵니다. 미리 각도를 체크하고 굳은 관절낭을 풀어주어야 시즌 중 피로 누적으로 인한 부상 이탈을 방지할 수 있습니다.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h4 class="faq-q"><i class="fa-solid fa-circle-question" style="color: #38bdf8;"></i> Q3. 케어 소요 시간과 예약 방식은
+                어떻게 되나요?</h4>
+              <p class="faq-a">
+                1회당 50분 집중 1:1 전담으로 진행됩니다. 현재 공식 거점인 <strong>[조승수 야구 아카데미 센터]에서 매주 주말(토·일 17:00 ~ 22:00) 100% 정원제 사전
+                  예약제</strong>로 운영되며, 도봉 야구단 등 공식 협력 팀은 별도 단체 점검 일정으로 운영됩니다.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h4 class="faq-q"><i class="fa-solid fa-circle-question" style="color: #38bdf8;"></i> Q4. 급성 손상이나 심한 통증이
+                발견되면 어떻게 하나요?</h4>
+              <p class="faq-a">
+                바이오피치 랩은 안전 프로토콜(Red Flags)을 엄격히 준수합니다. 검사 중 관절 불안정성, 골절 의심, 인대 손상 등 의료기관의 정밀 검진이 필요한 이상 징후 감지 시
+                <strong>즉시 케어를 중단하고 정형외과 및 전문 병원 진료를 최우선으로 안내</strong>합니다.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 4: B2B 아카데미 제휴 솔루션 (아카데미 대표용)
+         ======================================================== -->
+    <section class="section section-b2b" id="b2bSolution">
+      <div class="container">
+
+        <div class="b2b-header-card">
+          <span class="b2b-pill">FOR BASEBALL ACADEMY OWNERS</span>
+          <h2 class="b2b-main-title">
+            "아카데미의 4평 유휴 공간,<br>
+            <span class="gradient-text-gold">프리미엄 메디컬 룸</span>으로 전환하세요"
+          </h2>
+          <p class="b2b-main-desc">
+            레슨 코칭은 대표님이 100% 전담하시고, 남는 공간에는 바이오피치 랩의 시스템을 심으십시오.<br>
+            <strong>전담 인건비 부담 0원 · 인테리어 및 장비 턴키 세팅 · 검증된 전문 인력 매칭</strong>으로 아카데미의 신규 순수익을 창출합니다.
+          </p>
+        </div>
+
+        <!-- 3 Core B2B Values -->
+        <div class="b2b-value-grid">
+
+          <div class="b2b-value-card">
+            <div class="b2b-v-icon"><i class="fa-solid fa-couch"></i></div>
+            <div class="b2b-v-num">VALUE 01</div>
+            <h3 class="b2b-v-title">공간 기획 &amp; 평가 프로토콜 턴키 세팅</h3>
+            <p class="b2b-v-desc">
+              센터 내 4~6평 유휴 공간을 실측하여 전문 베드, 정밀 각도계, 튜빙 스테이션, 방수 코팅 운동 카드, Red Flags 병원 의뢰 기준표까지 일체 턴키로 세팅해 드립니다.
+            </p>
+            <span class="b2b-v-check"><i class="fa-solid fa-check"></i> 대표님 준비 사항 0개 (본사 완벽 세팅)</span>
+          </div>
+
+          <div class="b2b-value-card">
+            <div class="b2b-v-icon"><i class="fa-solid fa-user-shield"></i></div>
+            <div class="b2b-v-num">VALUE 02</div>
+            <h3 class="b2b-v-title">사전 검증된 물리치료사 전문 인력 매칭</h3>
+            <p class="b2b-v-desc">
+              구인난과 인건비 걱정을 끝내드립니다. 16년 차 총괄 실장의 PNF/오스테오파시 프로토콜 교육을 이수한 검증된 전문 물리치료사를 주말/평일 맞춤 스케줄로 파견 매칭합니다.
+            </p>
+            <span class="b2b-v-check"><i class="fa-solid fa-check"></i> 상시 고정 인건비 월 0원 (매출 셰어)</span>
+          </div>
+
+          <div class="b2b-value-card">
+            <div class="b2b-v-icon"><i class="fa-solid fa-coins"></i></div>
+            <div class="b2b-v-num">VALUE 03</div>
+            <h3 class="b2b-v-title">부가세/수수료 제외 투명한 실수령 정산</h3>
+            <p class="b2b-v-desc">
+              복잡한 정산 공식 없이, 결제 금액에서 부가세와 결제 수수료를 제외한 순매출을 기준으로 투명하게 월 단위 정산합니다. 레슨비 외에 매월 고정적인 부가 순이익이 발생합니다.
+            </p>
+            <span class="b2b-v-check"><i class="fa-solid fa-check"></i> 선수 15명만 등록해도 월 150만 원 순이익</span>
+          </div>
+
+        </div>
+
+        <!-- B2B Profit Simulator -->
+        <div class="b2b-roi-simulator">
+          <div class="roi-sim-header">
+            <h4><i class="fa-solid fa-calculator"></i> 아카데미 원장님 수익 시뮬레이션</h4>
+            <span class="roi-sim-badge">현실적인 레슨 회원 15명 기준</span>
+          </div>
+          <div class="roi-sim-grid">
+            <div class="roi-sim-box">
+              <span class="sim-label">도입 옵션 (예시)</span>
+              <span class="sim-value">월 100,000원</span>
+              <span class="sim-sub">선수 1:1 정기 가동성 케어 옵션</span>
+            </div>
+            <div class="roi-sim-box">
+              <span class="sim-label">참여 선수 수</span>
+              <span class="sim-value">단 15명</span>
+              <span class="sim-sub">전체 회원의 약 15~20% 참여 시</span>
+            </div>
+            <div class="roi-sim-box highlight-box">
+              <span class="sim-label">아카데미 월 추가 순수익</span>
+              <span class="sim-value">+1,500,000원</span>
+              <span class="sim-sub">연간 +1,800만 원 추가 고정 이익</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- B2B Contact Form -->
+        <div class="b2b-form-wrap" id="b2bFormSection">
+          <div class="b2b-form-header">
+            <h3><i class="fa-solid fa-clipboard-list"></i> 아카데미 메디컬 룸 도입 및 인력 매칭 제휴 신청</h3>
+            <p>신청서를 작성해 주시면 24시간 이내에 박인국 총괄 디렉터가 직접 유선 연락 후 현장 실측 방문 일정을 조율해 드립니다.</p>
+          </div>
+
+          <form class="b2b-form" id="b2bInquiryForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="academyName">아카데미명 / 상호 <span class="required">*</span></label>
+                <input type="text" id="academyName" name="academyName" placeholder="예: CSS 야구 아카데미" required>
+              </div>
+              <div class="form-group">
+                <label for="ownerName">대표자 성함 <span class="required">*</span></label>
+                <input type="text" id="ownerName" name="ownerName" placeholder="예: 홍길동 대표" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ownerPhone">연락처 <span class="required">*</span></label>
+                <input type="tel" id="ownerPhone" name="ownerPhone" placeholder="010-0000-0000" required>
+              </div>
+              <div class="form-group">
+                <label for="academyLocation">센터 위치 (시/구) <span class="required">*</span></label>
+                <input type="text" id="academyLocation" name="academyLocation" placeholder="예: 서울 송파구 / 경기 남양주시"
+                  required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="spaceSize">활용 가능한 유휴 공간 규모</label>
+                <select id="spaceSize" name="spaceSize">
+                  <option value="3~4평">약 3~4평 (베드 1개 + 측정 공간)</option>
+                  <option value="5~6평" selected>약 5~6평 (베드 1개 + 튜빙 스테이션 / 추천)</option>
+                  <option value="7평 이상">7평 이상 (복합 컨디셔닝 룸 가능)</option>
+                  <option value="공간 미정">현재 공간 실측 상담 필요</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="partnerType">희망 제휴 형태</label>
+                <select id="partnerType" name="partnerType">
+                  <option value="턴키구축+인력매칭" selected>공간 턴키 구축 + 전문 인력 파견 매칭 (추천)</option>
+                  <option value="기존코치진교육">공간 턴키 구축 + 기존 코치진 워크숍 교육</option>
+                  <option value="방문상담희망">우선 현장 무료 시연 및 방문 상담 희망</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inquiryMessage">문의 사항 / 현재 아카데미 상황 (선택)</label>
+              <textarea id="inquiryMessage" name="inquiryMessage" rows="3"
+                placeholder="예: 현재 주말에 레슨생이 몰리는데, 주말 전담 물리치료사 매칭이 가능한지 궁금합니다."></textarea>
+            </div>
+
+            <div class="form-agree">
+              <input type="checkbox" id="b2bAgree" required checked>
+              <label for="b2bAgree">제휴 상담 및 현장 실측 일정 조율을 위한 개인정보 수집에 동의합니다.</label>
+            </div>
+
+            <button type="submit" class="btn btn-gold btn-lg btn-full" id="b2bSubmitBtn">
+              <i class="fa-solid fa-paper-plane"></i> 메디컬 룸 도입 및 인력 매칭 제휴 신청하기
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 5: 디렉터 소개 (박인국 총괄 디렉터)
+         ======================================================== -->
+    <section class="section section-director" id="director">
+      <div class="container">
+
+        <div class="director-card">
+          <div class="director-img-col">
+            <div class="director-photo-wrap">
+              <img src="images/park_inguk_profile.jpg" alt="바이오피치 랩 박인국 총괄 디렉터" class="director-img">
+              <div class="director-badge">총괄 디렉터</div>
+            </div>
+          </div>
+
+          <div class="director-info-col">
+            <span class="director-sub">CHIEF BIOMECHANICS &amp; CLINICAL DIRECTOR</span>
+            <h2 class="director-name">박인국 <span class="title-desc">총괄 디렉터 / 16년 차 물리치료사</span></h2>
+
+            <div class="director-tags">
+              <span class="tag">보건복지부 면허 물리치료사</span>
+              <span class="tag">재활·도수 임상 16년</span>
+              <span class="tag">PNF ADVANCED 코스 수료</span>
+              <span class="tag">오스테오파시 심화 수료</span>
+            </div>
+
+            <p class="director-bio">
+              "야구 선수의 부상은 우연히 발생하지 않습니다. 굳어진 관절과 깨진 회전 밸런스가 누적되어 임계점을 넘을 때 비로소 통증이 터져 나옵니다. 16년간 대학병원과 대형 재활의학과 도수치료실에서
+              수많은 환자와 스포츠 선수들을 치료하며 확립한 과학적 바이오메카닉 시스템을 이제 야구 현장에 온전히 접목합니다."
+            </p>
+
+            <div class="career-detail-grid">
+              <div class="career-col">
+                <h5><i class="fa-solid fa-hospital-user"></i> 주요 임상 경력</h5>
+                <ul>
+                  <li><strong>현) 삼성서울연합의원</strong> 도수치료실 재직 (2025 ~ 현재)</li>
+                  <li><strong>전) 연세편한재활의학과의원</strong> 도수치료실 실장 (2018 ~ 2024, <strong>6년 8개월 총괄</strong>)</li>
+                  <li><strong>전) 라본병원</strong> 도수치료실 실장 (수술·외래 환자 재활 및 근막이완 총괄)</li>
+                  <li>서울라이즈병원, 구리효병원, 호원병원, 삼육재활병원 등 16년 임상</li>
+                </ul>
+              </div>
+              <div class="career-col">
+                <h5><i class="fa-solid fa-graduation-cap"></i> 전문 학술 이수</h5>
+                <ul>
+                  <li><strong>대한고유수용성신경근촉진법학회 (PNF)</strong> ADVANCED(심화) 코스 이수</li>
+                  <li><strong>Osteopathy (오스테오파시)</strong> MFT(근막이완), SCS, LAS 심화 수료</li>
+                  <li><strong>D.O.M.P.T</strong> MFR &amp; Unwinding 기법 수료</li>
+                  <li><strong>Bobath</strong> 소아/주니어 신경계 정상 운동 발달 기본 강좌 이수</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="legal-safety-note">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span><strong>안내:</strong> 바이오피치 랩의 모든 케어 프로그램은 합법적인 체육 서비스 범위의 가동성 평가 및 기능 활성화 트레이닝으로 진행되며, 병원 진료가 필요한 이상
+                징후 감지 시 Red Flags 프로토콜에 따라 의료기관 진료를 최우선 권고합니다.</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       FOOTER: 브랜드 공식 정보 및 파트너십 안내
+       ======================================================== -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+
+      <div class="footer-brand-col">
+        <div class="footer-logo">
+          <i class="fa-solid fa-baseball-bat-ball"></i>
+          <span>BIOPITCH <strong style="color: #38bdf8;">LAB</strong></span>
+        </div>
+        <p class="footer-desc">
+          바이오피치 랩(BioPitch Lab)은 16년 임상 경험을 기반으로 대한민국 야구 유소년과 엘리트 선수의 부상 없는 성장을 지원하는 야구 바이오메카닉 &amp; 전문 메디컬 케어 턴키
+          플랫폼입니다.
+        </p>
+        <div class="footer-contact-info">
+          <span><i class="fa-solid fa-phone"></i> 직통 상담: 010-3888-2649</span>
+          <span><i class="fa-solid fa-envelope"></i> 이메일: pik0909@hanmail.net</span>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>플랫폼 바로가기</h4>
+        <ul>
+          <li><a href="#whyUs">바이오메카닉 시스템 소개</a></li>
+          <li><a href="#locations">조승수 센터 &amp; 도봉야구단 안내</a></li>
+          <li><a href="#clinicalData">가동성 평가 시스템 &amp; 리포트</a></li>
+          <li><a href="#b2bSolution">아카데미 B2B 턴키 제휴</a></li>
+          <li><a href="#director">박인국 총괄 디렉터 프로필</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-legal-col">
+        <h4>공식 파트너십 및 안내</h4>
+        <p class="legal-text">
+          • 공식 제휴 센터: 조승수 야구 아카데미 센터 (경기 남양주시 순화궁로)<br>
+          • 공식 전담 구단: 도봉 야구단 (유소년 및 주니어 엘리트 선수단)<br>
+          • 본 플랫폼의 평가 프로토콜, 서식, 모바일 리포트 및 교육 매뉴얼에 대한 저작권은 바이오피치 랩에 있으며 무단 복제를 금합니다.
+        </p>
+        <p class="copyright">
+          © 2026 BIOPITCH LAB &amp; MEDICAL. All Rights Reserved.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       B2C 선수 1:1 케어 예약 모달 (Popup Dialog)
+       ======================================================== -->
+  <div class="modal-overlay" id="bookingModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-calendar-check" style="color: #38bdf8;"></i> 선수 1:1 바이오메카닉 케어 예약
+        </h3>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="닫기"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form class="modal-body" id="b2cBookingForm">
+        <p class="modal-notice">
+          <strong>[조승수 야구 아카데미 &amp; 도봉야구단 전담 센터]</strong> 매주 주말(토·일) 17:00~22:00 정원제로 운영됩니다. 신청 후 담당 디렉터가 확인하여 확정 문자를
+          발송해 드립니다.
+        </p>
+
+        <div class="form-group">
+          <label for="selectCenter">예약 장소 <span class="required">*</span></label>
+          <select id="selectCenter" name="selectCenter" required>
+            <option value="조승수 야구 아카데미 센터 (남양주 별내)" selected>조승수 야구 아카데미 센터 (경기 남양주 별내 / 운영중)</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="playerName">선수 이름 <span class="required">*</span></label>
+            <input type="text" id="playerName" name="playerName" placeholder="예: 김민준" required>
+          </div>
+          <div class="form-group">
+            <label for="playerAge">학년 / 소속 <span class="required">*</span></label>
+            <input type="text" id="playerAge" name="playerAge" placeholder="예: 중2 / ○○중 야구부" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="playerPhone">보호자 연락처 <span class="required">*</span></label>
+            <input type="tel" id="playerPhone" name="playerPhone" placeholder="010-0000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="playerPos">선수 포지션 <span class="required">*</span></label>
+            <select id="playerPos" name="playerPos">
+              <option value="투수(우완)" selected>투수 (우완)</option>
+              <option value="투수(좌완)">투수 (좌완)</option>
+              <option value="포수">포수</option>
+              <option value="내야수">내야수</option>
+              <option value="외야수">외야수</option>
+              <option value="취미/사회인야구">취미 / 사회인 야구</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="preferredDay">희망 요일 <span class="required">*</span></label>
+            <select id="preferredDay" name="preferredDay">
+              <option value="이번 주 토요일">이번 주 토요일 (17:00 ~ 22:00 중)</option>
+              <option value="이번 주 일요일">이번 주 일요일 (17:00 ~ 22:00 중)</option>
+              <option value="다음 주 주말">다음 주 주말 (일정 조율)</option>
+              <option value="평일 별도문의">평일 저녁 별도 문의</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="painArea">불편한 부위 / 집중 케어 희망</label>
+            <input type="text" id="painArea" name="painArea" placeholder="예: 투구 시 어깨 찝힘, 팔꿈치 뻐근함">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="extraNotes">추가 메모 (부상 이력 등)</label>
+          <textarea id="extraNotes" name="extraNotes" rows="2"
+            placeholder="과거 수술 이력이나 병원 진단 이력이 있다면 기재해 주세요."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-cyan btn-lg btn-full" id="bookingSubmitBtn">
+          <i class="fa-solid fa-check"></i> 1:1 케어 예약 신청 완료하기
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toastNotification" role="alert" aria-live="polite">
+    <div class="toast-icon" id="toastIcon"><i class="fa-solid fa-circle-check"></i></div>
+    <div class="toast-message" id="toastMessage">신청이 정상적으로 접수되었습니다.</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
