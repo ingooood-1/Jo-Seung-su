@@ -611,11 +611,22 @@
           <div class="brand-sub">카드뉴스 &amp; 공식 홈페이지 포털</div>
         </div>
       </div>
-      <div class="nav-badge">
-        <i class="fa-solid fa-circle-check"></i> 공식 단독 배포 패키지
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button class="nav-badge" id="btnBgmToggle" onclick="toggleBgm()" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.3); color:#38bdf8;" title="배경음악 켜기/끄기">
+          <i class="fa-solid fa-volume-high" id="bgmIcon"></i> <span>BGM ON</span>
+        </button>
+        <div class="nav-badge">
+          <i class="fa-solid fa-circle-check"></i> 공식 단독 배포 패키지
+        </div>
       </div>
     </div>
   </nav>
+
+  <!-- Audio Element for Continuous BGM -->
+  <audio id="bgmAudio" loop preload="auto">
+    <source src="audio/bgm_morning.mp3" type="audio/mpeg">
+    <source src="audio/bgm_carefree.mp3" type="audio/mpeg">
+  </audio>
 
   <main class="container">
     <!-- Hero Header -->
@@ -831,13 +842,91 @@ https://ingooood-1.github.io/biopitch-center/cardnews/scrapbook_magazine_cardnew
     }
 
     function copyShareLink() {
-      const shareUrl = "https://ingooood-1.github.io/biopitch-center/scrapbook_magazine_cardnews.html?mode=user";
+      const shareUrl = "https://ingooood-1.github.io/biopitch-center/cardnews/scrapbook_magazine_cardnews.html?mode=user";
       navigator.clipboard.writeText(shareUrl).then(() => {
         showToast('학부모 배포용 링크가 복사되었습니다!');
       }).catch(() => {
         alert('복사 권한이 필요합니다.');
       });
     }
+
+    // ==========================================
+    // 포털 메인 화면 BGM 상시 재생 엔진
+    // ==========================================
+    const bgmAudio = document.getElementById('bgmAudio');
+    const bgmIcon = document.getElementById('bgmIcon');
+    const btnBgm = document.getElementById('btnBgmToggle');
+    let isBgmStarted = false;
+    let isBgmMuted = false;
+
+    if (bgmAudio) bgmAudio.volume = 0.28;
+
+    function playBgm() {
+      if (!bgmAudio || isBgmMuted) return;
+      isBgmStarted = true;
+      bgmAudio.play().then(() => {
+        if (bgmIcon) bgmIcon.className = 'fa-solid fa-volume-high';
+        if (btnBgm) {
+          const txt = btnBgm.querySelector('span');
+          if (txt) txt.textContent = 'BGM ON';
+        }
+      }).catch(err => {
+        console.log("BGM pending user interaction");
+      });
+    }
+
+    function toggleBgm() {
+      if (!bgmAudio) return;
+      isBgmMuted = !isBgmMuted;
+      if (isBgmMuted) {
+        bgmAudio.pause();
+        if (bgmIcon) bgmIcon.className = 'fa-solid fa-volume-xmark';
+        if (btnBgm) {
+          const txt = btnBgm.querySelector('span');
+          if (txt) txt.textContent = 'BGM OFF';
+          btnBgm.style.color = '#94a3b8';
+        }
+        showToast('배경음악이 꺼졌습니다.');
+      } else {
+        isBgmStarted = true;
+        bgmAudio.play().catch(() => {});
+        if (bgmIcon) bgmIcon.className = 'fa-solid fa-volume-high';
+        if (btnBgm) {
+          const txt = btnBgm.querySelector('span');
+          if (txt) txt.textContent = 'BGM ON';
+          btnBgm.style.color = '#38bdf8';
+        }
+        showToast('배경음악이 켜졌습니다.');
+      }
+    }
+
+    // 첫 터치/클릭 즉시 오디오 언락 리스너
+    ['click', 'touchstart', 'scroll', 'keydown', 'pointerdown'].forEach(evt => {
+      window.addEventListener(evt, () => {
+        if (!isBgmStarted && !isBgmMuted) {
+          playBgm();
+        }
+      }, { once: true });
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      playBgm();
+    });
+
+    // 탭 이동 시 다른 탭과 음악 겹침 100% 방지
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (bgmAudio) bgmAudio.pause();
+      } else {
+        if (!isBgmMuted && isBgmStarted && bgmAudio && bgmAudio.paused) {
+          bgmAudio.play().catch(() => {});
+        }
+      }
+    });
+
+    window.addEventListener('pagehide', () => {
+      if (bgmAudio) bgmAudio.pause();
+    });
   </script>
 </body>
 </html>

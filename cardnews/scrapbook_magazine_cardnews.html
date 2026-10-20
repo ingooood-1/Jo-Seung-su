@@ -329,14 +329,16 @@
       gap: 14px;
     }
 
-    /* Handwritten Style Main Title (Exactly like "카페 라라나") */
+    /* Handwritten Style Main Title (줄바꿈 단어 잘림 방지 최적화) */
     .hand-title {
       font-family: "Gaegu", cursive, sans-serif;
-      font-size: 40px;
+      font-size: 34px;
       font-weight: 700;
-      line-height: 1.15;
+      line-height: 1.22;
       color: #000000;
       letter-spacing: -0.5px;
+      word-break: keep-all;
+      overflow-wrap: normal;
     }
 
     /* Clean Body Paragraph - Larger and 100% Crisp Dark */
@@ -1356,7 +1358,7 @@
           </div>
 
           <div class="mag-text-column">
-            <h2 class="hand-title">3단계 성장 프로세스</h2>
+            <h2 class="hand-title" style="white-space: nowrap;">3단계 성장 프로세스</h2>
             <p class="mag-body-desc">
               단순 휴식이 아닌, <strong>원인을 찾고 바른 성장과 올바른 투구</strong>를 완성합니다.<br><br>
               가동성 및 체형 밸런스 분석부터 관절 안정화 케어, 올바른 근육 학습까지 1:1로 밀착 지도합니다.
@@ -1424,7 +1426,10 @@
           </div>
 
           <div class="mag-text-column">
-            <h2 class="hand-title">조승수 X 박인국 원팀</h2>
+            <h2 class="hand-title" style="line-height: 1.25;">
+              조승수 × 박인국<br>
+              <span style="color: #2563eb;">스페셜 콜라보 케어</span>
+            </h2>
             <p class="mag-body-desc">
               공을 올바르게 던지는 법(조승수 대표)과<br>
               관절 과부하를 줄여 키 성장을 지키는 법(박인국 실장).<br><br>
@@ -1440,7 +1445,7 @@
         </div>
       </article>
 
-      <!-- ================= CARD 6 (혜택 및 상담) ================= -->
+      <!-- ================= CARD 6 (혜택 및 센터 시설 전경) ================= -->
       <article class="scrapbook-card" id="scrap-6" style="display:none;">
         <div class="mag-header">
           <div class="mag-header-meta">
@@ -1463,27 +1468,20 @@
         <div class="mag-content-split">
           <div class="photo-tape-wrapper">
             <div class="washi-tape-top"></div>
-            <div class="scrap-photo-frame" style="background:#fff; padding:10px; display:flex; flex-direction:column; justify-content:space-between;">
-              <div style="display:flex; gap:6px; height:66%;">
-                <div style="flex:1; border-radius:4px; overflow:hidden; border:1px solid #e2e8f0; position:relative;">
-                  <img src="../cho_seungsoo_real.jpg" alt="조승수 대표" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
-                  <span style="position:absolute; bottom:2px; left:2px; background:rgba(0,0,0,0.85); color:#fff; font-size:10px; font-weight:800; padding:2px 5px; border-radius:3px;">야구 수업</span>
+            <div class="scrap-photo-frame" style="background:#fff; padding:6px; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden;">
+              <div style="width:100%; height:100%; border-radius:6px; overflow:hidden; position:relative; background:#0f172a;">
+                <img src="../center_facility_3zones.jpg" alt="CSS 야구센터 훈련 공간 (실내 투구장, 웨이트 존, 기능성 트레이닝)" style="width:100%; height:100%; object-fit:cover; display:block;">
+                <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(15,23,42,0.92) 25%); padding:10px 8px 8px 8px; color:#fff; text-align:center;">
+                  <span style="font-size:11.5px; font-weight:900; color:#fde047;">⚾ 웨이트부터 투구·케어까지 원스톱</span>
+                  <div style="font-size:9.5px; color:#bfdbfe; font-weight:700; margin-top:2px;">실내 투구장 · 웨이트 존 · 기능성 트레이닝</div>
                 </div>
-                <div style="flex:1; border-radius:4px; overflow:hidden; border:1px solid #e2e8f0; position:relative; background:#ffffff; display:flex; align-items:center; justify-content:center;">
-                  <img src="../park_inguk_profile.jpg" alt="박인국 실장" style="width:100%; height:100%; object-fit:contain; object-position:center center; background:#ffffff;">
-                  <span style="position:absolute; bottom:2px; left:2px; background:rgba(0,0,0,0.85); color:#fff; font-size:10px; font-weight:800; padding:2px 5px; border-radius:3px;">1:1 맞춤 케어</span>
-                </div>
-              </div>
-              <div style="background:#eff6ff; border-radius:6px; padding:7px; border:1px dashed #3b82f6; text-align:center;">
-                <span style="font-size:12.5px; font-weight:900; color:#1e293b;">1:1 맞춤 케어 특별 혜택</span>
-                <p style="font-size:10.5px; color:#2563eb; font-weight:800; margin-top:1px;">(조승수 대표 야구 수업과 별개로 1:1 케어 진행)</p>
               </div>
             </div>
             <div class="washi-tape-bottom"></div>
           </div>
 
           <div class="mag-text-column">
-            <h2 class="hand-title">선수모집 &amp; 특별혜택</h2>
+            <h2 class="hand-title" style="white-space: nowrap;">선수모집 &amp; 특별혜택</h2>
             <p class="mag-body-desc">
               <strong>초등학생 ~ 중1 선수모집!</strong><br>
               <strong>입단테스트 가능! 1:1 개인레슨 상담!!</strong><br><br>
@@ -1597,8 +1595,15 @@
     function closeSlider() {
       isSliderOpen = false;
       clearTimeout(autoNextTimer);
-      ttsAudio.pause();
-      if (bgmAudio) bgmAudio.pause();
+      ttsAudio.pause(); // 성우 낭독 음성은 멈춤
+      
+      // ★ [썸네일 전용 화면에서도 BGM 상시 유지]
+      if (bgmAudio && !isSoundMuted) {
+        setBgmVolumeSmooth(BGM_BASE_VOL, 300);
+        if (bgmAudio.paused) {
+          bgmAudio.play().catch(() => {});
+        }
+      }
 
       sliderView.style.display = 'none';
       galleryView.style.display = 'block';
@@ -1606,7 +1611,7 @@
       publicCounter.style.display = 'none';
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      showToast("⊞ 전체 매거진 갤러리 목록으로 돌아왔습니다.");
+      showToast("⊞ 전체 매거진 갤러리 목록입니다.");
     }
 
     // 은은한 BGM과 성우 낭독 스마트 시작
@@ -1629,7 +1634,7 @@
     }
 
     // 첫 터치/클릭 즉시 오디오 언락 리스너
-    ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+    ['click', 'touchstart', 'scroll', 'keydown', 'pointerdown'].forEach(evt => {
       window.addEventListener(evt, () => {
         if (!isAudioStarted && !isSoundMuted) {
           startAllAudio();
@@ -1647,6 +1652,8 @@
         openSlider(cardParam);
       } else {
         closeSlider();
+        // 썸네일 화면에서도 은은한 BGM 즉시 실행 시도
+        startAllAudio();
       }
     });
 
@@ -1757,8 +1764,14 @@
         ttsAudio.pause();
         clearTimeout(autoNextTimer);
       } else {
-        if (!isSoundMuted && isAudioStarted && isSliderOpen) {
-          if (bgmAudio) bgmAudio.play().catch(() => {});
+        // 활성화된 탭으로 돌아왔을 때: 썸네일 화면이든 슬라이더든 BGM 부드럽게 재개
+        if (!isSoundMuted && isAudioStarted) {
+          if (bgmAudio && bgmAudio.paused) {
+            bgmAudio.play().catch(() => {});
+          }
+          if (isSliderOpen && ttsAudio && ttsAudio.paused) {
+            ttsAudio.play().catch(() => {});
+          }
         }
       }
     });
