@@ -906,8 +906,8 @@
 </head>
 <body class="user-mode">
 
-  <!-- Public Minimal Header (User Distribution Mode) -->
-  <header class="public-header user-only" id="publicHeader">
+  <!-- Public Minimal Header -->
+  <header class="public-header" id="publicHeader" style="display:flex !important;">
     <div class="public-brand">
       <span class="public-badge">CSS × 도봉리틀</span>
       <span class="public-title">꿈나무 성장 매거진</span>
@@ -919,58 +919,8 @@
       <a href="도봉리틀야구단_감성매거진_홍보영상_카드뉴스.html" class="btn-public-pill" style="background: linear-gradient(135deg, #e11d48, #be123c); color: #fff; text-decoration: none; border-color: rgba(225,29,72,0.5); font-weight:800;" title="도봉리틀 6컷 홍보영상 카드뉴스 보기">
         <i class="fa-solid fa-clapperboard"></i> <span>🎬 홍보영상</span>
       </a>
-      <button class="btn-public-pill btn-public-play" id="btnPublicPlay" onclick="toggleAutoVideoPlay()" title="영상 자동재생">
-        <i class="fa-solid fa-play" id="pubPlayIcon"></i> <span>슬라이드</span>
-      </button>
-      <button class="btn-public-pill active" id="btnPublicBgm" onclick="toggleBgm()" title="BGM 켜기/끄기">
-        <i class="fa-solid fa-music"></i> <span>BGM</span>
-      </button>
-      <button class="btn-public-pill active" id="btnPublicTts" onclick="toggleTts()" title="AI 성우 켜기/끄기">
-        <i class="fa-solid fa-microphone-lines"></i> <span>성우</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Top Admin Toolbar (Admin Mode Only) -->
-  <header class="top-toolbar admin-only">
-    <div class="brand-title">
-      <span class="brand-tag" style="background: #f59e0b; color: #000;">👑 ADMIN</span>
-      <span>CSS 야구센터 관리 콘솔 (내부용)</span>
-    </div>
-
-    <div class="tools-group">
-      <a href="도봉리틀야구단_감성매거진_홍보영상_카드뉴스.html" class="btn-action" style="text-decoration:none; background: #e11d48; border-color:#e11d48; color:#fff; font-weight:800;" title="도봉리틀 홍보영상 카드뉴스 열기">
-        <i class="fa-solid fa-film"></i> 🎬 홍보영상 카드뉴스
-      </a>
-      <button class="btn-action" style="background:#f59e0b; border-color:#f59e0b; color:#0f172a; font-weight:800;" onclick="setAppMode('user')">
-        <i class="fa-solid fa-mobile-screen"></i> 📱 학부모 배포 화면으로 보기
-      </button>
-      <button class="btn-action" onclick="copyCleanShareUrl()">
-        <i class="fa-solid fa-link"></i> 학부모 배포 링크 복사
-      </button>
-      <button class="btn-action" onclick="openShareModal()">
-        <i class="fa-solid fa-comment-dots"></i> 카톡 공지문 복사
-      </button>
-      <button class="btn-action" id="btnPlayVideo" onclick="toggleAutoVideoPlay()" style="background: linear-gradient(135deg, #e11d48, #be123c); border-color: #f43f5e; color: #fff;">
-        <i class="fa-solid fa-play" id="playIcon"></i> <span id="playText">영상 자동재생</span>
-      </button>
-      <button class="btn-action active" id="btnBgm" onclick="toggleBgm()">
-        <i class="fa-solid fa-music"></i> <span id="bgmText">BGM 켜짐</span>
-      </button>
-      <button class="btn-action active" id="btnTts" onclick="toggleTts()">
-        <i class="fa-solid fa-microphone-lines"></i> <span id="ttsText">AI 성우 켜짐</span>
-      </button>
-      <button class="btn-action" id="btnSingle" onclick="setViewMode('single')">
-        <i class="fa-solid fa-square"></i> 1장씩
-      </button>
-      <button class="btn-action" id="btnGrid" onclick="setViewMode('grid')">
-        <i class="fa-solid fa-table-cells"></i> 전체 보기
-      </button>
-      <button class="btn-action btn-download" onclick="downloadCurrentPng()">
-        <i class="fa-solid fa-camera"></i> PNG 저장
-      </button>
-      <button class="btn-action btn-zip" onclick="downloadAllZip()">
-        <i class="fa-solid fa-file-zipper"></i> ZIP
+      <button class="btn-public-pill active" id="btnPublicSound" onclick="toggleAllSound()" title="소리 켜기/끄기" style="padding: 7px 12px; border-radius: 20px;">
+        <i class="fa-solid fa-volume-high" id="soundIcon"></i>
       </button>
     </div>
   </header>
@@ -1333,8 +1283,8 @@
     </div><!-- /magazineViewer -->
   </main>
 
-  <!-- Fixed Floating CTA Bar (Public User Mode Only) -->
-  <div class="public-floating-cta user-only" id="publicFloatingCta">
+  <!-- Fixed Floating CTA Bar (조승수 대표 직통 일원화) -->
+  <div class="public-floating-cta" id="publicFloatingCta">
     <a href="tel:01036669069" class="btn-cta-phone" style="flex: 2; background: linear-gradient(135deg, #2563eb, #1d4ed8);" title="조승수 대표 직통 전화 상담">
       <i class="fa-solid fa-phone-volume"></i>
       <span>조승수 대표 직통 상담</span>
@@ -1345,104 +1295,67 @@
     </a>
   </div>
 
-  <!-- Discreet Floating Admin Switch Button (User Mode Bottom Right) -->
-  <button class="btn-admin-switch-floating user-only" onclick="setAppMode('admin')" title="관리자 콘솔로 전환">
-    <i class="fa-solid fa-gear"></i> 관리자 콘솔
-  </button>
-
-  <!-- Kakao Share Modal -->
-  <div class="modal-backdrop" id="shareModal" onclick="closeShareModal(event)">
-    <div class="modal-box" onclick="event.stopPropagation()">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-        <h3 style="font-size:18px; font-weight:800; color:#38bdf8;"><i class="fa-solid fa-comment"></i> 도봉 리틀 학부모 공지용 카톡 문구</h3>
-        <button onclick="closeShareModal()" style="background:transparent; border:none; color:#f8fafc; font-size:20px; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <p style="font-size:14px; font-weight:700; color:#f8fafc; margin-bottom:10px;">아래 문구를 복사해서 학부모 단톡방이나 밴드에 그대로 전송하세요:</p>
-      <textarea id="kakaoText" readonly style="width:100%; height:230px; background:#070b14; color:#f8fafc; border:1px solid rgba(255,255,255,0.2); border-radius:10px; padding:14px; font-size:13.5px; line-height:1.65; resize:none;">[도봉 리틀 야구단 특별 소식 ⚾]
-야구도 잘하고 키도 쑥쑥! 초등 성장 발육 & 균형잡힌 체형 만들기
-
-초등학생 ~ 중1 선수모집 (입단테스트 상시 가능 / 1:1 개인레슨 상담)!
-야구처럼 한쪽 회전력을 강하게 쓰는 운동일수록, 반대쪽 밸런스를 균형 있게 채워줄 때 숨은 키와 폭발적인 잠재력이 함께 깨어납니다!
-좌우 밸런스를 바로잡아 체형 불균형을 예방하고 성장판 스트레스 및 관절 과부하를 대폭 줄여줍니다.
-
-★ 서비스 안내
-• ⚾ 조승수 대표: 전문 야구 수업 (KBO 프로 출신 투구 폼 & 구속 메커니즘, 1:1 개인레슨)
-• 🏃 박인국 실장: 1:1 맞춤 케어 (16년 임상 관절 안정화 & 체형 케어)
-※ 조승수 대표 야구 수업과 별개로 1:1 케어가 진행됩니다.
-
-📞 【문의】: 조승수 대표 (010-3666-9069)
-• 🔍 첫 정밀 가동성 평가 & 맞춤 분석 (50% 지원): 50,000원
-• 📱 모바일 감성 매거진 카드뉴스 보기:
-https://ingooood-1.github.io/biopitch-center/cardnews/scrapbook_magazine_cardnews.html?mode=user</textarea>
-      <button onclick="copyKakaoMsg()" style="width:100%; margin-top:12px; background:#38bdf8; color:#0f172a; font-weight:900; font-size:15px; padding:13px; border-radius:10px; border:none; cursor:pointer;">
-        <i class="fa-solid fa-copy"></i> 카카오톡 안내 문구 전체 복사
-      </button>
-    </div>
-  </div>
-
   <div class="toast-popup" id="toastPopup">
     <i class="fa-solid fa-circle-check" style="color:#10b981;"></i>
-    <span id="toastMsg">복사되었습니다.</span>
+    <span id="toastMsg">알림</span>
   </div>
 
   <script>
     let currentIdx = 1;
     const total = 6;
-    let isGrid = false;
-    let appMode = 'user'; // 'user' (일반 배포 모드) or 'admin' (관리자 모드)
-
-    // Audio & TTS Engine States
-    let isBgmOn = true;
-    let isTtsOn = true;
-    let isVideoPlaying = false;
-    let autoPlayTimer = null;
+    let isSoundMuted = false;
+    let isAudioStarted = false;
+    let autoNextTimer = null;
 
     const bgmAudio = document.getElementById('bgmAudio');
     const ttsAudio = document.getElementById('ttsAudio');
     const sfxAudio = document.getElementById('sfxAudio');
+    const soundIcon = document.getElementById('soundIcon');
+    const btnPublicSound = document.getElementById('btnPublicSound');
 
-    // Initialize Volumes
     bgmAudio.volume = 0.35;
     ttsAudio.volume = 1.0;
 
-    // Mode Controller
-    function setAppMode(mode, showNotification = false) {
-      appMode = mode;
-      document.body.className = mode === 'admin' ? 'admin-mode' : 'user-mode';
-      try {
-        localStorage.setItem('css_app_mode', mode);
-      } catch (e) {}
+    // 무조건 음악 및 성우 음성 자동 시작 (브라우저 정책 자동 대응)
+    function startAllAudio() {
+      if (isAudioStarted || isSoundMuted) return;
+      isAudioStarted = true;
 
-      if (showNotification) {
-        if (mode === 'admin') {
-          showToast("👑 관리자 콘솔 모드로 전환되었습니다.");
-        } else {
-          showToast("📱 일반 배포 모드로 전환되었습니다. (학부모 클린 뷰)");
+      bgmAudio.play().then(() => {
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
+        if (btnPublicSound) btnPublicSound.classList.add('active');
+      }).catch(err => {
+        console.log("BGM Autoplay pending user interaction");
+      });
+
+      playCurrentVoice();
+    }
+
+    // 첫 터치/클릭 즉시 오디오 언락 리스너
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, () => {
+        if (!isAudioStarted && !isSoundMuted) {
+          startAllAudio();
         }
-      }
-    }
+      }, { once: true });
+    });
 
-    // Initialize Mode from URL or Storage
-    const urlParams = new URLSearchParams(window.location.search);
-    const modeParam = urlParams.get('mode');
-    const cardParam = urlParams.get('card');
-
-    if (modeParam === 'admin') {
-      setAppMode('admin', false);
-    } else if (modeParam === 'user') {
-      setAppMode('user', false);
-    } else {
-      const savedMode = localStorage.getItem('css_app_mode');
-      setAppMode(savedMode === 'admin' ? 'admin' : 'user', false);
-    }
+    // 페이지 로드 시 즉시 실행
+    window.addEventListener('DOMContentLoaded', () => {
+      showCard(1, false);
+      startAllAudio();
+    });
 
     function showCard(n, autoPlayVoice = true) {
       currentIdx = n;
+      clearTimeout(autoNextTimer);
+
       for (let i = 1; i <= total; i++) {
         const c = document.getElementById(`scrap-${i}`);
         if (c) c.style.display = (i === n) ? 'flex' : 'none';
       }
-      document.getElementById('navCounter').textContent = `0${currentIdx} / 0${total}`;
+      const navCount = document.getElementById('navCounter');
+      if (navCount) navCount.textContent = `0${currentIdx} / 0${total}`;
       const pubNum = document.getElementById('pubCurrNum');
       if (pubNum) pubNum.textContent = `0${currentIdx}`;
 
@@ -1453,166 +1366,46 @@ https://ingooood-1.github.io/biopitch-center/cardnews/scrapbook_magazine_cardnew
         sfxAudio.play().catch(() => {});
       } catch (e) {}
 
-      // 카드 변경 시 음성 자동 낭독
-      if (isTtsOn && autoPlayVoice) {
+      // 카드 변경 시 성우 음성 자동 낭독
+      if (!isSoundMuted && (autoPlayVoice || isAudioStarted)) {
         playCurrentVoice();
       }
     }
 
     function playCurrentVoice() {
+      if (isSoundMuted) return;
+      clearTimeout(autoNextTimer);
       ttsAudio.pause();
-      clearTimeout(autoPlayTimer);
 
       ttsAudio.src = `../audio/tts_mag_0${currentIdx}.mp3`;
       
-      // BGM 볼륨 부드럽게 줄이기 (오디오 덕킹 Ducking)
+      // BGM 볼륨 부드럽게 줄이기 (오디오 덕킹)
       if (!bgmAudio.paused) {
         bgmAudio.volume = 0.12;
       }
 
       ttsAudio.play().then(() => {
+        isAudioStarted = true;
         const icon = document.getElementById('speakIcon');
         if (icon) icon.className = 'fa-solid fa-waveform-lines';
       }).catch(err => {
-        console.log("Audio play blocked by browser autoplay policy:", err);
+        console.log("TTS play waiting for interaction");
       });
 
       ttsAudio.onended = () => {
         const icon = document.getElementById('speakIcon');
         if (icon) icon.className = 'fa-solid fa-volume-high';
-        // BGM 볼륨 원래대로 복귀
         if (!bgmAudio.paused) {
           bgmAudio.volume = 0.35;
         }
 
-        // 영상 자동재생 모드 중이면 1.2초 후 다음 카드로 자동 이동!
-        if (isVideoPlaying) {
-          autoPlayTimer = setTimeout(() => {
-            if (currentIdx < total) {
-              nextCard();
-            } else {
-              // 마지막 카드 종료
-              stopAutoVideoPlay();
-              showToast("🎉 감성 매거진 카드뉴스 영상 시청이 완료되었습니다!");
-            }
-          }, 1200);
+        // 음성 종료 후 2.2초 뒤 다음 카드로 자동 이동 (원활한 슬라이드 감상)
+        if (currentIdx < total) {
+          autoNextTimer = setTimeout(() => {
+            nextCard();
+          }, 2200);
         }
       };
-    }
-
-    function toggleAutoVideoPlay() {
-      if (isVideoPlaying) {
-        stopAutoVideoPlay();
-      } else {
-        startAutoVideoPlay();
-      }
-    }
-
-    function startAutoVideoPlay() {
-      isVideoPlaying = true;
-      isBgmOn = true;
-      isTtsOn = true;
-
-      const btnAdminPlay = document.getElementById('btnPlayVideo');
-      if (btnAdminPlay) {
-        btnAdminPlay.style.background = 'linear-gradient(135deg, #2563eb, #1d4ed8)';
-        document.getElementById('playIcon').className = 'fa-solid fa-pause';
-        document.getElementById('playText').textContent = '영상 일시정지';
-      }
-
-      const pubPlay = document.getElementById('btnPublicPlay');
-      if (pubPlay) {
-        document.getElementById('pubPlayIcon').className = 'fa-solid fa-pause';
-        pubPlay.querySelector('span').textContent = '일시정지';
-      }
-
-      // BGM 켜기
-      bgmAudio.play().catch(() => {});
-      updateAudioButtons();
-
-      // 1번 카드부터 시작
-      if (currentIdx === total) currentIdx = 1;
-      showCard(currentIdx, true);
-      showToast("🎬 영상 자동재생이 시작되었습니다. (BGM + AI 성우 낭독)");
-    }
-
-    function stopAutoVideoPlay() {
-      isVideoPlaying = false;
-      clearTimeout(autoPlayTimer);
-      ttsAudio.pause();
-
-      const btnAdminPlay = document.getElementById('btnPlayVideo');
-      if (btnAdminPlay) {
-        btnAdminPlay.style.background = 'linear-gradient(135deg, #e11d48, #be123c)';
-        document.getElementById('playIcon').className = 'fa-solid fa-play';
-        document.getElementById('playText').textContent = '영상 자동재생';
-      }
-
-      const pubPlay = document.getElementById('btnPublicPlay');
-      if (pubPlay) {
-        document.getElementById('pubPlayIcon').className = 'fa-solid fa-play';
-        pubPlay.querySelector('span').textContent = '영상재생';
-      }
-
-      const icon = document.getElementById('speakIcon');
-      if (icon) icon.className = 'fa-solid fa-volume-high';
-
-      if (!bgmAudio.paused) {
-        bgmAudio.volume = 0.35;
-      }
-    }
-
-    function toggleBgm() {
-      if (bgmAudio.paused) {
-        bgmAudio.play().then(() => {
-          isBgmOn = true;
-          updateAudioButtons();
-          showToast("🎵 감성 BGM이 재생됩니다.");
-        }).catch(err => {
-          showToast("화면을 한 번 터치한 후 다시 눌러주세요!");
-        });
-      } else {
-        bgmAudio.pause();
-        isBgmOn = false;
-        updateAudioButtons();
-        showToast("BGM이 일시정지되었습니다.");
-      }
-    }
-
-    function toggleTts() {
-      isTtsOn = !isTtsOn;
-      updateAudioButtons();
-
-      if (isTtsOn) {
-        playCurrentVoice();
-        showToast("🎙️ AI 성우 낭독이 켜졌습니다.");
-      } else {
-        ttsAudio.pause();
-        if (!bgmAudio.paused) bgmAudio.volume = 0.35;
-        showToast("AI 성우 낭독이 꺼졌습니다.");
-      }
-    }
-
-    function updateAudioButtons() {
-      const btnAdminBgm = document.getElementById('btnBgm');
-      const btnPublicBgm = document.getElementById('btnPublicBgm');
-      if (isBgmOn && !bgmAudio.paused) {
-        if (btnAdminBgm) { btnAdminBgm.classList.add('active'); document.getElementById('bgmText').textContent = 'BGM 켜짐'; }
-        if (btnPublicBgm) btnPublicBgm.classList.add('active');
-      } else {
-        if (btnAdminBgm) { btnAdminBgm.classList.remove('active'); document.getElementById('bgmText').textContent = 'BGM 꺼짐'; }
-        if (btnPublicBgm) btnPublicBgm.classList.remove('active');
-      }
-
-      const btnAdminTts = document.getElementById('btnTts');
-      const btnPublicTts = document.getElementById('btnPublicTts');
-      if (isTtsOn) {
-        if (btnAdminTts) { btnAdminTts.classList.add('active'); document.getElementById('ttsText').textContent = 'AI 성우 켜짐'; }
-        if (btnPublicTts) btnPublicTts.classList.add('active');
-      } else {
-        if (btnAdminTts) { btnAdminTts.classList.remove('active'); document.getElementById('ttsText').textContent = 'AI 성우 꺼짐'; }
-        if (btnPublicTts) btnPublicTts.classList.remove('active');
-      }
     }
 
     function nextCard() {
@@ -1624,7 +1417,28 @@ https://ingooood-1.github.io/biopitch-center/cardnews/scrapbook_magazine_cardnew
     function prevCard() {
       let prev = currentIdx - 1;
       if (prev < 1) prev = total;
-      showCard(prev);
+      showCard(prev, true);
+    }
+
+    // 미니멀 음소거 / 소리켬 토글
+    function toggleAllSound() {
+      isSoundMuted = !isSoundMuted;
+      if (isSoundMuted) {
+        bgmAudio.pause();
+        ttsAudio.pause();
+        clearTimeout(autoNextTimer);
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-xmark';
+        if (btnPublicSound) btnPublicSound.classList.remove('active');
+        showToast("소리가 음소거되었습니다.");
+      } else {
+        isAudioStarted = true;
+        bgmAudio.volume = 0.35;
+        bgmAudio.play().catch(() => {});
+        playCurrentVoice();
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
+        if (btnPublicSound) btnPublicSound.classList.add('active');
+        showToast("음악과 성우 음성이 켜졌습니다.");
+      }
     }
 
     // Touch Swipe Navigation for Smartphones
@@ -1655,164 +1469,13 @@ https://ingooood-1.github.io/biopitch-center/cardnews/scrapbook_magazine_cardnew
       if (e.key === 'ArrowLeft') prevCard();
     });
 
-    function setViewMode(mode) {
-      const viewer = document.getElementById('magazineViewer');
-      const nav = document.getElementById('navBar');
-      const btnSingle = document.getElementById('btnSingle');
-      const btnGrid = document.getElementById('btnGrid');
-
-      if (mode === 'grid') {
-        isGrid = true;
-        viewer.classList.add('grid-view');
-        nav.style.display = 'none';
-        if (btnGrid) btnGrid.classList.add('active');
-        if (btnSingle) btnSingle.classList.remove('active');
-
-        for (let i = 1; i <= total; i++) {
-          const c = document.getElementById(`scrap-${i}`);
-          c.style.display = 'flex';
-          c.onclick = () => {
-            setViewMode('single');
-            showCard(i);
-          };
-        }
-      } else {
-        isGrid = false;
-        viewer.classList.remove('grid-view');
-        nav.style.display = 'flex';
-        if (btnSingle) btnSingle.classList.add('active');
-        if (btnGrid) btnGrid.classList.remove('active');
-
-        for (let i = 1; i <= total; i++) {
-          const c = document.getElementById(`scrap-${i}`);
-          c.onclick = null;
-        }
-        showCard(currentIdx);
-      }
-    }
-
     function showToast(text) {
       const toast = document.getElementById('toastPopup');
-      document.getElementById('toastMsg').textContent = text;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2500);
-    }
-
-    function copyCleanShareUrl() {
-      const url = window.location.origin + window.location.pathname + '?mode=user';
-      navigator.clipboard.writeText(url).then(() => {
-        showToast("🔗 학부모 배포용 클린 링크가 복사되었습니다!");
-      }).catch(() => {
-        prompt("배포 링크 복사:", url);
-      });
-    }
-
-    function openShareModal() {
-      document.getElementById('shareModal').style.display = 'flex';
-    }
-
-    function closeShareModal() {
-      document.getElementById('shareModal').style.display = 'none';
-    }
-
-    function copyKakaoMsg() {
-      const text = document.getElementById('kakaoText').value;
-      navigator.clipboard.writeText(text).then(() => {
-        showToast("📋 카카오톡 공지 문구가 복사되었습니다!");
-        setTimeout(() => closeShareModal(), 800);
-      }).catch(() => {
-        showToast("문구를 드래그하여 복사해주세요.");
-      });
-    }
-
-    function handleKakaoConsultClick() {
-      // 카카오톡 1:1 오픈채팅 URL (실장님 오픈채팅 링크 등록 시 바로 연결)
-      const kakaoOpenChatUrl = ""; // 예: "https://open.kakao.com/o/xxxxxx"
-      if (kakaoOpenChatUrl) {
-        window.open(kakaoOpenChatUrl, '_blank');
-      } else {
-        alert("박인국 실장 카카오톡 1:1 상담 연결 준비 중입니다.\n\n즉시 상담은 [1:1 문자] 또는 박인국 실장 직통 전화(010-3888-2649)로 바로 가능합니다!\n(카카오톡 오픈채팅방 링크나 카톡 ID를 등록하시면 클릭 시 즉시 카톡 채팅창으로 연결됩니다.)");
-      }
-    }
-
-    async function downloadCurrentPng() {
-      const card = document.getElementById(`scrap-${currentIdx}`);
-      showToast(`스크랩북 카드 0${currentIdx} PNG 렌더링 중...`);
-
-      try {
-        const canvas = await html2canvas(card, {
-          scale: 2.5,
-          useCORS: true,
-          backgroundColor: '#f5f4ef',
-          logging: false
-        });
-
-        canvas.toBlob((blob) => {
-          saveAs(blob, `CSS야구센터_스크랩북카드_0${currentIdx}.png`);
-          showToast(`카드 0${currentIdx} 다운로드 완료! 📸`);
-        });
-      } catch (err) {
-        console.error(err);
-        showToast('저장 중 오류가 발생했습니다.');
-      }
-    }
-
-    async function downloadAllZip() {
-      showToast('6장 전체 PNG 렌더링 및 ZIP 압축 중...');
-      const zip = new JSZip();
-      const folder = zip.folder("CSS야구센터_스크랩북카드_6장");
-
-      try {
-        for (let i = 1; i <= total; i++) {
-          const card = document.getElementById(`scrap-${i}`);
-          const prevDisplay = card.style.display;
-          card.style.display = 'flex';
-
-          const canvas = await html2canvas(card, {
-            scale: 2.5,
-            useCORS: true,
-            backgroundColor: '#f5f4ef',
-            logging: false
-          });
-
-          card.style.display = prevDisplay;
-
-          const dataUrl = canvas.toDataURL('image/png');
-          const base64Data = dataUrl.replace(/^data:image\/png;base64,/, "");
-          folder.file(`스크랩북카드_0${i}.png`, base64Data, { base64: true });
-        }
-
-        const zipBlob = await zip.generateAsync({ type: "blob" });
-        saveAs(zipBlob, "CSS야구센터_스크랩북_매거진카드_6장전체.zip");
-        showToast('6장 전체 ZIP 다운로드가 완료되었습니다! 🎉');
-      } catch (err) {
-        console.error(err);
-        showToast('일괄 저장 중 오류가 발생했습니다.');
-      }
-    }
-
-    // URL 파라미터 ?card=1~6 지원 (스크린샷 내보내기용)
-    if (cardParam) {
-      const cNum = parseInt(cardParam, 10);
-      if (cNum >= 1 && cNum <= total) {
-        document.body.classList.add('screenshot-mode');
-        const pubHeader = document.getElementById('publicHeader');
-        if (pubHeader) pubHeader.style.display = 'none';
-        const topToolbar = document.querySelector('.top-toolbar');
-        if (topToolbar) topToolbar.style.display = 'none';
-        const navBar = document.getElementById('navBar');
-        if (navBar) navBar.style.display = 'none';
-        const ctaBar = document.getElementById('publicFloatingCta');
-        if (ctaBar) ctaBar.style.display = 'none';
-        const adminBtn = document.querySelector('.btn-admin-switch-floating');
-        if (adminBtn) adminBtn.style.display = 'none';
-        const toast = document.getElementById('toastPopup');
-        if (toast) toast.style.display = 'none';
-
-        document.body.style.backgroundColor = '#2b2f3a';
-        document.querySelector('.main-canvas').style.padding = '0';
-        document.getElementById('magazineViewer').style.gap = '0';
-        showCard(cNum, false);
+      const msg = document.getElementById('toastMsg');
+      if (toast && msg) {
+        msg.textContent = text;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2000);
       }
     }
   </script>

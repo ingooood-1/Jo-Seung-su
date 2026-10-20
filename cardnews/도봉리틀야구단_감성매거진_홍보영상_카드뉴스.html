@@ -527,17 +527,11 @@
       </div>
     </div>
     <div class="toolbar-actions">
-      <a href="scrapbook_magazine_cardnews.html?mode=user" class="btn-action" style="text-decoration:none; background:rgba(255,255,255,0.15);" title="감성 매거진 스크랩북으로 보기">
+      <a href="scrapbook_magazine_cardnews.html" class="btn-action" style="text-decoration:none; background:rgba(255,255,255,0.15);" title="감성 매거진 스크랩북으로 보기">
         <i class="fa-solid fa-book-open"></i> 스크랩북 보기
       </a>
-      <button class="btn-action" onclick="openShareModal()">
-        <i class="fa-solid fa-comment-dots"></i> 카톡 문구
-      </button>
-      <button class="btn-action" id="btnTtsToggle" onclick="toggleTtsVoice()">
-        <i class="fa-solid fa-microphone-lines"></i> <span id="ttsBtnText">성우 켜짐</span>
-      </button>
-      <button class="btn-action highlight" id="btnBgmToggle" onclick="toggleBgm()">
-        <i class="fa-solid fa-volume-high" id="bgmIcon"></i> BGM
+      <button class="btn-action highlight" id="btnSoundToggle" onclick="toggleAllSound()" title="소리 켜기/끄기" style="padding: 7px 12px; border-radius:20px;">
+        <i class="fa-solid fa-volume-high" id="soundIcon"></i>
       </button>
     </div>
   </header>
@@ -864,13 +858,17 @@
 
   </main>
 
-  <!-- Bottom Floating Video Controls Bar -->
-  <div class="bottom-video-controls">
-    <button class="btn-ctrl" onclick="prevCut()"><i class="fa-solid fa-backward-step"></i></button>
-    <button class="btn-ctrl btn-play-video" id="btnPlayVideo" onclick="toggleVideoPlay()">
-      <i class="fa-solid fa-play" id="playIcon"></i> <span id="playText">영상 자동 재생 (BGM+성우)</span>
+  <!-- Bottom Floating Minimal Controls Bar -->
+  <div class="bottom-video-controls" style="gap: 14px; padding: 10px 20px; border-radius: 30px;">
+    <button class="btn-ctrl" onclick="prevCut()" title="이전" style="padding: 9px 18px; border-radius: 20px; font-size: 14px; font-weight: 800;">
+      <i class="fa-solid fa-chevron-left"></i> 이전
     </button>
-    <button class="btn-ctrl" onclick="nextCut()"><i class="fa-solid fa-forward-step"></i></button>
+    <div style="color: #fff; font-weight: 800; font-size: 15px; min-width: 60px; text-align: center;">
+      <span id="currCutNum" style="color: #f43f5e; font-size: 17px; font-weight: 900;">01</span> / 06
+    </div>
+    <button class="btn-ctrl" onclick="nextCut()" title="다음" style="padding: 9px 18px; border-radius: 20px; font-size: 14px; font-weight: 800; background: linear-gradient(135deg, #e11d48, #be123c); border-color:#f43f5e;">
+      다음 <i class="fa-solid fa-chevron-right"></i>
+    </button>
   </div>
 
   <!-- Toast Notification -->
@@ -878,58 +876,55 @@
     <i class="fa-solid fa-check"></i> <span id="toastMsg">알림</span>
   </div>
 
-  <!-- Share Modal for KakaoTalk Text Copy -->
-  <div class="copy-modal-wrap" id="copyModal" onclick="closeShareModal(event)">
-    <div class="copy-modal-card" onclick="event.stopPropagation()">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-        <h3 style="font-size:18px; font-weight:800; color:#38bdf8;"><i class="fa-solid fa-comment"></i> 도봉 리틀 학부모 공지용 카톡 문구</h3>
-        <button onclick="closeShareModal()" style="background:transparent; border:none; color:#f8fafc; font-size:20px; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <p style="font-size:14px; font-weight:700; color:#f8fafc; margin-bottom:10px;">아래 문구를 복사해서 학부모 단톡방이나 밴드에 그대로 전송하세요:</p>
-      <textarea id="kakaoText" readonly style="width:100%; height:230px; background:#070b14; color:#f8fafc; border:1px solid rgba(255,255,255,0.2); border-radius:10px; padding:14px; font-size:13.5px; line-height:1.65; resize:none;">[도봉 리틀 야구단 특별 소식 ⚾]
-야구도 잘하고 키도 쑥쑥! 초등 성장 발육 & 균형잡힌 체형 만들기
-
-📢 초등학생 ~ 중1 선수모집! 입단테스트 상시 가능! 1:1 개인레슨 상담!!
-야구처럼 한쪽 회전력을 강하게 쓰는 운동일수록, 반대쪽 밸런스를 균형 있게 채워줄 때 숨은 키와 폭발적인 잠재력이 함께 깨어납니다!
-좌우 밸런스를 바로잡아 체형 불균형을 예방하고 성장판 스트레스 및 관절 과부하를 대폭 줄여줍니다.
-
-★ 서비스 안내
-• ⚾ 조승수 대표: 전문 야구 수업 (KBO 프로 출신 투구 폼 & 구속 메커니즘, 1:1 개인레슨)
-• 🏃 박인국 실장: 1:1 맞춤 케어 (16년 임상 관절 안정화 & 체형 케어)
-※ 조승수 대표 야구 수업과 별개로 1:1 케어가 진행됩니다.
-
-📞 【문의】: 조승수 대표 (010-3666-9069)
-• 🔍 첫 정밀 가동성 평가 & 맞춤 분석 (50% 지원): 50,000원
-• 📱 모바일 감성 매거진 카드뉴스 보기:
-https://ingooood-1.github.io/biopitch-center/cardnews/scrapbook_magazine_cardnews.html?mode=user</textarea>
-      <button onclick="copyKakaoMsg()" style="width:100%; margin-top:12px; background:#38bdf8; color:#0f172a; font-weight:900; font-size:15px; padding:13px; border-radius:10px; border:none; cursor:pointer;">
-        <i class="fa-solid fa-copy"></i> 카카오톡 안내 문구 전체 복사
-      </button>
-    </div>
-  </div>
-
   <script>
     const totalCuts = 6;
     let currentCut = 1;
-    let isPlaying = false;
-    let playTimer = null;
-    let progressTimer = null;
-    const cutDurationMs = 5000; // 5 seconds per cut for video slide mode
-    let cutStartTime = 0;
+    let autoNextTimer = null;
+    let isSoundMuted = false;
+    let isAudioStarted = false;
 
     const bgm = document.getElementById('bgmAudio');
     const tts = document.getElementById('ttsAudio');
-    const btnPlay = document.getElementById('btnPlayVideo');
-    const playIcon = document.getElementById('playIcon');
-    const playText = document.getElementById('playText');
-    const bgmIcon = document.getElementById('bgmIcon');
-    let isTtsEnabled = true;
+    const soundIcon = document.getElementById('soundIcon');
+    const btnSound = document.getElementById('btnSoundToggle');
 
     bgm.volume = 0.35;
     tts.volume = 1.0;
 
+    // 무조건 음악 및 성우 음성 자동 시작 (브라우저 정책 자동 대응)
+    function startAllAudio() {
+      if (isAudioStarted || isSoundMuted) return;
+      isAudioStarted = true;
+
+      bgm.play().then(() => {
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
+        if (btnSound) btnSound.classList.add('highlight');
+      }).catch(err => {
+        console.log('BGM Autoplay pending user interaction');
+      });
+
+      playCutVoice(currentCut);
+    }
+
+    // 첫 터치/클릭 즉시 오디오 언락 리스너
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, () => {
+        if (!isAudioStarted && !isSoundMuted) {
+          startAllAudio();
+        }
+      }, { once: true });
+    });
+
+    // 페이지 로드 시 즉시 시도
+    window.addEventListener('DOMContentLoaded', () => {
+      showCut(1, false);
+      startAllAudio();
+    });
+
     function showCut(cutNum, triggerVoice = true) {
       currentCut = cutNum;
+      clearTimeout(autoNextTimer);
+
       for (let i = 1; i <= totalCuts; i++) {
         const card = document.getElementById(`card-${i}`);
         const seg = document.getElementById(`seg-${i}`);
@@ -952,28 +947,39 @@ https://ingooood-1.github.io/biopitch-center/cardnews/scrapbook_magazine_cardnew
         }
       }
 
-      if (isTtsEnabled && triggerVoice) {
+      const numEl = document.getElementById('currCutNum');
+      if (numEl) numEl.textContent = `0${cutNum}`;
+
+      if (!isSoundMuted && (triggerVoice || isAudioStarted)) {
         playCutVoice(cutNum);
       }
     }
 
     function playCutVoice(cutNum) {
+      if (isSoundMuted) return;
+      clearTimeout(autoNextTimer);
       tts.pause();
+
       tts.src = `../audio/tts_video_0${cutNum}.mp3`;
       if (!bgm.paused) {
-        bgm.volume = 0.12;
+        bgm.volume = 0.12; // 목소리 나올 때 BGM 부드럽게 감소
       }
 
-      tts.play().catch(e => console.log('TTS Autoplay waiting for click:', e));
+      tts.play().then(() => {
+        isAudioStarted = true;
+      }).catch(e => {
+        console.log('TTS Autoplay waiting for interaction');
+      });
 
       tts.onended = () => {
         if (!bgm.paused) {
-          bgm.volume = 0.35;
+          bgm.volume = 0.35; // 목소리 끝나면 BGM 원래 볼륨 복귀
         }
-        if (isPlaying) {
-          playTimer = setTimeout(() => {
+        // 음성 종료 후 2초 뒤 자동 다음 컷 전환 (쇼츠/릴스 방식)
+        if (currentCut < totalCuts) {
+          autoNextTimer = setTimeout(() => {
             nextCut();
-          }, 1200);
+          }, 2000);
         }
       };
     }
@@ -981,13 +987,8 @@ https://ingooood-1.github.io/biopitch-center/cardnews/scrapbook_magazine_cardnew
     function nextCut() {
       let next = currentCut + 1;
       if (next > totalCuts) {
-        if (isPlaying) {
-          pauseVideo();
-          showToast('🎉 전편 시청이 완료되었습니다!');
-          return;
-        } else {
-          next = 1;
-        }
+        showToast('🎉 전편 시청이 완료되었습니다!');
+        next = 1;
       }
       showCut(next, true);
     }
@@ -998,104 +999,39 @@ https://ingooood-1.github.io/biopitch-center/cardnews/scrapbook_magazine_cardnew
       showCut(prev, true);
     }
 
-    // Video Auto-Play Engine
-    function toggleVideoPlay() {
-      if (isPlaying) {
-        pauseVideo();
-      } else {
-        playVideo();
-      }
-    }
-
-    function playVideo() {
-      isPlaying = true;
-      btnPlay.classList.add('playing');
-      playIcon.className = 'fa-solid fa-pause';
-      playText.innerText = '일시 정지';
-      
-      // Start BGM with low soothing volume
-      bgm.volume = 0.35;
-      bgm.play().catch(e => console.log('Autoplay audio blocked:', e));
-
-      showCut(currentCut, true);
-      showToast('🎬 BGM과 AI 성우 음성 자동 재생이 시작되었습니다.');
-    }
-
-    function pauseVideo() {
-      isPlaying = false;
-      btnPlay.classList.remove('playing');
-      playIcon.className = 'fa-solid fa-play';
-      playText.innerText = '영상 자동 재생 (BGM+성우)';
-      
-      clearTimeout(playTimer);
-      clearInterval(progressTimer);
-      tts.pause();
-      bgm.pause();
-    }
-
-    function toggleBgm() {
-      if (bgm.paused) {
-        bgm.volume = 0.35;
-        bgm.play().then(() => {
-          bgmIcon.className = 'fa-solid fa-volume-high';
-          document.getElementById('btnBgmToggle').classList.add('highlight');
-          showToast('배경음악(BGM)이 켜졌습니다.');
-        }).catch(e => {
-          showToast('화면을 한 번 클릭해 주세요!');
-        });
-      } else {
+    // 미니멀 음소거 / 소리켬 토글
+    function toggleAllSound() {
+      isSoundMuted = !isSoundMuted;
+      if (isSoundMuted) {
         bgm.pause();
-        bgmIcon.className = 'fa-solid fa-volume-xmark';
-        document.getElementById('btnBgmToggle').classList.remove('highlight');
-        showToast('배경음악이 일시 중지되었습니다.');
-      }
-    }
-
-    function toggleTtsVoice() {
-      isTtsEnabled = !isTtsEnabled;
-      const btn = document.getElementById('btnTtsToggle');
-      const txt = document.getElementById('ttsBtnText');
-
-      if (isTtsEnabled) {
-        btn.classList.add('highlight');
-        txt.innerText = '성우 켜짐';
-        playCutVoice(currentCut);
-        showToast('🎙️ AI 성우 낭독이 켜졌습니다.');
-      } else {
         tts.pause();
-        btn.classList.remove('highlight');
-        txt.innerText = '성우 꺼짐';
-        if (!bgm.paused) bgm.volume = 0.35;
-        showToast('AI 성우 낭독이 꺼졌습니다.');
+        clearTimeout(autoNextTimer);
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-xmark';
+        if (btnSound) btnSound.classList.remove('highlight');
+        showToast('소리가 음소거되었습니다.');
+      } else {
+        isAudioStarted = true;
+        bgm.volume = 0.35;
+        bgm.play().catch(() => {});
+        playCutVoice(currentCut);
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
+        if (btnSound) btnSound.classList.add('highlight');
+        showToast('음악과 성우 음성이 켜졌습니다.');
       }
     }
 
-    // Toast Utility
+    // 토스트 알림
     function showToast(msg) {
       const toast = document.getElementById('toast');
       const toastMsg = document.getElementById('toastMsg');
-      toastMsg.innerText = msg;
-      toast.classList.add('show');
-      setTimeout(() => { toast.classList.remove('show'); }, 2200);
-    }
-
-    // Modal Utilities
-    function openShareModal() {
-      document.getElementById('copyModal').style.display = 'flex';
-    }
-    function closeShareModal() {
-      document.getElementById('copyModal').style.display = 'none';
-    }
-    function copyKakaoMsg() {
-      const text = document.getElementById('kakaoText').value;
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(text);
-        showToast('카카오톡 문구가 복사되었습니다!');
-        setTimeout(closeShareModal, 1000);
+      if (toast && toastMsg) {
+        toastMsg.innerText = msg;
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); }, 2000);
       }
     }
 
-    // Keyboard Arrow Controls
+    // 키보드 좌우 방향키 넘김
     window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' || e.key === ' ') {
         nextCut();
