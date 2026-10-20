@@ -666,88 +666,36 @@
       </div>
     </div>
 
-    <!-- 4 Main Portal Cards -->
-    <section class="portal-grid">
+    <!-- Main Portal Cards: 홍보영상/스크랩북 분리 제거 -> 단일 통합 카드뉴스 & 공식 웹사이트 -->
+    <section class="portal-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
 
-      <!-- Card 1: Public User Mode -->
-      <article class="portal-card">
+      <!-- Card 1: Unified Cardnews (통합 카드뉴스) -->
+      <article class="portal-card" style="border: 2px solid rgba(56, 189, 248, 0.4);">
         <div class="card-glow glow-blue"></div>
         <div class="card-top">
           <div class="card-badge-row">
-            <span class="card-badge badge-primary">📱 학부모 전용 배포</span>
-            <i class="fa-solid fa-mobile-screen" style="color: var(--accent-cyan); font-size: 16px;"></i>
+            <span class="card-badge badge-primary">⚾ 도봉리틀 감성 매거진 카드뉴스</span>
+            <i class="fa-solid fa-circle-play" style="color: var(--accent-rose); font-size: 18px;"></i>
           </div>
           <div class="card-icon-large" style="color: var(--accent-cyan);">
-            <i class="fa-solid fa-newspaper"></i>
+            <i class="fa-solid fa-book-open-reader"></i>
           </div>
-          <h2 class="card-title">학부모 배포용 카드뉴스</h2>
+          <h2 class="card-title">꿈나무 성장 &amp; 야구 밸런스 매거진</h2>
           <p class="card-desc">
-            학부모님이 스마트폰에서 편안하게 보실 수 있도록 관리용 버튼을 모두 숨긴 <strong>클린 매거진 리더 뷰</strong>입니다.
+            홍보영상과 스크랩북을 하나로 통합한 <strong>공식 카드뉴스</strong>입니다. 아래 썸네일을 클릭하시면 <strong>은은한 BGM과 AI 성우 음성</strong>으로 바로 실행됩니다.
           </p>
           <ul class="feature-list">
-            <li><i class="fa-solid fa-check"></i> 군더더기 없는 미니멀 럭셔리 매거진 뷰</li>
-            <li><i class="fa-solid fa-check"></i> 스마트폰 좌우 스와이프 &amp; AI 성우 낭독</li>
-            <li><i class="fa-solid fa-check"></i> 하단 고정 대표님 직통 전화/문자 상담</li>
+            <li><i class="fa-solid fa-check"></i> 썸네일 클릭 시 뷰어로 즉각 실행 &amp; 음악 자동 재생</li>
+            <li><i class="fa-solid fa-check"></i> 16년 임상 박인국 실장의 성장판 &amp; 가동성 결손 솔루션</li>
+            <li><i class="fa-solid fa-check"></i> 조승수 대표 1:1 맞춤 케어 연계 및 입단 안내</li>
           </ul>
         </div>
-        <a href="cardnews/scrapbook_magazine_cardnews.html?mode=user" class="card-btn btn-solid-blue">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> 학부모 배포 뷰어 열기
+        <a href="cardnews/scrapbook_magazine_cardnews.html" class="card-btn btn-solid-blue">
+          <i class="fa-solid fa-play"></i> 카드뉴스 1편부터 바로 보기
         </a>
       </article>
 
-      <!-- Card 2: Admin Console Mode -->
-      <article class="portal-card">
-        <div class="card-glow glow-gold"></div>
-        <div class="card-top">
-          <div class="card-badge-row">
-            <span class="card-badge badge-admin">👑 센터 관리자 콘솔</span>
-            <i class="fa-solid fa-shield-halved" style="color: var(--accent-gold); font-size: 16px;"></i>
-          </div>
-          <div class="card-icon-large" style="color: var(--accent-gold);">
-            <i class="fa-solid fa-sliders"></i>
-          </div>
-          <h2 class="card-title">센터 관리자 모드</h2>
-          <p class="card-desc">
-            센터 및 대표님 전용 콘솔로 <strong>배포 링크 복사, 카톡 공지문 복사, 카드 고화질 PNG/ZIP 다운로드</strong>가 가능합니다.
-          </p>
-          <ul class="feature-list">
-            <li><i class="fa-solid fa-check"></i> 배포 링크 및 카톡 단톡방 공지문 즉시 복사</li>
-            <li><i class="fa-solid fa-check"></i> 6장 전체 고화질 ZIP 압축 다운로드</li>
-            <li><i class="fa-solid fa-check"></i> BGM 볼륨 및 AI 성우 낭독 제어 툴바</li>
-          </ul>
-        </div>
-        <a href="cardnews/scrapbook_magazine_cardnews.html?mode=admin" class="card-btn btn-solid-gold">
-          <i class="fa-solid fa-gear"></i> 관리자 콘솔 열기
-        </a>
-      </article>
-
-      <!-- Card 3: Video Player -->
-      <article class="portal-card">
-        <div class="card-glow glow-rose"></div>
-        <div class="card-top">
-          <div class="card-badge-row">
-            <span class="card-badge badge-video">🎬 영상 플레이어</span>
-            <i class="fa-solid fa-film" style="color: var(--accent-rose); font-size: 16px;"></i>
-          </div>
-          <div class="card-icon-large" style="color: var(--accent-rose);">
-            <i class="fa-solid fa-clapperboard"></i>
-          </div>
-          <h2 class="card-title">도봉리틀 홍보영상 플레이어</h2>
-          <p class="card-desc">
-            카드뉴스가 6개 CUT 타임라인을 따라 자동으로 전환되며 AI 성우 음성과 BGM이 함께 재생되는 <strong>동영상형 플레이어</strong>입니다.
-          </p>
-          <ul class="feature-list">
-            <li><i class="fa-solid fa-check"></i> 6개 컷 자동 프로그레스 타임라인</li>
-            <li><i class="fa-solid fa-check"></i> 조승수 X 박인국 듀얼 사진 및 직통 전화</li>
-            <li><i class="fa-solid fa-check"></i> 쇼츠 및 인스타 릴스 시연에 최적화</li>
-          </ul>
-        </div>
-        <a href="cardnews/도봉리틀야구단_감성매거진_홍보영상_카드뉴스.html" class="card-btn btn-solid-rose">
-          <i class="fa-solid fa-play"></i> 홍보영상 플레이어 열기
-        </a>
-      </article>
-
-      <!-- Card 4: Official Website -->
+      <!-- Card 2: Official Website -->
       <article class="portal-card">
         <div class="card-glow glow-cyan"></div>
         <div class="card-top">
@@ -794,38 +742,67 @@
       </div>
     </section>
 
-    <!-- Gallery Section (High Res PNG Previews) -->
+    <!-- Gallery Section (썸네일 클릭 시 해당 카드 슬라이더로 바로 실행!) -->
     <section class="gallery-section">
       <h2 class="section-title">
-        <i class="fa-solid fa-images" style="color: var(--accent-cyan);"></i> 고화질 매거진 카드뉴스 (총 6장)
+        <i class="fa-solid fa-images" style="color: var(--accent-cyan);"></i> 감성 매거진 카드뉴스 (총 6편)
       </h2>
-      <p class="section-sub">인쇄, 학부모 알림장 전송, SNS 업로드용으로 바로 활용 가능한 고화질 이미지 모음입니다.</p>
+      <p class="section-sub">아래 <strong>각 썸네일을 클릭</strong>하시면 해당 카드가 화면에 확대되며 <strong>음악과 AI 성우 음성으로 바로 실행</strong>됩니다.</p>
 
       <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="cardnews/감성매거진_01_표지_야구도키도쑥쑥.png" alt="01 표지">
+        <!-- 01 -->
+        <a href="cardnews/scrapbook_magazine_cardnews.html?card=1" class="gallery-item" style="text-decoration:none; cursor:pointer;" title="01. 표지 (클릭 시 실행)">
+          <div style="position:relative; overflow:hidden; border-radius:10px;">
+            <img src="cardnews/감성매거진_01_표지_야구도키도쑥쑥.png" alt="01 표지" style="width:100%; display:block; transition:transform 0.3s ease;">
+            <span style="position:absolute; top:8px; left:8px; background:rgba(0,0,0,0.8); color:#38bdf8; font-size:11px; font-weight:900; padding:3px 7px; border-radius:4px;">CUT 01 ▶</span>
+          </div>
           <div class="gallery-cap">01. 표지 (야구도 키도 쑥쑥)</div>
-        </div>
-        <div class="gallery-item">
-          <img src="cardnews/감성매거진_02_메인_성장판지키며키쑥쑥.png" alt="02 성장판">
+        </a>
+
+        <!-- 02 -->
+        <a href="cardnews/scrapbook_magazine_cardnews.html?card=2" class="gallery-item" style="text-decoration:none; cursor:pointer;" title="02. 성장판 지키며 키 쑥쑥 (클릭 시 실행)">
+          <div style="position:relative; overflow:hidden; border-radius:10px;">
+            <img src="cardnews/감성매거진_02_메인_성장판지키며키쑥쑥.png" alt="02 성장판" style="width:100%; display:block; transition:transform 0.3s ease;">
+            <span style="position:absolute; top:8px; left:8px; background:rgba(0,0,0,0.8); color:#38bdf8; font-size:11px; font-weight:900; padding:3px 7px; border-radius:4px;">CUT 02 ▶</span>
+          </div>
           <div class="gallery-cap">02. 성장판 지키며 키 쑥쑥</div>
-        </div>
-        <div class="gallery-item">
-          <img src="cardnews/감성매거진_03_원인_왜또아플까.png" alt="03 부상원인">
+        </a>
+
+        <!-- 03 -->
+        <a href="cardnews/scrapbook_magazine_cardnews.html?card=3" class="gallery-item" style="text-decoration:none; cursor:pointer;" title="03. 왜 또 아플까? (클릭 시 실행)">
+          <div style="position:relative; overflow:hidden; border-radius:10px;">
+            <img src="cardnews/감성매거진_03_원인_왜또아플까.png" alt="03 부상원인" style="width:100%; display:block; transition:transform 0.3s ease;">
+            <span style="position:absolute; top:8px; left:8px; background:rgba(0,0,0,0.8); color:#38bdf8; font-size:11px; font-weight:900; padding:3px 7px; border-radius:4px;">CUT 03 ▶</span>
+          </div>
           <div class="gallery-cap">03. 왜 또 아플까? (부상 원인)</div>
-        </div>
-        <div class="gallery-item">
-          <img src="cardnews/감성매거진_04_솔루션_3단계성장프로세스.png" alt="04 성장솔루션">
+        </a>
+
+        <!-- 04 -->
+        <a href="cardnews/scrapbook_magazine_cardnews.html?card=4" class="gallery-item" style="text-decoration:none; cursor:pointer;" title="04. 3단계 성장 솔루션 (클릭 시 실행)">
+          <div style="position:relative; overflow:hidden; border-radius:10px;">
+            <img src="cardnews/감성매거진_04_솔루션_3단계성장프로세스.png" alt="04 성장솔루션" style="width:100%; display:block; transition:transform 0.3s ease;">
+            <span style="position:absolute; top:8px; left:8px; background:rgba(0,0,0,0.8); color:#38bdf8; font-size:11px; font-weight:900; padding:3px 7px; border-radius:4px;">CUT 04 ▶</span>
+          </div>
           <div class="gallery-cap">04. 3단계 성장 솔루션</div>
-        </div>
-        <div class="gallery-item">
-          <img src="cardnews/감성매거진_05_원팀_조승수X박인국.png" alt="05 원팀 조승수X박인국">
+        </a>
+
+        <!-- 05 -->
+        <a href="cardnews/scrapbook_magazine_cardnews.html?card=5" class="gallery-item" style="text-decoration:none; cursor:pointer;" title="05. 조승수 X 박인국 원팀 (클릭 시 실행)">
+          <div style="position:relative; overflow:hidden; border-radius:10px;">
+            <img src="cardnews/감성매거진_05_원팀_조승수X박인국.png" alt="05 원팀 조승수X박인국" style="width:100%; display:block; transition:transform 0.3s ease;">
+            <span style="position:absolute; top:8px; left:8px; background:rgba(0,0,0,0.8); color:#38bdf8; font-size:11px; font-weight:900; padding:3px 7px; border-radius:4px;">CUT 05 ▶</span>
+          </div>
           <div class="gallery-cap">05. 조승수 X 박인국 원팀</div>
-        </div>
-        <div class="gallery-item">
-          <img src="cardnews/감성매거진_06_혜택_도봉리틀특별혜택.png" alt="06 도봉리틀 혜택">
+        </a>
+
+        <!-- 06 -->
+        <a href="cardnews/scrapbook_magazine_cardnews.html?card=6" class="gallery-item" style="text-decoration:none; cursor:pointer;" title="06. 1:1 코칭 특별 혜택 (클릭 시 실행)">
+          <div style="position:relative; overflow:hidden; border-radius:10px;">
+            <img src="cardnews/감성매거진_06_혜택_도봉리틀특별혜택.png" alt="06 도봉리틀 혜택" style="width:100%; display:block; transition:transform 0.3s ease;">
+            <span style="position:absolute; top:8px; left:8px; background:rgba(0,0,0,0.8); color:#38bdf8; font-size:11px; font-weight:900; padding:3px 7px; border-radius:4px;">CUT 06 ▶</span>
+          </div>
           <div class="gallery-cap">06. 1:1 코칭 특별 혜택</div>
-        </div>
+        </a>
       </div>
     </section>
   </main>
