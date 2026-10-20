@@ -1112,104 +1112,58 @@
   <!-- ============================================================ -->
   <section class="gallery-section" id="galleryView">
     <div class="gallery-hero">
-      <span class="hero-badge"><i class="fa-solid fa-baseball"></i> CSS 야구센터 × 도봉리틀 특별호</span>
-      <h2>꿈나무 성장 &amp; 야구 밸런스 감성 매거진</h2>
-      <p>궁금한 카드를 클릭하시면 <strong>고품질 BGM과 전문 AI 성우 낭독</strong>으로 즉시 감상하실 수 있습니다.</p>
-      <button class="btn-hero-play" onclick="openSlider(1)">
-        <i class="fa-solid fa-circle-play"></i> 1편부터 슬라이드로 연속 감상하기
-      </button>
+      <span class="hero-badge"><i class="fa-solid fa-layer-group"></i> CSS 야구센터 × 도봉리틀 카드뉴스 컬렉션</span>
+      <h2>도봉 리틀 공식 카드뉴스 시리즈</h2>
+      <p>감상하실 카드뉴스 작품의 <strong>대표 썸네일을 클릭</strong>하시면 BGM과 AI 성우 목소리로 바로 실행됩니다.</p>
     </div>
 
-    <div class="gallery-grid">
-      <!-- Card 01 -->
+    <!-- 제작된 2개 작품 갤러리 (추후 3호, 4호 추가 확장 가능) -->
+    <div class="gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); max-width: 860px; margin: 0 auto; gap: 28px;">
+      
+      <!-- 작품 1호: 감성 매거진 특별호 (첫 장면 표지 썸네일) -->
       <div class="gallery-card-item" onclick="openSlider(1)">
-        <div class="gallery-thumb-wrap">
-          <span class="gallery-cut-badge">CUT 01</span>
-          <img src="감성매거진_01_표지_야구도키도쑥쑥.png" alt="CUT 01 표지">
+        <div class="gallery-thumb-wrap" style="height: 240px;">
+          <span class="gallery-cut-badge" style="background:#0284c7; color:#fff;">VOL.01 · 감성 매거진</span>
+          <img src="감성매거진_01_표지_야구도키도쑥쑥.png" alt="카드뉴스 1호 표지">
           <div class="gallery-play-overlay">
             <div class="gallery-play-btn-circle"><i class="fa-solid fa-play"></i></div>
           </div>
         </div>
-        <div class="gallery-info-box">
-          <div class="gallery-card-title">01. 야구도 잘하고 키도 쑥쑥!</div>
-          <div class="gallery-card-desc">초등 성장기 성장판을 지키며 숨은 키와 잠재력을 깨우는 밸런스 특강</div>
+        <div class="gallery-info-box" style="padding: 20px;">
+          <div style="font-size:12px; color:#0284c7; font-weight:800; margin-bottom:4px;">총 6컷 완결 · BGM &amp; AI 성우 탑재</div>
+          <div class="gallery-card-title" style="font-size:18px;">[1호] 야구도 잘하고 키도 쑥쑥!</div>
+          <div class="gallery-card-desc">초등 성장기 성장판 보호 &amp; 좌우 밸런스 회복으로 숨은 키와 잠재력을 깨우는 스크랩북 매거진</div>
+          <div style="margin-top:14px; display:flex; align-items:center; justify-content:space-between; color:#e11d48; font-weight:800; font-size:13px;">
+            <span><i class="fa-solid fa-circle-play"></i> 클릭하여 1편 감상하기</span>
+            <span style="color:#64748b; font-size:12px;">6 Cuts</span>
+          </div>
         </div>
       </div>
 
-      <!-- Card 02 -->
-      <div class="gallery-card-item" onclick="openSlider(2)">
-        <div class="gallery-thumb-wrap">
-          <span class="gallery-cut-badge">CUT 02</span>
-          <img src="감성매거진_02_메인_성장판지키며키쑥쑥.png" alt="CUT 02 메인">
+      <!-- 작품 2호: 홍보영상 카드뉴스 (첫 장면 표지 썸네일) -->
+      <div class="gallery-card-item" onclick="location.href='도봉리틀야구단_감성매거진_홍보영상_카드뉴스.html'">
+        <div class="gallery-thumb-wrap" style="height: 240px; background: linear-gradient(135deg, #0284c7, #1e3a8a); display:flex; align-items:center; justify-content:center;">
+          <span class="gallery-cut-badge" style="background:#e11d48; color:#fff;">VOL.02 · 홍보영상 매거진</span>
+          <div style="text-align:center; color:#fff; padding:20px;">
+            <i class="fa-solid fa-child-reaching" style="font-size: 48px; color: #fde047; margin-bottom: 8px;"></i>
+            <div style="font-size: 17px; font-weight: 900;">도봉 리틀 꿈나무를 위한<br>성장 발육 &amp; 균형 체형 특강</div>
+            <span style="font-size: 11px; color: #bfdbfe;">CSS 야구센터 바이오피치 랩</span>
+          </div>
           <div class="gallery-play-overlay">
             <div class="gallery-play-btn-circle"><i class="fa-solid fa-play"></i></div>
           </div>
         </div>
-        <div class="gallery-info-box">
-          <div class="gallery-card-title">02. 성장판 지키며 키 쑥쑥!</div>
-          <div class="gallery-card-desc">한쪽 회전 편측 운동의 불균형을 채워 어깨·팔꿈치 과부하를 예방합니다.</div>
+        <div class="gallery-info-box" style="padding: 20px;">
+          <div style="font-size:12px; color:#e11d48; font-weight:800; margin-bottom:4px;">총 6컷 자동 슬라이드 · 영상 플레이어</div>
+          <div class="gallery-card-title" style="font-size:18px;">[2호] 도봉리틀 홍보영상 카드뉴스</div>
+          <div class="gallery-card-desc">타임라인을 따라 자동으로 전환되며 은은한 BGM과 AI 성우 목소리로 시청하는 영상형 카드뉴스</div>
+          <div style="margin-top:14px; display:flex; align-items:center; justify-content:space-between; color:#e11d48; font-weight:800; font-size:13px;">
+            <span><i class="fa-solid fa-circle-play"></i> 클릭하여 2편 감상하기</span>
+            <span style="color:#64748b; font-size:12px;">6 Cuts</span>
+          </div>
         </div>
       </div>
 
-      <!-- Card 03 -->
-      <div class="gallery-card-item" onclick="openSlider(3)">
-        <div class="gallery-thumb-wrap">
-          <span class="gallery-cut-badge">CUT 03</span>
-          <img src="감성매거진_03_원인_왜또아플까.png" alt="CUT 03 원인">
-          <div class="gallery-play-overlay">
-            <div class="gallery-play-btn-circle"><i class="fa-solid fa-play"></i></div>
-          </div>
-        </div>
-        <div class="gallery-info-box">
-          <div class="gallery-card-title">03. 왜 또 아플까? (원인 분석)</div>
-          <div class="gallery-card-desc">팔꿈치만 무리하는 원인! 던진 뒤 어깨 뒤쪽 굳음과 골반 회전 제한 점검.</div>
-        </div>
-      </div>
-
-      <!-- Card 04 -->
-      <div class="gallery-card-item" onclick="openSlider(4)">
-        <div class="gallery-thumb-wrap">
-          <span class="gallery-cut-badge">CUT 04</span>
-          <img src="감성매거진_04_솔루션_3단계성장프로세스.png" alt="CUT 04 솔루션">
-          <div class="gallery-play-overlay">
-            <div class="gallery-play-btn-circle"><i class="fa-solid fa-play"></i></div>
-          </div>
-        </div>
-        <div class="gallery-info-box">
-          <div class="gallery-card-title">04. 3단계 성장 케어 프로세스</div>
-          <div class="gallery-card-desc">가동성 결손 회복 ➔ 좌우 코어 밸런스 ➔ 공과 배트에 힘이 실리는 몸 완성!</div>
-        </div>
-      </div>
-
-      <!-- Card 05 -->
-      <div class="gallery-card-item" onclick="openSlider(5)">
-        <div class="gallery-thumb-wrap">
-          <span class="gallery-cut-badge">CUT 05</span>
-          <img src="감성매거진_05_신뢰_16년임상노하우.png" alt="CUT 05 원팀">
-          <div class="gallery-play-overlay">
-            <div class="gallery-play-btn-circle"><i class="fa-solid fa-play"></i></div>
-          </div>
-        </div>
-        <div class="gallery-info-box">
-          <div class="gallery-card-title">05. 조승수 대표 × 박인국 실장</div>
-          <div class="gallery-card-desc">전 두산베어스 투수 기술 수업과 16년 임상 물리치료사의 1:1 맞춤 케어!</div>
-        </div>
-      </div>
-
-      <!-- Card 06 -->
-      <div class="gallery-card-item" onclick="openSlider(6)">
-        <div class="gallery-thumb-wrap">
-          <span class="gallery-cut-badge">CUT 06</span>
-          <img src="감성매거진_06_혜택_도봉리틀특별혜택.png" alt="CUT 06 혜택">
-          <div class="gallery-play-overlay">
-            <div class="gallery-play-btn-circle"><i class="fa-solid fa-play"></i></div>
-          </div>
-        </div>
-        <div class="gallery-info-box">
-          <div class="gallery-card-title">06. 도봉 리틀 단독 특별 혜택</div>
-          <div class="gallery-card-desc">초등~중1 선수모집 &amp; 첫 정밀 가동성 분석 50% 지원 혜택 안내.</div>
-        </div>
-      </div>
     </div>
   </section>
 
