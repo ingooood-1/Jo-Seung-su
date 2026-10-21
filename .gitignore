@@ -5,6 +5,10 @@ Desktop.ini
 $RECYCLE.BIN/
 .DS_Store
 
+# Environment Variables
+.env
+.env.*
+
 # Logs & Temp
 *.log
 scratch/
