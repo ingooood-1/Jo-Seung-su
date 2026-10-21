@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>[2호 숏츠] 도봉리틀 홍보영상 특강 - 박인국 실장 6대 움직임 & 조승수 대표 콜라보</title>
+  <meta name="description" content="도봉 리틀 꿈나무를 위한 성장 발육 & 균형 체형 특강 - 9:16 모바일 숏츠 비디오">
+
+  <!-- Pretendard & Gaegu Fonts -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Outfit:wght@600;800;900&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-black: #000000;
+      --primary-blue: #0284c7;
+      --accent-cyan: #38bdf8;
+      --accent-gold: #fde047;
+      --accent-rose: #f43f5e;
+      --text-white: #ffffff;
+      --text-dim: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, sans-serif;
+      background-color: var(--bg-black);
+      color: var(--text-white);
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 9:16 Shorts Canvas Stage */
+    .shorts-stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 450px;
+      max-height: 840px;
+      background: #090e17;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 50px rgba(0,0,0,0.85);
+    }
+
+    @media (min-width: 480px) {
+      .shorts-stage {
+        border-radius: 28px;
+        border: 2px solid rgba(255, 255, 255, 0.12);
+        height: 94dvh;
+      }
+    }
+
+    /* Top Timeline Progress Bars (6 Segments) */
+    .shorts-progress-wrap {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      z-index: 50;
+      display: flex;
+      gap: 5px;
+    }
+
+    .progress-seg {
+      flex: 1;
+      height: 3.5px;
+      background: rgba(255, 255, 255, 0.35);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #ffffff;
+      border-radius: 4px;
+      transition: width 0.1s linear;
+    }
+
+    .progress-seg.completed .progress-fill {
+      width: 100% !important;
+    }
+
+    /* Top Nav Pills */
+    .shorts-header {
+      position: absolute;
+      top: 26px;
+      left: 14px;
+      right: 14px;
+      z-index: 45;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .badge-pill {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .badge-pill i {
+      color: var(--accent-cyan);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-switch-shorts {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+    }
+
+    /* Slide Slides Stage */
+    .cuts-viewport {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cut-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      transform: scale(0.97);
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px 20px 96px 20px;
+    }
+
+    .cut-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    /* Gradient Shadow Overlay for Text Legibility */
+    .cut-slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.45) 0%,
+        rgba(0, 0, 0, 0.1) 22%,
+        rgba(0, 0, 0, 0.45) 58%,
+        rgba(0, 0, 0, 0.94) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Card Slide Visual Content Wrap */
+    .slide-visual-center {
+      position: absolute;
+      top: 72px;
+      left: 18px;
+      right: 18px;
+      bottom: 236px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .promo-card-frame {
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.65);
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      background: #faf8f2;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      animation: gentleZoom 12s infinite alternate ease-in-out;
+      padding: 16px 16px 14px 16px;
+    }
+
+    @keyframes gentleZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.04); }
+    }
+
+    /* Floating Side Action Icons (YouTube Shorts / Reels) */
+    .shorts-side-actions {
+      position: absolute;
+      right: 12px;
+      bottom: 110px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .side-action-btn {
+      background: rgba(0, 0, 0, 0.58);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: transform 0.2s ease, background 0.2s ease;
+      text-decoration: none;
+    }
+
+    .side-action-btn:hover {
+      transform: scale(1.12);
+      background: rgba(2, 132, 199, 0.7);
+    }
+
+    .side-action-btn.active i {
+      color: var(--accent-rose);
+    }
+
+    .side-action-btn i {
+      font-size: 18px;
+    }
+
+    .side-action-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #e2e8f0;
+      margin-top: 3px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+
+    /* Bottom Info & Subtitles Area */
+    .slide-bottom-info {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-right: 56px;
+    }
+
+    .profile-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .profile-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-cyan);
+      object-fit: cover;
+    }
+
+    .profile-name {
+      font-size: 13.5px;
+      font-weight: 900;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-apply-pill {
+      background: linear-gradient(135deg, #e11d48, #be123c);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-decoration: none;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 4px 10px rgba(225, 29, 72, 0.4);
+    }
+
+    /* Dynamic Handwriting Caption */
+    .caption-title {
+      font-family: 'Gaegu', cursive;
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--accent-gold);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+      word-break: keep-all;
+    }
+
+    .caption-desc {
+      font-size: 13px;
+      color: #f1f5f9;
+      line-height: 1.48;
+      word-break: keep-all;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+    }
+
+    /* Music Audio Ticker with Spinning Vinyl Disc */
+    .audio-ticker-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #cbd5e1;
+      margin-top: 3px;
+    }
+
+    .vinyl-disc {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #333 30%, #000 70%);
+      border: 2px solid #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: rotateDisc 4s linear infinite;
+    }
+
+    .vinyl-center {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #f43f5e;
+    }
+
+    @keyframes rotateDisc {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Screen Tap Indicator (Pause / Play Animation) */
+    .tap-indicator {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.6);
+      width: 76px;
+      height: 76px;
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+    }
+
+    .tap-indicator.pop {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Double Tap Heart Effect */
+    .double-tap-heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 80px;
+      color: var(--accent-rose);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 101;
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+    }
+
+    .double-tap-heart.pop {
+      transform: translate(-50%, -50%) scale(1.2);
+      opacity: 1;
+    }
+
+    /* Toast Notification */
+    .shorts-toast {
+      position: absolute;
+      top: 75px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--accent-rose);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      font-weight: 800;
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .shorts-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Elements -->
+  <audio id="bgmAudio" loop preload="auto">
+    <source src="audio/bgm_morning.mp3" type="audio/mpeg">
+    <source src="audio/bgm_carefree.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="ttsAudio" preload="auto"></audio>
+
+  <!-- Main 9:16 Shorts Stage -->
+  <main class="shorts-stage" id="shortsStage">
+
+    <!-- 1. Top Instagram / YouTube Style Progress Bars (6 cuts) -->
+    <div class="shorts-progress-wrap">
+      <div class="progress-seg" id="pseg-1"><div class="progress-fill" id="pfill-1"></div></div>
+      <div class="progress-seg" id="pseg-2"><div class="progress-fill" id="pfill-2"></div></div>
+      <div class="progress-seg" id="pseg-3"><div class="progress-fill" id="pfill-3"></div></div>
+      <div class="progress-seg" id="pseg-4"><div class="progress-fill" id="pfill-4"></div></div>
+      <div class="progress-seg" id="pseg-5"><div class="progress-fill" id="pfill-5"></div></div>
+      <div class="progress-seg" id="pseg-6"><div class="progress-fill" id="pfill-6"></div></div>
+    </div>
+
+    <!-- 2. Top Header Navigation -->
+    <header class="shorts-header">
+      <a href="index.html" class="badge-pill" title="공식 포털 홈으로 이동">
+        <i class="fa-solid fa-arrow-left"></i> <span>포털 홈</span>
+      </a>
+      <div class="header-actions">
+        <a href="shorts_vol1_growth.html" class="btn-switch-shorts" title="1호 감성매거진 숏츠로 이동">
+          <i class="fa-solid fa-backward"></i> <span>1호 숏츠 보기</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- 3. Screen Tap Center Indicators -->
+    <div class="tap-indicator" id="tapIndicator">
+      <i class="fa-solid fa-play" id="tapIcon"></i>
+    </div>
+    <div class="double-tap-heart" id="heartIcon">
+      <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="shorts-toast" id="shortsToast">안내 메시지</div>
+
+    <!-- 4. Cuts Stage (6 Cuts) -->
+    <div class="cuts-viewport" id="cutsViewport">
+
+      <!-- CUT 01: 도봉 리틀 특별호 표지 -->
+      <section class="cut-slide active" id="cslide-1">
+        <div class="slide-visual-center">
+          <div class="promo-card-frame" style="background:#faf8f2; justify-content:space-between;">
+            <!-- Top tag -->
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+              <span style="font-size:10px; font-weight:800; color:#0284c7; letter-spacing:0.5px;">DOBONG LITTLE BASEBALL NEWS</span>
+              <span style="background:#e11d48; color:#fff; font-size:9.5px; font-weight:900; padding:2px 7px; border-radius:4px;">CUT 01</span>
+            </div>
+            <!-- Center Graphic Banner -->
+            <div style="background:linear-gradient(135deg, #0284c7, #1e3a8a); border-radius:14px; padding:18px 14px; text-align:center; color:#fff; box-shadow:0 8px 20px rgba(2, 132, 199, 0.35);">
+              <i class="fa-solid fa-child-reaching" style="font-size:42px; color:#fde047; margin-bottom:6px;"></i>
+              <h3 style="font-size:18px; font-weight:900; line-height:1.25; letter-spacing:-0.4px;">도봉 리틀 꿈나무를 위한<br><span style="color:#fde047;">성장 발육 &amp; 균형 체형 특강</span></h3>
+              <p style="font-size:11px; color:#bfdbfe; margin-top:5px; font-weight:700;">CSS 야구센터 바이오피치 랩</p>
+            </div>
+            <!-- Sub Info Box -->
+            <div style="background:#f1f5f9; border-radius:12px; padding:12px; border-left:4px solid #0284c7;">
+              <div style="font-size:11.5px; font-weight:900; color:#0f172a; margin-bottom:4px;">✨ 성장 발육 &amp; 부상 예방 솔루션</div>
+              <p style="font-size:11px; color:#334155; line-height:1.45; font-weight:700;">16년 임상 물리치료사 출신 박인국 실장의 6대 움직임 &amp; 불균형 예방 집중 코칭</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide-bottom-info">
+          <div class="profile-row">
+            <img src="cho_seungsoo_real.jpg" class="profile-avatar" alt="CSS야구센터">
+            <span class="profile-name">CSS 야구센터 × 도봉리틀</span>
+            <a href="tel:01036669069" class="btn-apply-pill"><i class="fa-solid fa-phone"></i> 입단 상담</a>
+          </div>
+          <h2 class="caption-title">⚾ 야구도 잘하고 키도 쑥쑥! 초등 성장 발육</h2>
+          <p class="caption-desc">야구는 한쪽 회전력을 강하게 쓰는 운동! 반대쪽 밸런스를 균형 있게 채워줄 때 숨은 키와 잠재력이 함께 깨어납니다.</p>
+          <div class="audio-ticker-row">
+            <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+            <span>도봉리틀 홍보영상 오디오 트랙 · 모닝 어쿠스틱</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUT 02: 박인국 실장 프로필 -->
+      <section class="cut-slide" id="cslide-2">
+        <div class="slide-visual-center">
+          <div class="promo-card-frame" style="background:#faf8f2; justify-content:space-between;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+              <span style="font-size:10px; font-weight:800; color:#059669; letter-spacing:0.5px;">EXPERT INTERVIEW · 박인국 실장</span>
+              <span style="background:#059669; color:#fff; font-size:9.5px; font-weight:900; padding:2px 7px; border-radius:4px;">CUT 02</span>
+            </div>
+            <!-- Profile Display Box -->
+            <div style="display:flex; align-items:center; gap:14px; background:#ffffff; border-radius:14px; padding:12px; border:2px solid #e2e8f0; box-shadow:0 6px 16px rgba(0,0,0,0.06);">
+              <img src="park_inguk_profile.jpg" alt="박인국 실장" style="width:78px; height:92px; border-radius:10px; object-fit:contain; background:#ffffff; border:2px solid #2563eb; padding:2px;">
+              <div>
+                <span style="font-size:10.5px; color:#2563eb; font-weight:900;">가동성 컨디셔닝 디렉터</span>
+                <h3 style="font-size:20px; font-weight:900; color:#0f172a; line-height:1.2;">박인국 실장</h3>
+                <p style="font-size:11.5px; color:#334155; font-weight:800; margin-top:2px;">16년 임상 경력 물리치료사 출신</p>
+                <span style="display:inline-block; margin-top:5px; background:#dbeafe; color:#1e40af; font-size:10px; font-weight:900; padding:2px 7px; border-radius:4px;">2만여 명 임상 경험</span>
+              </div>
+            </div>
+            <!-- Key Expertise Points -->
+            <div style="background:#ecfdf5; border-radius:12px; padding:11px; border-left:4px solid #059669;">
+              <div style="font-size:11.5px; font-weight:900; color:#065f46; margin-bottom:3px;">✔ 핵심 전문성</div>
+              <p style="font-size:11px; color:#047857; line-height:1.45; font-weight:700;">現 유도 엘리트 선수 전담 매뉴얼 코칭 · 수술 후 가동성 점진 회복</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide-bottom-info">
+          <div class="profile-row">
+            <img src="cho_seungsoo_real.jpg" class="profile-avatar" alt="CSS야구센터">
+            <span class="profile-name">CSS 야구센터 × 도봉리틀</span>
+            <a href="tel:01036669069" class="btn-apply-pill"><i class="fa-solid fa-phone"></i> 입단 상담</a>
+          </div>
+          <h2 class="caption-title">2만여 명 임상 경험 담은 1:1 맞춤형 코칭</h2>
+          <p class="caption-desc">병원 도수치료실 16년 경력을 바탕으로 유도 엘리트 선수 전담 매뉴얼 코칭과 관절 안정화 및 가동성을 전문 지도합니다.</p>
+          <div class="audio-ticker-row">
+            <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+            <span>도봉리틀 홍보영상 오디오 트랙 · 모닝 어쿠스틱</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUT 03: 체형 평가 & 기둥 세우기 (STEP 1 & 2) -->
+      <section class="cut-slide" id="cslide-3">
+        <div class="slide-visual-center">
+          <div class="promo-card-frame" style="background:#faf8f2; justify-content:space-between;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+              <span style="font-size:10px; font-weight:800; color:#0284c7; letter-spacing:0.5px;">DOBONG LESSON 1 · STEP 1 &amp; 2</span>
+              <span style="background:#0284c7; color:#fff; font-size:9.5px; font-weight:900; padding:2px 7px; border-radius:4px;">CUT 03</span>
+            </div>
+            <!-- Center Focus Box -->
+            <div style="background:linear-gradient(135deg, #0f172a, #1e293b); border-radius:14px; padding:16px 14px; text-align:center; color:#fff; box-shadow:0 8px 20px rgba(15, 23, 42, 0.4);">
+              <i class="fa-solid fa-person-arrow-up-from-line" style="font-size:40px; color:#38bdf8; margin-bottom:6px;"></i>
+              <h3 style="font-size:18px; font-weight:900; line-height:1.25;"><span style="color:#38bdf8;">하체 제어</span> &amp; 몸통 안정화</h3>
+              <p style="font-size:11.5px; color:#cbd5e1; margin-top:5px; font-weight:700;">흔들리지 않는 기둥이 먼저 세워져야 합니다!</p>
+            </div>
+            <!-- Checkpoints -->
+            <div style="background:#fff1f2; border-radius:12px; padding:11px; border-left:4px solid #e11d48;">
+              <div style="font-size:11.5px; font-weight:900; color:#be123c; margin-bottom:3px;">🚨 몸통 무너지면 힘 전달 불가!</div>
+              <p style="font-size:11px; color:#475569; line-height:1.45; font-weight:700;">체형 평가로 내 관절에 맞는 폼을 찾고, 하체가 버텨줘야 손끝까지 힘이 전달됩니다.</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide-bottom-info">
+          <div class="profile-row">
+            <img src="cho_seungsoo_real.jpg" class="profile-avatar" alt="CSS야구센터">
+            <span class="profile-name">CSS 야구센터 × 도봉리틀</span>
+            <a href="tel:01036669069" class="btn-apply-pill"><i class="fa-solid fa-phone"></i> 입단 상담</a>
+          </div>
+          <h2 class="caption-title">아이마다 체형이 다른데 왜 폼은 다 같을까요?</h2>
+          <p class="caption-desc">쓰는 근육이 달라지면 선수의 능력치도 달라집니다! 몸통에 안정성이 떨어지면 아무리 세게 던져도 공에 힘이 실리지 않아요.</p>
+          <div class="audio-ticker-row">
+            <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+            <span>도봉리틀 홍보영상 오디오 트랙 · 모닝 어쿠스틱</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUT 04: 회전 파워 & 힘 전달 (STEP 3 & 4) -->
+      <section class="cut-slide" id="cslide-4">
+        <div class="slide-visual-center">
+          <div class="promo-card-frame" style="background:#faf8f2; justify-content:space-between;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+              <span style="font-size:10px; font-weight:800; color:#2563eb; letter-spacing:0.5px;">DOBONG LESSON 2 · STEP 3 &amp; 4</span>
+              <span style="background:#2563eb; color:#fff; font-size:9.5px; font-weight:900; padding:2px 7px; border-radius:4px;">CUT 04</span>
+            </div>
+            <!-- Center Focus Box -->
+            <div style="background:linear-gradient(135deg, #1e3a8a, #0369a1); border-radius:14px; padding:16px 14px; text-align:center; color:#fff; box-shadow:0 8px 20px rgba(30, 58, 138, 0.4);">
+              <i class="fa-solid fa-bolt-lightning" style="font-size:40px; color:#fde047; margin-bottom:6px;"></i>
+              <h3 style="font-size:18px; font-weight:900; line-height:1.25;"><span style="color:#fde047;">발끝에서 손끝까지</span> 지면반력 전달</h3>
+              <p style="font-size:11.5px; color:#e0f2fe; margin-top:5px; font-weight:700;">공과 배트에 온전히 힘이 실리는 폭발적 메커니즘</p>
+            </div>
+            <!-- Checkpoints -->
+            <div style="background:#eff6ff; border-radius:12px; padding:11px; border-left:4px solid #2563eb;">
+              <div style="font-size:11.5px; font-weight:900; color:#1e40af; margin-bottom:3px;">⚡ 순서 학습 &amp; 구속 증가</div>
+              <p style="font-size:11px; color:#334155; line-height:1.45; font-weight:700;">몸통과 고관절의 큰 움직임에서 소근육으로 부드럽고 섬세하게 이어집니다.</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide-bottom-info">
+          <div class="profile-row">
+            <img src="cho_seungsoo_real.jpg" class="profile-avatar" alt="CSS야구센터">
+            <span class="profile-name">CSS 야구센터 × 도봉리틀</span>
+            <a href="tel:01036669069" class="btn-apply-pill"><i class="fa-solid fa-phone"></i> 입단 상담</a>
+          </div>
+          <h2 class="caption-title">몸통·고관절 큰 회전에서 소근육으로 강력하게!</h2>
+          <p class="caption-desc">팔만 휘두르면 인대가 다칩니다. 큰 움직임에서 시작해 소근육으로 부드럽게 이어져야 공에 온전히 힘을 실어줍니다.</p>
+          <div class="audio-ticker-row">
+            <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+            <span>도봉리틀 홍보영상 오디오 트랙 · 모닝 어쿠스틱</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUT 05: 부상 예방 & 올바른 복귀 (STEP 5 & 6) -->
+      <section class="cut-slide" id="cslide-5">
+        <div class="slide-visual-center">
+          <div class="promo-card-frame" style="background:#faf8f2; justify-content:space-between;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+              <span style="font-size:10px; font-weight:800; color:#059669; letter-spacing:0.5px;">DOBONG LESSON 3 · STEP 5 &amp; 6</span>
+              <span style="background:#059669; color:#fff; font-size:9.5px; font-weight:900; padding:2px 7px; border-radius:4px;">CUT 05</span>
+            </div>
+            <!-- Center Focus Box -->
+            <div style="background:linear-gradient(135deg, #065f46, #047857); border-radius:14px; padding:16px 14px; text-align:center; color:#fff; box-shadow:0 8px 20px rgba(6, 95, 70, 0.4);">
+              <i class="fa-solid fa-water" style="font-size:40px; color:#6ee7b7; margin-bottom:6px;"></i>
+              <h3 style="font-size:18px; font-weight:900; line-height:1.25;"><span style="color:#6ee7b7;">물결 파동처럼</span> 스트레스 분산</h3>
+              <p style="font-size:11.5px; color:#d1fae5; margin-top:5px; font-weight:700;">관절 스트레스 온몸으로 고르게 흡수 &amp; 어깨 보호</p>
+            </div>
+            <!-- Checkpoints -->
+            <div style="background:#ecfdf5; border-radius:12px; padding:11px; border-left:4px solid #059669;">
+              <div style="font-size:11.5px; font-weight:900; color:#065f46; margin-bottom:3px;">🛡️ 그냥 쉬는 건 해결책이 아니다!</div>
+              <p style="font-size:11px; color:#047857; line-height:1.45; font-weight:700;">통증만 잠시 잊는 휴식 대신, 아픈 근본 원인을 바로잡아야 부상이 재발하지 않습니다.</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide-bottom-info">
+          <div class="profile-row">
+            <img src="cho_seungsoo_real.jpg" class="profile-avatar" alt="CSS야구센터">
+            <span class="profile-name">CSS 야구센터 × 도봉리틀</span>
+            <a href="tel:01036669069" class="btn-apply-pill"><i class="fa-solid fa-phone"></i> 입단 상담</a>
+          </div>
+          <h2 class="caption-title">물의 파동처럼 흘러야 예방! 근본 원인 개선</h2>
+          <p class="caption-desc">물에 파동이 일어 잔잔해지듯 관절 충격 부하가 온몸으로 분산되어야 어깨와 팔꿈치를 안전하게 보호할 수 있어요.</p>
+          <div class="audio-ticker-row">
+            <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+            <span>도봉리틀 홍보영상 오디오 트랙 · 모닝 어쿠스틱</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUT 06: 선수모집 & 도봉 리틀 특별 프로모션 (조승수 X 박인국 실사 듀얼 프로필 복원) -->
+      <section class="cut-slide" id="cslide-6">
+        <div class="slide-visual-center">
+          <div class="promo-card-frame" style="background:#ffffff; border:2px dashed #cbd5e1; justify-content:space-between; padding:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #f1f5f9; padding-bottom:6px;">
+              <span style="font-size:10px; font-weight:900; color:#e11d48; letter-spacing:0.5px;">SPECIAL BENEFIT · 도봉 리틀 특별 프로모션</span>
+              <span style="background:#e11d48; color:#fff; font-size:9.5px; font-weight:900; padding:2px 7px; border-radius:4px;">CUT 06</span>
+            </div>
+
+            <!-- ★ Dual Profile Pictures (조승수 대표 & 박인국 실장 실사) ★ -->
+            <div style="display:flex; gap:8px; height:105px; width:100%;">
+              <div style="flex:1; border-radius:8px; overflow:hidden; border:1px solid #cbd5e1; position:relative; background:#0f172a;">
+                <img src="cho_seungsoo_real.jpg" alt="조승수 대표 투구" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
+                <span style="position:absolute; bottom:2px; left:2px; background:rgba(0,0,0,0.85); color:#fff; font-size:9.5px; font-weight:800; padding:2px 5px; border-radius:3px;">조승수 대표 | 실전 투구</span>
+              </div>
+              <div style="flex:1; border-radius:8px; overflow:hidden; border:1px solid #cbd5e1; position:relative; background:#ffffff;">
+                <img src="park_inguk_profile.jpg" alt="박인국 실장 프로필" style="width:100%; height:100%; object-fit:contain; object-position:center top;">
+                <span style="position:absolute; bottom:2px; left:2px; background:rgba(0,0,0,0.85); color:#fff; font-size:9.5px; font-weight:800; padding:2px 5px; border-radius:3px;">박인국 실장 | 16년 임상</span>
+              </div>
+            </div>
+
+            <!-- 50% Benefit Price Banner -->
+            <div style="width:100%; display:flex; justify-content:space-between; align-items:center; background:#f8fafc; border-radius:8px; padding:6px 10px; border:1px solid #e2e8f0;">
+              <div>
+                <span style="font-size:11.5px; font-weight:900; color:#1e293b;">조승수 × 박인국 스페셜 맞춤 분석</span>
+                <span style="background:#e11d48; color:#fff; font-size:8.5px; font-weight:900; padding:1px 5px; border-radius:3px; margin-left:3px;">50% 지원</span>
+              </div>
+              <span style="font-size:14.5px; font-weight:900; color:#e11d48;">50,000원</span>
+            </div>
+
+            <!-- Phone Call CTA Box -->
+            <div style="background:#fff1f2; border-radius:8px; padding:7px 10px; border:1px solid #fecdd3; text-align:center;">
+              <span style="font-size:11px; font-weight:900; color:#be123c;">📞 입단 &amp; 1:1 케어 문의: 010-3666-9069</span>
+            </div>
+          </div>
+        </div>
+        <div class="slide-bottom-info">
+          <div class="profile-row">
+            <img src="cho_seungsoo_real.jpg" class="profile-avatar" alt="CSS야구센터">
+            <span class="profile-name">CSS 야구센터 × 도봉리틀</span>
+            <a href="tel:01036669069" class="btn-apply-pill" style="background:linear-gradient(135deg, #e11d48, #be123c);"><i class="fa-solid fa-phone"></i> 50% 혜택 신청</a>
+          </div>
+          <h2 class="caption-title">"선수모집 &amp; 특별 혜택" 조승수 × 박인국 콜라보</h2>
+          <p class="caption-desc">초등~중1 선수모집! 조승수 감독의 전문 야구 수업과 연계하여 박인국 실장의 1:1 맞춤 케어를 첫 방문 50% 혜택(5만 원)으로 지원합니다.</p>
+          <div class="audio-ticker-row">
+            <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+            <span>도봉리틀 홍보영상 오디오 트랙 · 모닝 어쿠스틱</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 5. Floating Side Action Bar -->
+    <aside class="shorts-side-actions">
+      <!-- Like Heart Button -->
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <button class="side-action-btn" id="btnLike" onclick="toggleLike()" title="좋아요">
+          <i class="fa-solid fa-heart" id="likeIcon"></i>
+        </button>
+        <span class="side-action-label" id="likeCount">1.4K</span>
+      </div>
+
+      <!-- Kakao / Share Button -->
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <button class="side-action-btn" onclick="shareShorts()" title="공유하기">
+          <i class="fa-solid fa-share"></i>
+        </button>
+        <span class="side-action-label">공유</span>
+      </div>
+
+      <!-- Sound Toggle Button -->
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <button class="side-action-btn" id="btnSound" onclick="toggleSound()" title="소리 켜기/끄기">
+          <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+        </button>
+        <span class="side-action-label">음성</span>
+      </div>
+
+      <!-- Direct Call Button -->
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <a href="tel:01036669069" class="side-action-btn" style="background:rgba(225, 29, 72, 0.88); border-color:#f43f5e;" title="조승수 대표 직통 통화">
+          <i class="fa-solid fa-phone"></i>
+        </a>
+        <span class="side-action-label">상담</span>
+      </div>
+    </aside>
+
+  </main>
+
+  <script>
+    const totalCuts = 6;
+    let currentCut = 1;
+    let isPlaying = true;
+    let isMuted = false;
+    let isLiked = false;
+    let likes = 1420;
+    let cutTimer = null;
+    let progressAnim = null;
+
+    const bgmAudio = document.getElementById('bgmAudio');
+    const ttsAudio = document.getElementById('ttsAudio');
+    const soundIcon = document.getElementById('soundIcon');
+    const likeIcon = document.getElementById('likeIcon');
+    const likeCount = document.getElementById('likeCount');
+    const tapIndicator = document.getElementById('tapIndicator');
+    const tapIcon = document.getElementById('tapIcon');
+    const heartIcon = document.getElementById('heartIcon');
+    const shortsStage = document.getElementById('shortsStage');
+
+    const BGM_BASE_VOL = 0.25;
+    const BGM_DUCK_VOL = 0.08;
+
+    bgmAudio.volume = BGM_BASE_VOL;
+    ttsAudio.volume = 1.0;
+
+    // Smooth Volume Ducking
+    function setBgmVolume(targetVol, durationMs = 300) {
+      if (!bgmAudio) return;
+      const startVol = bgmAudio.volume;
+      const startTime = performance.now();
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / durationMs, 1);
+        bgmAudio.volume = startVol + (targetVol - startVol) * progress;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Show Cut Slide
+    function showCut(cutNum) {
+      currentCut = cutNum;
+      clearTimeout(cutTimer);
+      cancelAnimationFrame(progressAnim);
+
+      // Update Slides
+      for (let i = 1; i <= totalCuts; i++) {
+        const slide = document.getElementById(`cslide-${i}`);
+        const pseg = document.getElementById(`pseg-${i}`);
+        const pfill = document.getElementById(`pfill-${i}`);
+
+        if (i === cutNum) {
+          slide.classList.add('active');
+          pseg.className = 'progress-seg active';
+          pfill.style.width = '0%';
+        } else if (i < cutNum) {
+          slide.classList.remove('active');
+          pseg.className = 'progress-seg completed';
+          pfill.style.width = '100%';
+        } else {
+          slide.classList.remove('active');
+          pseg.className = 'progress-seg';
+          pfill.style.width = '0%';
+        }
+      }
+
+      playCutAudio(cutNum);
+    }
+
+    // Play Voice & Animate Progress Bar
+    function playCutAudio(cutNum) {
+      if (isMuted) return;
+
+      ttsAudio.pause();
+      ttsAudio.src = `audio/tts_video_0${cutNum}.mp3`;
+
+      // Soft Duck BGM
+      setBgmVolume(BGM_DUCK_VOL, 300);
+
+      // Start BGM if paused
+      if (bgmAudio.paused && !isMuted) {
+        bgmAudio.play().catch(() => {});
+      }
+
+      ttsAudio.play().then(() => {
+        // Voice successfully playing, track audio duration for progress bar
+        animateProgressWithAudio();
+      }).catch(() => {
+        // Fallback progress estimation (6 seconds)
+        animateProgressFallback(6000);
+      });
+
+      ttsAudio.onended = () => {
+        // Restore BGM volume
+        setBgmVolume(BGM_BASE_VOL, 350);
+
+        // 0.8s delay before next cut
+        cutTimer = setTimeout(() => {
+          nextCut();
+        }, 800);
+      };
+    }
+
+    function animateProgressWithAudio() {
+      const pfill = document.getElementById(`pfill-${currentCut}`);
+      function update() {
+        if (!isPlaying) return;
+        if (ttsAudio.duration && !isNaN(ttsAudio.duration)) {
+          const pct = Math.min((ttsAudio.currentTime / ttsAudio.duration) * 100, 100);
+          if (pfill) pfill.style.width = `${pct}%`;
+        }
+        if (!ttsAudio.ended && isPlaying) {
+          progressAnim = requestAnimationFrame(update);
+        }
+      }
+      progressAnim = requestAnimationFrame(update);
+    }
+
+    function animateProgressFallback(durationMs) {
+      const pfill = document.getElementById(`pfill-${currentCut}`);
+      const start = performance.now();
+      function update(now) {
+        if (!isPlaying) return;
+        const elapsed = now - start;
+        const pct = Math.min((elapsed / durationMs) * 100, 100);
+        if (pfill) pfill.style.width = `${pct}%`;
+        if (pct < 100 && isPlaying) {
+          progressAnim = requestAnimationFrame(update);
+        } else if (pct >= 100) {
+          nextCut();
+        }
+      }
+      progressAnim = requestAnimationFrame(update);
+    }
+
+    function nextCut() {
+      let next = currentCut + 1;
+      if (next > totalCuts) {
+        showToast("🎉 2호 숏츠 전편 완독 완료!");
+        next = 1;
+      }
+      showCut(next);
+    }
+
+    function prevCut() {
+      let prev = currentCut - 1;
+      if (prev < 1) prev = totalCuts;
+      showCut(prev);
+    }
+
+    // Toggle Play/Pause on Canvas Tap
+    let lastTap = 0;
+    shortsStage.addEventListener('click', (e) => {
+      // Ignore clicks on header, side actions, links
+      if (e.target.closest('.shorts-header') || e.target.closest('.shorts-side-actions') || e.target.closest('a') || e.target.closest('button')) {
+        return;
+      }
+
+      const now = performance.now();
+      if (now - lastTap < 300) {
+        // Double tap -> Heart Like Animation!
+        showDoubleTapHeart();
+        if (!isLiked) toggleLike();
+      } else {
+        // Single tap -> Play/Pause
+        togglePlayPause();
+      }
+      lastTap = now;
+    });
+
+    function togglePlayPause() {
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        if (!isMuted) {
+          bgmAudio.play().catch(() => {});
+          ttsAudio.play().catch(() => {});
+        }
+        animateProgressWithAudio();
+        showTapIndicator('fa-play');
+      } else {
+        bgmAudio.pause();
+        ttsAudio.pause();
+        clearTimeout(cutTimer);
+        cancelAnimationFrame(progressAnim);
+        showTapIndicator('fa-pause');
+      }
+    }
+
+    function showTapIndicator(iconClass) {
+      tapIcon.className = `fa-solid ${iconClass}`;
+      tapIndicator.classList.add('pop');
+      setTimeout(() => {
+        tapIndicator.classList.remove('pop');
+      }, 500);
+    }
+
+    function showDoubleTapHeart() {
+      heartIcon.classList.add('pop');
+      setTimeout(() => {
+        heartIcon.classList.remove('pop');
+      }, 700);
+    }
+
+    // Like Toggle
+    function toggleLike() {
+      isLiked = !isLiked;
+      const btnLike = document.getElementById('btnLike');
+      if (isLiked) {
+        likes++;
+        btnLike.classList.add('active');
+        likeIcon.style.color = '#f43f5e';
+        showToast("❤️ 2호 숏츠를 좋아합니다!");
+      } else {
+        likes--;
+        btnLike.classList.remove('active');
+        likeIcon.style.color = '#ffffff';
+      }
+      likeCount.textContent = (likes / 1000).toFixed(1) + 'K';
+    }
+
+    // Sound Toggle
+    function toggleSound() {
+      isMuted = !isMuted;
+      if (isMuted) {
+        bgmAudio.pause();
+        ttsAudio.pause();
+        soundIcon.className = 'fa-solid fa-volume-xmark';
+        showToast("음소거되었습니다.");
+      } else {
+        soundIcon.className = 'fa-solid fa-volume-high';
+        bgmAudio.play().catch(() => {});
+        ttsAudio.play().catch(() => {});
+        showToast("오디오가 켜졌습니다.");
+      }
+    }
+
+    // Share Modal
+    function shareShorts() {
+      const shareUrl = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          showToast("🔗 2호 숏츠 링크가 복사되었습니다!");
+        });
+      } else {
+        showToast("공유 링크: " + shareUrl);
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('shortsToast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2200);
+    }
+
+    // Swipe Navigation
+    let touchStartX = 0;
+    let touchStartY = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    });
+
+    document.addEventListener('touchend', (e) => {
+      const diffX = e.changedTouches[0].clientX - touchStartX;
+      const diffY = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+        if (diffX < 0) nextCut();
+        else prevCut();
+      }
+    });
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextCut();
+      if (e.key === 'ArrowLeft') prevCut();
+      if (e.key === 'm' || e.key === 'M') toggleSound();
+    });
+
+    // Auto Unlock Audio on First Click
+    ['click', 'touchstart', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, () => {
+        if (bgmAudio.paused && !isMuted) {
+          bgmAudio.play().catch(() => {});
+        }
+      }, { once: true });
+    });
+
+    // Tab Visibility Sync
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        bgmAudio.pause();
+        ttsAudio.pause();
+      } else if (isPlaying && !isMuted) {
+        bgmAudio.play().catch(() => {});
+        ttsAudio.play().catch(() => {});
+      }
+    });
+
+    // Init
+    window.addEventListener('DOMContentLoaded', () => {
+      showCut(1);
+    });
+  </script>
+</body>
+</html>

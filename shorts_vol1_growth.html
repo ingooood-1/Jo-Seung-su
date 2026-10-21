@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>[1호 숏츠] 야구도 잘하고 키도 쑥쑥! - 도봉리틀 X CSS야구센터</title>
+  <meta name="description" content="초등 성장기 성장판 보호 & 좌우 밸런스 회복 솔루션 - 9:16 모바일 숏츠 비디오">
+
+  <!-- Pretendard & Gaegu Fonts -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Outfit:wght@600;800;900&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-black: #000000;
+      --primary-blue: #0284c7;
+      --accent-cyan: #38bdf8;
+      --accent-gold: #fde047;
+      --accent-rose: #f43f5e;
+      --text-white: #ffffff;
+      --text-dim: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, sans-serif;
+      background-color: var(--bg-black);
+      color: var(--text-white);
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 9:16 Shorts Canvas Stage */
+    .shorts-stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 450px;
+      max-height: 840px;
+      background: #0f172a;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    }
+
+    @media (min-width: 480px) {
+      .shorts-stage {
+        border-radius: 28px;
+        border: 2px solid rgba(255, 255, 255, 0.12);
+        height: 94dvh;
+      }
+    }
+
+    /* Top Timeline Progress Bars (6 Segments) */
+    .shorts-progress-wrap {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      z-index: 50;
+      display: flex;
+      gap: 5px;
+    }
+
+    .progress-seg {
+      flex: 1;
+      height: 3.5px;
+      background: rgba(255, 255, 255, 0.35);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #ffffff;
+      border-radius: 4px;
+      transition: width 0.1s linear;
+    }
+
+    .progress-seg.completed .progress-fill {
+      width: 100% !important;
+    }
+
+    /* Top Nav Pills */
+    .shorts-header {
+      position: absolute;
+      top: 26px;
+      left: 14px;
+      right: 14px;
+      z-index: 45;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .badge-pill {
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .badge-pill i {
+      color: var(--accent-cyan);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-switch-shorts {
+      background: linear-gradient(135deg, #e11d48, #be123c);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 4px 12px rgba(225, 29, 72, 0.4);
+    }
+
+    /* Slide Slides Stage */
+    .cuts-viewport {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cut-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      transform: scale(0.97);
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px 20px 100px 20px;
+    }
+
+    .cut-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    /* Gradient Shadow Overlay for Text Legibility */
+    .cut-slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.35) 0%,
+        rgba(0, 0, 0, 0.1) 25%,
+        rgba(0, 0, 0, 0.4) 60%,
+        rgba(0, 0, 0, 0.92) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Card Slide Visual Content Wrap */
+    .slide-visual-center {
+      position: absolute;
+      top: 75px;
+      left: 20px;
+      right: 20px;
+      bottom: 230px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .slide-img-frame {
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.6);
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      animation: gentleZoom 12s infinite alternate ease-in-out;
+    }
+
+    @keyframes gentleZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    /* Floating Side Action Icons (YouTube Shorts / Reels) */
+    .shorts-side-actions {
+      position: absolute;
+      right: 12px;
+      bottom: 120px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .side-action-btn {
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: transform 0.2s ease, background 0.2s ease;
+      text-decoration: none;
+    }
+
+    .side-action-btn:hover {
+      transform: scale(1.12);
+      background: rgba(2, 132, 199, 0.7);
+    }
+
+    .side-action-btn.active i {
+      color: var(--accent-rose);
+    }
+
+    .side-action-btn i {
+      font-size: 18px;
+    }
+
+    .side-action-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #e2e8f0;
+      margin-top: 3px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+
+    /* Bottom Info & Subtitles Area */
+    .slide-bottom-info {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-right: 56px;
+    }
+
+    .profile-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profile-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-cyan);
+      object-fit: cover;
+    }
+
+    .profile-name {
+      font-size: 14px;
+      font-weight: 900;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-apply-pill {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-decoration: none;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.4);
+    }
+
+    /* Dynamic Handwriting Caption */
+    .caption-title {
+      font-family: 'Gaegu', cursive;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--accent-gold);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+      word-break: keep-all;
+    }
+
+    .caption-desc {
+      font-size: 13.5px;
+      color: #f1f5f9;
+      line-height: 1.5;
+      word-break: keep-all;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+    }
+
+    /* Music Audio Ticker with Spinning Vinyl Disc */
+    .audio-ticker-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      color: #cbd5e1;
+      margin-top: 4px;
+    }
+
+    .vinyl-disc {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #333 30%, #000 70%);
+      border: 2px solid #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: rotateDisc 4s linear infinite;
+    }
+
+    .vinyl-center {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+    }
+
+    @keyframes rotateDisc {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Screen Tap Indicator (Pause / Play Animation) */
+    .tap-indicator {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.6);
+      width: 76px;
+      height: 76px;
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+    }
+
+    .tap-indicator.pop {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Double Tap Heart Effect */
+    .double-tap-heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 80px;
+      color: var(--accent-rose);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 101;
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+    }
+
+    .double-tap-heart.pop {
+      transform: translate(-50%, -50%) scale(1.2);
+      opacity: 1;
+    }
+
+    /* Toast Notification */
+    .shorts-toast {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--accent-cyan);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      font-weight: 800;
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .shorts-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Elements -->
+  <audio id="bgmAudio" loop preload="auto">
+    <source src="audio/bgm_morning.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="ttsAudio" preload="auto"></audio>
+
+  <!-- Main 9:16 Shorts Stage -->
+  <main class="shorts-stage" id="shortsStage">
+
+    <!-- 1. Top Instagram / YouTube Style Progress Bars (6 cuts) -->
+    <div class="shorts-progress-wrap">
+      <div class="progress-seg" id="pseg-1"><div class="progress-fill" id="pfill-1"></div></div>
+      <div class="progress-seg" id="pseg-2"><div class="progress-fill" id="pfill-2"></div></div>
+      <div class="progress-seg" id="pseg-3"><div class="progress-fill" id="pfill-3"></div></div>
+      <div class="progress-seg" id="pseg-4"><div class="progress-fill" id="pfill-4"></div></div>
+      <div class="progress-seg" id="pseg-5"><div class="progress-fill" id="pfill-5"></div></div>
+      <div class="progress-seg" id="pseg-6"><div class="progress-fill" id="pfill-6"></div></div>
+    </div>
+
+    <!-- 2. Top Header Navigation -->
+    <header class="shorts-header">
+      <a href="index.html" class="badge-pill" title="공식 포털 홈으로 이동">
+        <i class="fa-solid fa-arrow-left"></i> <span>포털 홈</span>
+      </a>
+      <div class="header-actions">
+        <a href="shorts_vol2_promo.html" class="btn-switch-shorts" title="2호 홍보영상 숏츠로 이동">
+          <span>2호 숏츠 보기</span> <i class="fa-solid fa-forward"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- 3. Screen Tap Center Indicators -->
+    <div class="tap-indicator" id="tapIndicator">
+      <i class="fa-solid fa-play" id="tapIcon"></i>
+    </div>
+    <div class="double-tap-heart" id="heartIcon">
+      <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="shorts-toast" id="shortsToast">안내 메시지</div>
+
+    <!-- 4. Cuts Stage (6 Cuts) -->
+    <div class="cuts-viewport" id="cutsViewport">
+
+      <!-- CUT 01: 표지 -->
+      <section class="cut-slide active" id="cslide-1">
+        <div class="slide-visual-center">
+          <div class="slide-img-frame">
+            <img src="cardnews/감성매거진_01_표지_야구도키도쑥쑥.png" alt="01호 표지">
+          </div>
+        </div>
+        <div class="slide-bottom-info">
+          <div class="profile-row">
+            <img src="cho_seungsoo_real.jpg" class="profile-avatar" alt="CSS야구센터">
+            <span class="profile-name">CSS 야구센터 × 도봉리틀</span>
+            <a href="tel:01036669069" class="btn-apply-pill"><i class="fa-solid fa-phone"></i> 입단 상담</a>
+          </div>
+          <h2 class="caption-title">⚾ 야구도 잘하고 키도 쑥쑥!</h2>
+          <p class="caption-desc">초등 성장기 성장판 보호 &amp; 좌우 밸런스 회복으로 숨은 키와 폭발적인 잠재력을 깨우는 1호 감성 매거진 숏츠!</p>
+          <div class="audio-ticker-row">
+            <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+            <span>조승수 센터 공식 사운드트랙 · 모닝 어쿠스틱</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUT 02: 메인 -->
+      <section class="cut-slide" id="cslide-2">
+        <div class="slide-visual-center">
+          <div class="slide-img-frame">
+            <img src="cardnews/감성매거진_02_메인_성장판지키며키쑥쑥.png" alt="02호 메인">
+          </div>
+        </div>
+        <div class="slide-bottom-info">
+          <div class="profile-row">
+            <img src="cho_seungsoo_real.jpg" class="profile-avatar" alt="CSS야구센터">
+            <span class="profile-name">CSS 야구센터 × 도봉리틀</span>
+            <a href="tel:01036669069" class="btn-apply-pill"><i class="fa-solid fa-phone"></i> 입단 상담</a>
+          </div>
+          <h2 class="caption-title">성장판을 지키며 키 쑥쑥! 좌우 밸런스 회복</h2>
+          <p class="caption-desc">야구는 한쪽만 쓰는 편측 회전 운동! 반대쪽 밸런스를 균형 있게 채워줄 때 숨은 키와 잠재력이 함께 깨어납니다.</p>
+          <div class="audio-ticker-row">
+            <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+            <span>조승수 센터 공식 사운드트랙 · 모닝 어쿠스틱</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUT 03: 원인 -->
+      <section class="cut-slide" id="cslide-3">
+        <div class="slide-visual-center">
+          <div class="slide-img-frame">
+            <img src="cardnews/감성매거진_03_원인_왜또아플까.png" alt="03호 원인">
+          </div>
+        </div>
+        <div class="slide-bottom-info">
+          <div class="profile-row">
+            <img src="cho_seungsoo_real.jpg" class="profile-avatar" alt="CSS야구센터">
+            <span class="profile-name">CSS 야구센터 × 도봉리틀</span>
+            <a href="tel:01036669069" class="btn-apply-pill"><i class="fa-solid fa-phone"></i> 입단 상담</a>
+          </div>
+          <h2 class="caption-title">쉬었는데 왜 또 아플까? 반복되는 통증의 비밀</h2>
+          <p class="caption-desc">반복된 회전 동작으로 굳어진 반대쪽 근육과 틀어진 체형이 통증의 진짜 원인! 단순 휴식만으론 해결되지 않습니다.</p>
+          <div class="audio-ticker-row">
+            <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+            <span>조승수 센터 공식 사운드트랙 · 모닝 어쿠스틱</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUT 04: 솔루션 -->
+      <section class="cut-slide" id="cslide-4">
+        <div class="slide-visual-center">
+          <div class="slide-img-frame">
+            <img src="cardnews/감성매거진_04_솔루션_3단계성장프로세스.png" alt="04호 솔루션">
+          </div>
+        </div>
+        <div class="slide-bottom-info">
+          <div class="profile-row">
+            <img src="cho_seungsoo_real.jpg" class="profile-avatar" alt="CSS야구센터">
+            <span class="profile-name">CSS 야구센터 × 도봉리틀</span>
+            <a href="tel:01036669069" class="btn-apply-pill"><i class="fa-solid fa-phone"></i> 입단 상담</a>
+          </div>
+          <h2 class="caption-title">3단계 성장 프로세스: 이완 ➔ 가동성 ➔ 투구</h2>
+          <p class="caption-desc">굳은 근육 이완부터 관절 가동성 회복, 그리고 부드러운 투구 폼 연결까지 체계적으로 케어합니다.</p>
+          <div class="audio-ticker-row">
+            <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+            <span>조승수 센터 공식 사운드트랙 · 모닝 어쿠스틱</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUT 05: 전문가 -->
+      <section class="cut-slide" id="cslide-5">
+        <div class="slide-visual-center">
+          <div class="slide-img-frame">
+            <img src="cardnews/감성매거진_05_원팀_조승수X박인국.png" alt="05호 전문가">
+          </div>
+        </div>
+        <div class="slide-bottom-info">
+          <div class="profile-row">
+            <img src="cho_seungsoo_real.jpg" class="profile-avatar" alt="CSS야구센터">
+            <span class="profile-name">CSS 야구센터 × 도봉리틀</span>
+            <a href="tel:01036669069" class="btn-apply-pill"><i class="fa-solid fa-phone"></i> 입단 상담</a>
+          </div>
+          <h2 class="caption-title">조승수 × 박인국 스페셜 콜라보 케어</h2>
+          <p class="caption-desc">KBO 프로 출신 조승수 대표의 정규 야구 기술 레슨과 16년 임상 박인국 실장의 1:1 맞춤 성장판 케어의 환상적인 시너지!</p>
+          <div class="audio-ticker-row">
+            <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+            <span>조승수 센터 공식 사운드트랙 · 모닝 어쿠스틱</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUT 06: 센터 시설 & 특별 혜택 -->
+      <section class="cut-slide" id="cslide-6">
+        <div class="slide-visual-center">
+          <div class="slide-img-frame" style="background:#0b0f19;">
+            <img src="center_facility_3zones.jpg" alt="06호 센터 전경">
+          </div>
+        </div>
+        <div class="slide-bottom-info">
+          <div class="profile-row">
+            <img src="cho_seungsoo_real.jpg" class="profile-avatar" alt="CSS야구센터">
+            <span class="profile-name">CSS 야구센터 × 도봉리틀</span>
+            <a href="tel:01036669069" class="btn-apply-pill" style="background:linear-gradient(135deg, #e11d48, #be123c);"><i class="fa-solid fa-phone"></i> 50% 혜택 신청</a>
+          </div>
+          <h2 class="caption-title">선수모집 &amp; 첫 방문 50% 특별 혜택 (5만 원)</h2>
+          <p class="caption-desc">초등~중1 선수모집! 실내 투구장 · 웨이트 존 · 기능성 트레이닝 원스톱 시설에서 정밀 분석을 지원합니다. (문의: 010-3666-9069)</p>
+          <div class="audio-ticker-row">
+            <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+            <span>조승수 센터 공식 사운드트랙 · 모닝 어쿠스틱</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 5. Floating Side Action Bar -->
+    <aside class="shorts-side-actions">
+      <!-- Like Heart Button -->
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <button class="side-action-btn" id="btnLike" onclick="toggleLike()" title="좋아요">
+          <i class="fa-solid fa-heart" id="likeIcon"></i>
+        </button>
+        <span class="side-action-label" id="likeCount">1.2K</span>
+      </div>
+
+      <!-- Kakao / Share Button -->
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <button class="side-action-btn" onclick="shareShorts()" title="공유하기">
+          <i class="fa-solid fa-share"></i>
+        </button>
+        <span class="side-action-label">공유</span>
+      </div>
+
+      <!-- Sound Toggle Button -->
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <button class="side-action-btn" id="btnSound" onclick="toggleSound()" title="소리 켜기/끄기">
+          <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+        </button>
+        <span class="side-action-label">음성</span>
+      </div>
+
+      <!-- Direct Call Button -->
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <a href="tel:01036669069" class="side-action-btn" style="background:rgba(2, 132, 199, 0.85); border-color:#38bdf8;" title="조승수 대표 직통 통화">
+          <i class="fa-solid fa-phone"></i>
+        </a>
+        <span class="side-action-label">상담</span>
+      </div>
+    </aside>
+
+  </main>
+
+  <script>
+    const totalCuts = 6;
+    let currentCut = 1;
+    let isPlaying = true;
+    let isMuted = false;
+    let isLiked = false;
+    let likes = 1248;
+    let cutTimer = null;
+    let progressAnim = null;
+
+    const bgmAudio = document.getElementById('bgmAudio');
+    const ttsAudio = document.getElementById('ttsAudio');
+    const soundIcon = document.getElementById('soundIcon');
+    const likeIcon = document.getElementById('likeIcon');
+    const likeCount = document.getElementById('likeCount');
+    const tapIndicator = document.getElementById('tapIndicator');
+    const tapIcon = document.getElementById('tapIcon');
+    const heartIcon = document.getElementById('heartIcon');
+    const shortsStage = document.getElementById('shortsStage');
+
+    const BGM_BASE_VOL = 0.25;
+    const BGM_DUCK_VOL = 0.08;
+
+    bgmAudio.volume = BGM_BASE_VOL;
+    ttsAudio.volume = 1.0;
+
+    // Smooth Volume Ducking
+    function setBgmVolume(targetVol, durationMs = 300) {
+      if (!bgmAudio) return;
+      const startVol = bgmAudio.volume;
+      const startTime = performance.now();
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / durationMs, 1);
+        bgmAudio.volume = startVol + (targetVol - startVol) * progress;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Show Cut Slide
+    function showCut(cutNum) {
+      currentCut = cutNum;
+      clearTimeout(cutTimer);
+      cancelAnimationFrame(progressAnim);
+
+      // Update Slides
+      for (let i = 1; i <= totalCuts; i++) {
+        const slide = document.getElementById(`cslide-${i}`);
+        const pseg = document.getElementById(`pseg-${i}`);
+        const pfill = document.getElementById(`pfill-${i}`);
+
+        if (i === cutNum) {
+          slide.classList.add('active');
+          pseg.className = 'progress-seg active';
+          pfill.style.width = '0%';
+        } else if (i < cutNum) {
+          slide.classList.remove('active');
+          pseg.className = 'progress-seg completed';
+          pfill.style.width = '100%';
+        } else {
+          slide.classList.remove('active');
+          pseg.className = 'progress-seg';
+          pfill.style.width = '0%';
+        }
+      }
+
+      playCutAudio(cutNum);
+    }
+
+    // Play Voice & Animate Progress Bar
+    function playCutAudio(cutNum) {
+      if (isMuted) return;
+
+      ttsAudio.pause();
+      ttsAudio.src = `audio/tts_mag_0${cutNum}.mp3`;
+
+      // Soft Duck BGM
+      setBgmVolume(BGM_DUCK_VOL, 300);
+
+      // Start BGM if paused
+      if (bgmAudio.paused && !isMuted) {
+        bgmAudio.play().catch(() => {});
+      }
+
+      ttsAudio.play().then(() => {
+        // Voice successfully playing, track audio duration for progress bar
+        animateProgressWithAudio();
+      }).catch(() => {
+        // Fallback progress estimation (6 seconds)
+        animateProgressFallback(6000);
+      });
+
+      ttsAudio.onended = () => {
+        // Restore BGM volume
+        setBgmVolume(BGM_BASE_VOL, 350);
+
+        // 0.6s delay before next cut
+        cutTimer = setTimeout(() => {
+          nextCut();
+        }, 600);
+      };
+    }
+
+    function animateProgressWithAudio() {
+      const pfill = document.getElementById(`pfill-${currentCut}`);
+      function update() {
+        if (!isPlaying) return;
+        if (ttsAudio.duration && !isNaN(ttsAudio.duration)) {
+          const pct = Math.min((ttsAudio.currentTime / ttsAudio.duration) * 100, 100);
+          if (pfill) pfill.style.width = `${pct}%`;
+        }
+        if (!ttsAudio.ended && isPlaying) {
+          progressAnim = requestAnimationFrame(update);
+        }
+      }
+      progressAnim = requestAnimationFrame(update);
+    }
+
+    function animateProgressFallback(durationMs) {
+      const pfill = document.getElementById(`pfill-${currentCut}`);
+      const start = performance.now();
+      function update(now) {
+        if (!isPlaying) return;
+        const elapsed = now - start;
+        const pct = Math.min((elapsed / durationMs) * 100, 100);
+        if (pfill) pfill.style.width = `${pct}%`;
+        if (pct < 100 && isPlaying) {
+          progressAnim = requestAnimationFrame(update);
+        } else if (pct >= 100) {
+          nextCut();
+        }
+      }
+      progressAnim = requestAnimationFrame(update);
+    }
+
+    function nextCut() {
+      let next = currentCut + 1;
+      if (next > totalCuts) {
+        showToast("🎉 1호 숏츠 전편 완독 완료!");
+        next = 1;
+      }
+      showCut(next);
+    }
+
+    function prevCut() {
+      let prev = currentCut - 1;
+      if (prev < 1) prev = totalCuts;
+      showCut(prev);
+    }
+
+    // Toggle Play/Pause on Canvas Tap
+    let lastTap = 0;
+    shortsStage.addEventListener('click', (e) => {
+      // Ignore clicks on header, side actions, links
+      if (e.target.closest('.shorts-header') || e.target.closest('.shorts-side-actions') || e.target.closest('a') || e.target.closest('button')) {
+        return;
+      }
+
+      const now = performance.now();
+      if (now - lastTap < 300) {
+        // Double tap -> Heart Like Animation!
+        showDoubleTapHeart();
+        if (!isLiked) toggleLike();
+      } else {
+        // Single tap -> Play/Pause
+        togglePlayPause();
+      }
+      lastTap = now;
+    });
+
+    function togglePlayPause() {
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        if (!isMuted) {
+          bgmAudio.play().catch(() => {});
+          ttsAudio.play().catch(() => {});
+        }
+        animateProgressWithAudio();
+        showTapIndicator('fa-play');
+      } else {
+        bgmAudio.pause();
+        ttsAudio.pause();
+        clearTimeout(cutTimer);
+        cancelAnimationFrame(progressAnim);
+        showTapIndicator('fa-pause');
+      }
+    }
+
+    function showTapIndicator(iconClass) {
+      tapIcon.className = `fa-solid ${iconClass}`;
+      tapIndicator.classList.add('pop');
+      setTimeout(() => {
+        tapIndicator.classList.remove('pop');
+      }, 500);
+    }
+
+    function showDoubleTapHeart() {
+      heartIcon.classList.add('pop');
+      setTimeout(() => {
+        heartIcon.classList.remove('pop');
+      }, 700);
+    }
+
+    // Like Toggle
+    function toggleLike() {
+      isLiked = !isLiked;
+      const btnLike = document.getElementById('btnLike');
+      if (isLiked) {
+        likes++;
+        btnLike.classList.add('active');
+        likeIcon.style.color = '#f43f5e';
+        showToast("❤️ 숏츠를 좋아합니다!");
+      } else {
+        likes--;
+        btnLike.classList.remove('active');
+        likeIcon.style.color = '#ffffff';
+      }
+      likeCount.textContent = (likes / 1000).toFixed(1) + 'K';
+    }
+
+    // Sound Toggle
+    function toggleSound() {
+      isMuted = !isMuted;
+      if (isMuted) {
+        bgmAudio.pause();
+        ttsAudio.pause();
+        soundIcon.className = 'fa-solid fa-volume-xmark';
+        showToast("음소거되었습니다.");
+      } else {
+        soundIcon.className = 'fa-solid fa-volume-high';
+        bgmAudio.play().catch(() => {});
+        ttsAudio.play().catch(() => {});
+        showToast("오디오가 켜졌습니다.");
+      }
+    }
+
+    // Share Modal
+    function shareShorts() {
+      const shareUrl = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          showToast("🔗 1호 숏츠 링크가 복사되었습니다!");
+        });
+      } else {
+        showToast("공유 링크: " + shareUrl);
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('shortsToast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2200);
+    }
+
+    // Swipe Navigation
+    let touchStartX = 0;
+    let touchStartY = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    });
+
+    document.addEventListener('touchend', (e) => {
+      const diffX = e.changedTouches[0].clientX - touchStartX;
+      const diffY = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+        if (diffX < 0) nextCut();
+        else prevCut();
+      }
+    });
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextCut();
+      if (e.key === 'ArrowLeft') prevCut();
+      if (e.key === 'm' || e.key === 'M') toggleSound();
+    });
+
+    // Auto Unlock Audio on First Click
+    ['click', 'touchstart', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, () => {
+        if (bgmAudio.paused && !isMuted) {
+          bgmAudio.play().catch(() => {});
+        }
+      }, { once: true });
+    });
+
+    // Tab Visibility Sync
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        bgmAudio.pause();
+        ttsAudio.pause();
+      } else if (isPlaying && !isMuted) {
+        bgmAudio.play().catch(() => {});
+        ttsAudio.play().catch(() => {});
+      }
+    });
+
+    // Init
+    window.addEventListener('DOMContentLoaded', () => {
+      showCut(1);
+    });
+  </script>
+</body>
+</html>
