@@ -14,4 +14,5 @@ $RECYCLE.BIN/
 scratch/
 .temp/
 temp_*
+test_*
 *_fitted.jpg
